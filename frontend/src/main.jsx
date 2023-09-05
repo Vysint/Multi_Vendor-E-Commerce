@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from "./App.jsx";
 import Login from "./pages/auth/Login.jsx";
+import Register from "./pages/auth/Register.jsx";
 
 import "./index.css";
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       {/* <Route index={true} path="/" element={<App />} /> */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
     </Route>
   )
 );

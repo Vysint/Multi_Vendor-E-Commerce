@@ -1,20 +1,44 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { RxAvatar } from "react-icons/rx";
 import Card from "../../components/card/Card";
 import "./Login.css";
+import { useState } from "react";
 
 const Login = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [visible, setVisible] = useState(false);
+  const [avatar, setAvatar] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("submit");
+  };
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setAvatar(file);
+  };
   return (
     <div className="auth">
       <Card>
         <div className="form">
-          <h2 className="title">Login</h2>
+          <h2 className="title">Register</h2>
           <form className="form1">
+            <div className="inputs">
+              <label> Full Name</label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
             <div className="inputs">
               <label>Email Address</label>
               <input
@@ -46,14 +70,29 @@ const Login = () => {
                 </span>
               </div>
             </div>
-            <div className="options">
-              <div className="checkbox">
-                <input type="checkbox" name="remember" id="remember" />
-                <label htmlFor="remember">Remember me</label>
+            <div className="option">
+              <label htmlFor="file-input"></label>
+              <div className="items-center">
+                <span className="inline">
+                  {avatar ? (
+                    <img src={URL.createObjectURL(avatar)} />
+                  ) : (
+                    <RxAvatar size={25} />
+                  )}
+                </span>
+                <label htmlFor="file-input">
+                  <div className="file-upload">
+                    <input
+                      type="file"
+                      name="avatar"
+                      id="file-input"
+                      onChange={handleFileInputChange}
+                      className="sr-only"
+                    />
+                    <button>Upload a file</button>
+                  </div>
+                </label>
               </div>
-              <Link to="/forgotpassword" className="register">
-                Forgot Password
-              </Link>
             </div>
             <button
               type="submit"
@@ -64,9 +103,9 @@ const Login = () => {
             </button>
           </form>
           <div style={{ marginBottom: "1rem" }}>
-            <span>Don&apos;t have an account?</span>
-            <Link to="/register" className="register">
-              &nbsp;SignUp
+            <span>Already have an account?</span>
+            <Link to="/login" className="register">
+              &nbsp;Sign In
             </Link>
           </div>
         </div>
