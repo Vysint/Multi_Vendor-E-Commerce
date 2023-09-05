@@ -13,7 +13,7 @@ const Login = () => {
     <div className="auth">
       <Card>
         <div className="form">
-          <h2 className="title">Login to your account</h2>
+          <h2 className="title">Login</h2>
           <form className="form1">
             <div className="inputs">
               <label>Email Address</label>
