@@ -1,11 +1,11 @@
-
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
-      <h3>App</h3>
-    </div>
-  )
-}
+    <>
+      <Outlet />
+    </>
+  );
+};
 
-export default App
+export default App;
