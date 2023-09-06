@@ -1,11 +1,12 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const fileUpload = require("express-fileupload");
 const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
+const  userRoutes  = require("./routes/userRoutes");
 
 const app = express();
 dotenv.config();
@@ -15,11 +16,14 @@ const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
-app.use(fileUpload({ useTempFiles: true }));
+
+// Routes
+app.use("/api/v2/users", userRoutes);
 
 //Error middlewares
 app.use(errorHandler);
