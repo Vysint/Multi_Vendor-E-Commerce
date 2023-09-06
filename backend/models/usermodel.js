@@ -53,14 +53,9 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     avatar: {
-      public_id: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: [true, "Please add a photo"],
+      default: "https://ibb.co/ZN5Wtjf",
     },
     createdAt: {
       type: Date,
@@ -84,8 +79,8 @@ userSchema.pre("save", async function (next) {
 });
 
 // Compare password
-userSchema.methods.comparePassword =async function(enteredPassword){
-  return await bcrypt.compare(enteredPassword, this.password)
-}
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 module.exports = mongoose.model("User", userSchema);
