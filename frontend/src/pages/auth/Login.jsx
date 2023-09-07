@@ -1,20 +1,52 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
+import { toast } from "react-toastify";
 import Card from "../../components/card/Card";
+import { useLoginMutation } from "../../features/slices/usersApiSlice";
+import { SpinnerImg } from "../../components/loader/Loader";
+import { setCredentials } from "../../features/slices/authSlice";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [visible, setVisible] = useState(false);
+
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      toast.success("Login successful");
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.message || err.error);
+    }
+  };
+
   return (
     <div className="auth">
+      {isLoading && <SpinnerImg />}
       <Card>
         <div className="form">
           <h2 className="title">Login</h2>
-          <form className="form1">
+          <form className="form1" onSubmit={submitHandler}>
             <div className="inputs">
               <label>Email Address</label>
               <input
