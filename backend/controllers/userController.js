@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
-const { cloudinary_js_config } = require("../utils/cloudinary");
 const verifyToken = require("../utils/jwt");
 const cloudinary = require("../utils/cloudinary");
+const bcrypt = require("bcryptjs");
 
 // @desc   Register a new user
 // route   POST /api/users/register
@@ -67,10 +67,10 @@ exports.registerUser = async (req, res, next) => {
       name,
       email,
       password,
-      avatar: {
-        public_id: fileData.public_id,
-        url: fileData.secure_url,
-      },
+      // avatar: {
+      //   public_id: fileData.public_id,
+      //   url: fileData.secure_url,
+      // },
     });
     if (newUser) {
       verifyToken(res, newUser._id);
@@ -78,11 +78,43 @@ exports.registerUser = async (req, res, next) => {
         _id: newUser._id,
         name: newUser.name,
         email: newUser.email,
-        avatar: newUser.avatar,
+        // avatar: newUser.avatar,
       });
     } else {
       res.status(400);
       throw new Error("Invalid user data");
+    }
+  } catch (err) {
+    return next(err);
+  }
+};
+
+// @desc   Login a  user
+// route   POST /api/users/login
+// @access Public
+
+exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
+  // Validate request
+  try {
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("Please add email and password");
+    }
+  } catch (err) {
+    return next(err);
+  }
+
+  // Check if user exists
+  try {
+    const user = await User.findOne({ email })
+      // .select("-password").exec();
+    if (user && (await user.comparePassword(password))) {
+      verifyToken(res, user._id);
+      res.status(200).json(user);
+    } else {
+      res.status(400);
+      throw new Error("User not found, please register instead.");
     }
   } catch (err) {
     return next(err);
