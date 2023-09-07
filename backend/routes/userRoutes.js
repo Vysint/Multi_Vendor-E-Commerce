@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { registerUser } = require("../controllers/userController");
-// const fileUpload = require("../utils/fileUpload");
-
-
-// fileUpload.single("file")
+const { registerUser, login } = require("../controllers/userController");
 
 router.post("/register", registerUser);
+router.post("/login", login);
+
 
 module.exports = router;
