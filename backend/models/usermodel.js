@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter your password"],
       minLength: [6, "Password must be at least 6 characters"],
-      select: false,
+      trim: true,
     },
     phoneNumber: {
       type: Number,
@@ -55,11 +55,12 @@ const userSchema = new mongoose.Schema(
     avatar: {
       public_id: {
         type: String,
-        required: true,
+        // required: true,
       },
       url: {
         type: String,
-        required: true,
+        // required: true,
+        default: "https://ibb.co/ZN5Wtjf",
       },
     },
     createdAt: {
