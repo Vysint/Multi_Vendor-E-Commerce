@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   background-color: rgb(249, 248, 248);
 }
 .--btn {
@@ -29,4 +29,13 @@
 .--btn-primary {
   color: #fff;
   background: #007bff;
+}
+.--center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
