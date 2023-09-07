@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
-const  userRoutes  = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 dotenv.config();
@@ -20,7 +20,12 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 
 // Routes
 app.use("/api/v2/users", userRoutes);
