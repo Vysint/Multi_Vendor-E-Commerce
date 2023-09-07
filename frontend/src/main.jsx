@@ -11,13 +11,14 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import store from "./store.js";
 import { Provider } from "react-redux";
-
+import Home from "./pages/home/Home.jsx";
 import "./index.css";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      {/* <Route index={true} path="/" element={<App />} /> */}
+      <Route index={true} path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Route>
