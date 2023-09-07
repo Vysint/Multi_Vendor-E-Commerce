@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const verifyToken = require("../utils/jwt");
 const cloudinary = require("../utils/cloudinary");
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 // @desc   Register a new user
 // route   POST /api/users/register
@@ -107,11 +107,15 @@ exports.login = async (req, res, next) => {
 
   // Check if user exists
   try {
-    const user = await User.findOne({ email })
-      // .select("-password").exec();
+    const user = await User.findOne({ email });
     if (user && (await user.comparePassword(password))) {
       verifyToken(res, user._id);
-      res.status(200).json(user);
+      res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        avatar: user.avatar.url,
+      });
     } else {
       res.status(400);
       throw new Error("User not found, please register instead.");
