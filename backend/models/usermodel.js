@@ -53,15 +53,9 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
     avatar: {
-      public_id: {
-        type: String,
-        // required: true,
-      },
-      url: {
-        type: String,
-        // required: true,
-        default: "https://ibb.co/ZN5Wtjf",
-      },
+      type: String,
+      required: [true, "Please add a photo"],
+      default: "https://i.ibb.co/3k2BG3T/profile.png",
     },
     createdAt: {
       type: Date,
