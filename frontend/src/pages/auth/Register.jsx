@@ -1,33 +1,57 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
+// import { RxAvatar } from "react-icons/rx";
+import { useSignUpMutation } from "../../features/slices/usersApiSlice";
+import { setCredentials } from "../../features/slices/authSlice";
 import Card from "../../components/card/Card";
+import { SpinnerImg } from "../../components/loader/Loader";
 import "./Login.css";
-import { useState } from "react";
 
 const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [avatar, setAvatar] = useState(null);
+  // const [avatar, setAvatar] = useState(null);
 
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  const [signUp, { isLoading }] = useSignUpMutation();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
+
+  // const handleFileInputChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setAvatar(file);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("submit");
+    try {
+      const res = await signUp({name, email, password}).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.message || err?.error);
+    }
   };
 
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    setAvatar(file);
-  };
   return (
     <div className="auth">
+      {isLoading && <SpinnerImg />}
       <Card>
         <div className="form">
           <h2 className="title">Register</h2>
-          <form className="form1">
+          <form className="form1" onSubmit={handleSubmit}>
             <div className="inputs">
               <label> Full Name</label>
               <input
@@ -70,7 +94,7 @@ const Login = () => {
                 </span>
               </div>
             </div>
-            <div className="option">
+            {/* <div className="option">
               <label htmlFor="file-input"></label>
               <div className="items-center">
                 <span className="inline">
@@ -93,7 +117,7 @@ const Login = () => {
                   </div>
                 </label>
               </div>
-            </div>
+            </div> */}
             <button
               type="submit"
               className="--btn --btn-primary --btn-block"
