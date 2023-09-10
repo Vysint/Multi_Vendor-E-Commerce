@@ -1,26 +1,24 @@
 const User = require("../models/userModel");
 const verifyToken = require("../utils/jwt");
 const cloudinary = require("../utils/cloudinary");
-const bcrypt = require('bcryptjs');
+const { fileSizeFormatter } = require("../utils/fileUpload");
 
 // @desc   Register a new user
 // route   POST /api/users/register
 // @access Public
 exports.registerUser = async (req, res, next) => {
-  const { name, email, password, avatar } = req.body;
+  const { name, email, password, imageURL } = req.body;
 
   // Validation
   try {
-    if (!name || !email || !password || !avatar) {
+    if (!name || !email || !password) {
       res.status(400);
       throw new Error("Please fill in all the required fields");
     }
   } catch (err) {
     return next(err);
   }
-
   // Check password length
-
   try {
     if (password.length < 6) {
       res.status(400);
@@ -45,40 +43,16 @@ exports.registerUser = async (req, res, next) => {
 
   // Create a new user
   try {
-    // Handle image upload to cloudinary
-    let fileData;
-    if (req.file) {
-      let uploadImage;
-      try {
-        uploadImage = await cloudinary.uploader.upload(req.file.path, {
-          folder: "Pinvent App",
-          resource_type: "image",
-        });
-      } catch (err) {
-        res.status(500);
-        throw new Error(err);
-      }
-      fileData = {
-        public_id: uploadImage.public_id,
-        url: uploadImage.secure_url,
-      };
-    }
     const newUser = await User.create({
       name,
       email,
       password,
-      // avatar: {
-      //   public_id: fileData.public_id,
-      //   url: fileData.secure_url,
-      // },
+      imageURL
     });
     if (newUser) {
       verifyToken(res, newUser._id);
       res.status(201).json({
-        _id: newUser._id,
-        name: newUser.name,
-        email: newUser.email,
-        // avatar: newUser.avatar,
+        user: newUser,
       });
     } else {
       res.status(400);
