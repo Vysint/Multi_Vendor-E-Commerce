@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    avatar: {
+    imageURL: {
       type: String,
       required: [true, "Please add a photo"],
       default: "https://i.ibb.co/3k2BG3T/profile.png",
