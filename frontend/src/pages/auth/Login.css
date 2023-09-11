@@ -39,14 +39,17 @@ h2 {
   border-radius: 3px;
 }
 .inputs > input:focus {
+  background: rgb(215, 238, 245);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid #1f93ff;
+  border: 1px solid #007bff;
   cursor: pointer;
 }
-
-.inputs > input:focus:invalid {
-  border-bottom: 3px solid #ff7730;
+.inputs > input:valid {
+  background: rgb(215, 238, 245);
+  
 }
+
+
 .options {
   display: flex;
   justify-content: space-between;
@@ -118,7 +121,7 @@ h2 {
   margin-top: 0.8rem;
   border-radius: 5px;
 }
-.inline > img{
+.inline > img {
   width: 100px;
   height: 100px;
   object-fit: cover;
