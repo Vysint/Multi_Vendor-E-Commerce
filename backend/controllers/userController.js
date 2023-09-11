@@ -87,7 +87,7 @@ exports.login = async (req, res, next) => {
     }
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
-      res.status(401);
+      res.status(400);
       throw new Error("Password is incorrect");
     }
     verifyToken(res, user._id);
