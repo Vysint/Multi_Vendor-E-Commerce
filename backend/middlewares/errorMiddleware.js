@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 exports.errorHandler = (err, req, res, next) => {
   let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   let message = err.message || "Something went wrong";
