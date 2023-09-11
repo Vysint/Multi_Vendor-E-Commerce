@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const verifyToken = require("../utils/jwt");
 const cloudinary = require("../utils/cloudinary");
 const { fileSizeFormatter } = require("../utils/fileUpload");
+const { response } = require("express");
 
 // @desc   Register a new user
 // route   POST /api/users/register
@@ -11,7 +12,7 @@ exports.registerUser = async (req, res, next) => {
 
   // Validation
   try {
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !imageURL) {
       res.status(400);
       throw new Error("Please fill in all the required fields");
     }
@@ -51,9 +52,7 @@ exports.registerUser = async (req, res, next) => {
     });
     if (newUser) {
       verifyToken(res, newUser._id);
-      res.status(201).json({
-        user: newUser,
-      });
+      res.status(201).json(newUser);
     } else {
       res.status(400);
       throw new Error("Invalid user data");
@@ -82,19 +81,46 @@ exports.login = async (req, res, next) => {
   // Check if user exists
   try {
     const user = await User.findOne({ email });
-    if (user && (await user.comparePassword(password))) {
-      verifyToken(res, user._id);
-      res.status(200).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        imageURL: user.imageURL,
-      });
-    } else {
-      res.status(400);
-      throw new Error("User not found, please register instead.");
+    if (!user) {
+      res.status(401);
+      throw new Error("User not found");
     }
+    const isPasswordValid = await user.comparePassword(password);
+    if (!isPasswordValid) {
+      res.status(401);
+      throw new Error("Password is incorrect");
+    }
+    verifyToken(res, user._id);
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      imageURL: user.imageURL,
+    });
   } catch (err) {
     return next(err);
   }
+  // try {
+  //   const user = await User.findOne({ email });
+  //   if (user) {
+  //     const isPasswordValid = await user.comparedPassword(password);
+  //     if (isPasswordValid) {
+  //       verifyToken(res, user._id);
+  //       res.status(200).json({
+  //         _id: user._id,
+  //         name: user.name,
+  //         email: user.email,
+  //         imageURL: user.imageURL,
+  //       });
+  //     } else {
+  //       res.status(400);
+  //       throw new Error("Password is incorrect");
+  //     }
+  //   } else {
+  //     res.status(400);
+  //     throw new Error("User not found, please register instead.");
+  //   }
+  // } catch (err) {
+  //   return next(err);
+  // }
 };
