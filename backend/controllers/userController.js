@@ -1,11 +1,13 @@
+const crypto = require("crypto");
 const User = require("../models/userModel");
+const Token = require("../models/tokenModel");
 const verifyToken = require("../utils/jwt");
 const cloudinary = require("../utils/cloudinary");
 const { fileSizeFormatter } = require("../utils/fileUpload");
-const { response } = require("express");
+const sendMail = require("../utils/sendMail");
 
 // @desc   Register a new user
-// route   POST /api/users/register
+// route   POST /api/v2/users/register
 // @access Public
 exports.registerUser = async (req, res, next) => {
   const { name, email, password, imageURL } = req.body;
@@ -63,7 +65,7 @@ exports.registerUser = async (req, res, next) => {
 };
 
 // @desc   Login a  user
-// route   POST /api/users/login
+// route   POST /api/v2/users/login
 // @access Public
 
 exports.login = async (req, res, next) => {
@@ -103,7 +105,7 @@ exports.login = async (req, res, next) => {
 };
 
 // @desc   Logout a user
-// route   POST /api/users/logout
+// route   POST /api/v2/users/logout
 // @access Public
 
 exports.logout = async (req, res, next) => {
@@ -115,7 +117,7 @@ exports.logout = async (req, res, next) => {
 };
 
 // @desc   GET user profile
-// route   GET /api/users/profile
+// route   GET /api/v2/users/profile
 // @access private
 
 exports.getUserProfile = async (req, res, next) => {
@@ -125,4 +127,79 @@ exports.getUserProfile = async (req, res, next) => {
     email: req.user.email,
   };
   res.status(200).json(user);
+};
+
+// @desc   Forgot Password
+// route   POST /api/v2/users/forgotpassword
+// @access public
+
+exports.forgotPassword = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      // Delete token if it exists in the database
+      try {
+        let token = await Token.findOne({ userId: user._id });
+        if (token) {
+          await token.deleteOne();
+        }
+      } catch (err) {
+        res.status(400);
+        throw new Error(err);
+      }
+
+      // Create a reset token
+      let resetToken = crypto.randomBytes(32).toString("hex") + user._id;
+
+      // Hash token before saving to the database
+      const hashedToken = crypto
+        .createHash("sha256")
+        .update(resetToken)
+        .digest("hex");
+
+      // Save to the database
+      await new Token({
+        userId: user._id,
+        token: hashedToken,
+        createdAt: Date.now(),
+        expiresAt: Date.now() + 30 * (60 * 1000), //30 minutes
+      }).save();
+
+      // Construct the Reset Url
+      const resetUrl = `${process.env.FRONTEND_URL}/resetpassword/${resetToken}`;
+
+      console.log(resetToken);
+
+      // Reset Password Email
+      const message = `
+      <h2>Hello ${user.name}</h2>
+      <p>You requested for a password reset</p>
+      <p>Please use the link below to reset your password</p>
+      <p>This reset link is valid for 30 minutes</p>
+      <a href=${resetUrl} clicktracking=off>${resetUrl}</a>   
+      
+      <p>Regards</p>
+      <p>Team</p>
+      `;
+
+      // Email options
+      const subject = "Password Reset Request";
+      const send_to = user.email;
+      const sent_from = process.env.EMAIL_USER;
+
+      try {
+        await sendMail(subject, message, send_to, sent_from);
+        res.status(200).json({ success: true, message: "Reset Email sent" });
+      } catch (err) {
+        res.status(400);
+        throw new Error("Email not sent,please try again");
+      }
+    } else {
+      res.status(400);
+      throw new Error("User not found");
+    }
+  } catch (err) {
+    return next(err);
+  }
 };
