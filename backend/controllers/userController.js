@@ -47,7 +47,7 @@ exports.registerUser = async (req, res, next) => {
       name,
       email,
       password,
-      imageURL
+      imageURL,
     });
     if (newUser) {
       verifyToken(res, newUser._id);
@@ -88,7 +88,7 @@ exports.login = async (req, res, next) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        avatar: user.avatar.url,
+        imageURL: user.imageURL,
       });
     } else {
       res.status(400);
