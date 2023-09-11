@@ -71,8 +71,9 @@ const Login = () => {
       const res = await signUp(formData).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate("/");
+      toast.success("Sign up is successful");
     } catch (err) {
-      toast.error(err?.message || err?.error);
+      toast.error(err?.data?.message || err?.error?.message);
     }
   };
 
