@@ -39,7 +39,7 @@ h2 {
   border-radius: 3px;
 }
 .inputs > input:focus {
-  background: rgb(215, 238, 245);
+  /* background: rgb(215, 238, 245); */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
   border: 1px solid #007bff;
   cursor: pointer;
