@@ -100,27 +100,29 @@ exports.login = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-  // try {
-  //   const user = await User.findOne({ email });
-  //   if (user) {
-  //     const isPasswordValid = await user.comparedPassword(password);
-  //     if (isPasswordValid) {
-  //       verifyToken(res, user._id);
-  //       res.status(200).json({
-  //         _id: user._id,
-  //         name: user.name,
-  //         email: user.email,
-  //         imageURL: user.imageURL,
-  //       });
-  //     } else {
-  //       res.status(400);
-  //       throw new Error("Password is incorrect");
-  //     }
-  //   } else {
-  //     res.status(400);
-  //     throw new Error("User not found, please register instead.");
-  //   }
-  // } catch (err) {
-  //   return next(err);
-  // }
+};
+
+// @desc   Logout a user
+// route   POST /api/users/logout
+// @access Public
+
+exports.logout = async (req, res, next) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
+// @desc   GET user profile
+// route   GET /api/users/profile
+// @access private
+
+exports.getUserProfile = async (req, res, next) => {
+  const user = {
+    _id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+  };
+  res.status(200).json(user);
 };
