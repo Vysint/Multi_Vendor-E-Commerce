@@ -203,3 +203,41 @@ exports.forgotPassword = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Reset Password
+// route   POST /api/v2/users/resetpassword/:resetToken
+// @access public
+
+exports.resetPassword = async (req, res, next) => {
+  const { password } = req.body;
+  const { resetToken } = req.params;
+
+  // Hash token, then compare to token in DB
+
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  //  Find the token in the database
+  try {
+    const userToken = await Token.findOne({
+      token: hashedToken,
+      expiresAt: { $gt: Date.now() },
+    });
+    if (userToken) {
+      //Find user
+      const user = await User.findOne({ _id: userToken.userId });
+      user.password = password;
+      await user.save();
+      res
+        .status(200)
+        .json({ message: "Password reset successful, please login" });
+    } else {
+      res.status(400);
+      throw new Error("Invalid or expired token");
+    }
+  } catch (err) {
+    return next(err);
+  }
+};
