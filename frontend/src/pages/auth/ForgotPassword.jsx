@@ -1,12 +1,23 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Card from "../../components/card/Card";
 import { SpinnerImg } from "../../components/loader/Loader";
+import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [forgot, { isLoading }] = useForgotPasswordMutation();
+
   const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const res = await forgot({ email }).unwrap();
+      setEmail("");
+      toast.success(res?.message);
+    } catch (err) {
+      toast.error(err?.response?.data?.message || err?.error);
+    }
   };
   return (
     <div className="auth">
