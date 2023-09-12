@@ -190,7 +190,7 @@ exports.forgotPassword = async (req, res, next) => {
 
       try {
         await sendMail(subject, message, send_to, sent_from);
-        res.status(200).json({ success: true, message: "Reset Email sent" });
+        res.status(200).json({ success: true, message: "Reset email sent, kindly check your email" });
       } catch (err) {
         res.status(400);
         throw new Error("Email not sent,please try again");
