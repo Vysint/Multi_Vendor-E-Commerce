@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Card from "../../components/card/Card";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
+import { validateEmail } from "../../components/utils/validateEmail";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -11,12 +12,20 @@ const ForgetPassword = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    // Data validation
+    if (!email) {
+      return toast.error("Please enter your email address");
+    }
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email address");
+    }
+
     try {
       const res = await forgot({ email }).unwrap();
       setEmail("");
       toast.success(res?.message);
     } catch (err) {
-      toast.error(err?.response?.data?.message || err?.error);
+      toast.error(err?.data?.message || err?.error);
     }
   };
   return (
