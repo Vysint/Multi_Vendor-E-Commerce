@@ -1,16 +1,43 @@
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { SpinnerImg } from "../../components/loader/Loader";
 import Card from "../../components/card/Card";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useResetPasswordMutation } from "../../features/slices/usersApiSlice";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [visible, setVisible] = useState(false);
 
+  const [reset, { isLoading }] = useResetPasswordMutation();
+  const navigate = useNavigate();
+
+  const { resetToken } = useParams();
   const submitHandler = async (e) => {
     e.preventDefault();
+    // Data validation
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters");
+    }
+    if (password !== confirmPassword) {
+      return toast.error("Password do not match");
+    }
+
+    const userData = {
+      password,
+      resetToken,
+    };
+
+    try {
+      const res = await reset(userData);
+      console.log(res?.message);
+      toast.success(res?.data?.message);
+      navigate("/login");
+    } catch (err) {
+      toast.error(err);
+    }
   };
   return (
     <div className="auth">
