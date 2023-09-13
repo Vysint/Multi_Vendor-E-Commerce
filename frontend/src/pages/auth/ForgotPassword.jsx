@@ -4,6 +4,7 @@ import Card from "../../components/card/Card";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
 import { validateEmail } from "../../components/utils/validateEmail";
+import { Link } from "react-router-dom";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -50,10 +51,13 @@ const ForgetPassword = () => {
             <button
               type="submit"
               className="--btn --btn-primary --btn-block"
-              style={{ margin: "2rem 0" }}
+              style={{ margin: "2rem 0 1rem 0" }}
             >
               Reset Reset Email
             </button>
+            <Link to="/login" className="back_link">
+              Back to login
+            </Link>
           </form>
         </div>
       </Card>
