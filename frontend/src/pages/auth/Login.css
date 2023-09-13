@@ -135,6 +135,19 @@
   object-position: top;
   border-radius: 50%;
 }
+.back_link{
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  color:#007bff;
+  font-size: 1rem;
+}
+.back_link:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
 @keyframes slide-up {
   0% {
     transform: translateY(-5rem);
