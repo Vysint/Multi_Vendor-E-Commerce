@@ -2,8 +2,6 @@ const crypto = require("crypto");
 const User = require("../models/userModel");
 const Token = require("../models/tokenModel");
 const verifyToken = require("../utils/jwt");
-const cloudinary = require("../utils/cloudinary");
-const { fileSizeFormatter } = require("../utils/fileUpload");
 const sendMail = require("../utils/sendMail");
 
 // @desc   Register a new user
