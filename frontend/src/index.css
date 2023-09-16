@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "ambrotype";
   src: local("ambrotype"), url("./fonts/ambrotype.ttf") format("ttf"),
