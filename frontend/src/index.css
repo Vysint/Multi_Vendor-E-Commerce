@@ -1,8 +1,14 @@
+@font-face {
+  font-family: "ambrotype";
+  src: local("ambrotype"), url("./fonts/ambrotype.ttf") format("ttf"),
+    url("./fonts/ambrotype.otf") format("otf");
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: "ambrotype", sans-serif;
   background-color: rgb(249, 248, 248);
 }
 .--btn {
@@ -38,4 +44,8 @@
   width: 100%;
   margin: auto;
   text-align: center;
+}
+body {
+  position: relative;
+  padding-top: 90px;
 }
