@@ -1,0 +1,14 @@
+.navbar_items{
+  flex-basis: 50%;
+ display: flex;
+ justify-content: space-between;
+ background: #007bff;
+//  gap: 1rem;
+.nav_item > a{
+  text-decoration: none;
+  color: #000;
+  background: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+}
+}
