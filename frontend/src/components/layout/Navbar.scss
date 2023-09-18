@@ -10,5 +10,10 @@
   background: #007bff;
   color: #fff;
   font-size: 1.2rem;
+
+  &:hover{
+    border-bottom: 2px solid #fff;
+  }
+
 }
 }

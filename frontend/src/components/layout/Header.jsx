@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
@@ -10,15 +11,19 @@ import { IoIosArrowForward } from "react-icons/io";
 import { productData, categoriesData } from "../../static/data";
 import Dropdown from "./Dropdown";
 import Navbar from "./Navbar";
-import "./Header.scss";
 import Card from "../card/Card";
+import InfoBox from "./InfoBox";
+import "./Header.scss";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState("");
   const [dropdown, setDropdown] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const [active, setActive] = useState(false);
+
+  const { userInfo } = useSelector((state) => state.auth);
 
   window.addEventListener("scroll", () => {
     if (window.screenY > 70) {
@@ -40,6 +45,9 @@ const Header = () => {
 
   const openDropdown = () => {
     setDropdown(!dropdown);
+  };
+  const openProfile = () => {
+    setProfileOpen(!profileOpen);
   };
   return (
     <div className="nav_container">
@@ -78,14 +86,6 @@ const Header = () => {
           ) : null}
         </div>
         <div className="account_credentials">
-          <Link to="/login">
-            <BiUserCircle
-              size={25}
-              color="white"
-              style={{ background: "transparent" }}
-            />
-            <span>Sign In</span>
-          </Link>
           <Link className="become_seller">
             <button>
               <span>Become Seller</span>
@@ -96,6 +96,40 @@ const Header = () => {
               />
             </button>
           </Link>
+          {userInfo ? (
+            <div style={{ background: "transparent", position: "relative" }}>
+              <img
+                src={userInfo.imageURL}
+                alt="Profile Picture"
+                onClick={openProfile}
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  objectFit: "cover",
+                  objectPosition: "top",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  border: "2px solid #fff",
+                }}
+              />
+              {profileOpen ? (
+                <InfoBox
+                  userInfo={userInfo}
+                  openProfile={openProfile}
+                  profileOpen={profileOpen}
+                />
+              ) : null}
+            </div>
+          ) : (
+            <Link to="/login">
+              <BiUserCircle
+                size={25}
+                color="white"
+                style={{ background: "transparent" }}
+              />
+              <span>Sign In</span>
+            </Link>
+          )}
         </div>
       </div>
       <div className="nav_items_section">
