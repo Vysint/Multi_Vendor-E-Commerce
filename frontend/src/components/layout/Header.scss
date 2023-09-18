@@ -114,6 +114,14 @@
       align-items: center;
       font-size: 1.2rem;
       background: #007bff;
+      position: relative;
+      cursor: pointer;
+
+      .drop_down {
+        position: absolute;
+        top: 50px;
+        left: 40px;
+      }
     }
     .nav_items {
       display: flex;

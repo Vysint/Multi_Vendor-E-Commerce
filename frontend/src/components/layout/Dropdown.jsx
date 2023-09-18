@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Card from "../card/Card";
+import "./Dropdown.scss";
 
 const Dropdown = ({ categories, setDropdown }) => {
   const navigate = useNavigate();

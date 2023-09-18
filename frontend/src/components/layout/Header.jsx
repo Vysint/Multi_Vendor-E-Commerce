@@ -11,6 +11,7 @@ import { productData, categoriesData } from "../../static/data";
 import Dropdown from "./Dropdown";
 import Navbar from "./Navbar";
 import "./Header.scss";
+import Card from "../card/Card";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -100,22 +101,45 @@ const Header = () => {
       <div className="nav_items_section">
         {/* categories */}
         <div className="category">
-          <HiMenuAlt2 size={20} style={{ background: "transparent", color:"white" }} />
-          <span onClick={openDropdown} style={{background:"transparent", color:"white"}}>All Categories</span>
+          <HiMenuAlt2
+            size={20}
+            style={{ background: "transparent", color: "white" }}
+          />
+          <span
+            onClick={openDropdown}
+            style={{ background: "transparent", color: "white" }}
+          >
+            All Categories
+          </span>
           {dropdown ? (
             <IoIosArrowDown
               size={20}
-              style={{ paddingTop: "4px", background: "transparent", color:"white" }}
+              style={{
+                paddingTop: "4px",
+                background: "transparent",
+                color: "white",
+              }}
             />
           ) : (
             <IoIosArrowForward
               size={20}
-              style={{ paddingTop: "4px", background: "transparent", color:"white"}}
+              style={{
+                paddingTop: "4px",
+                background: "transparent",
+                color: "white",
+              }}
             />
           )}
-          {dropdown ? (
-            <Dropdown categories={categoriesData} setDropdown={setDropdown} />
-          ) : null}
+          <div className="drop_down">
+            <Card>
+              {dropdown ? (
+                <Dropdown
+                  categories={categoriesData}
+                  setDropdown={setDropdown}
+                />
+              ) : null}
+            </Card>
+          </div>
         </div>
         <div className="nav_items">
           <div className="navbar">
@@ -123,11 +147,17 @@ const Header = () => {
           </div>
           <div className="nav_icons">
             <div>
-              <AiOutlineHeart size={25} style={{background: "#007bff", color:"white"}}/>
+              <AiOutlineHeart
+                size={25}
+                style={{ background: "#007bff", color: "white" }}
+              />
               <span>0</span>
             </div>
             <div>
-              <LuShoppingCart size={25} style={{background: "#007bff", color:"white"}}/>
+              <LuShoppingCart
+                size={25}
+                style={{ background: "#007bff", color: "white" }}
+              />
               <span>1</span>
             </div>
           </div>
