@@ -53,7 +53,7 @@ const ForgetPassword = () => {
               className="--btn --btn-primary --btn-block"
               style={{ margin: "2rem 0 1rem 0" }}
             >
-              Reset Reset Email
+              Reset Email
             </button>
             <Link to="/login" className="back_link">
               Back to login
