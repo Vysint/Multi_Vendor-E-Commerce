@@ -21,6 +21,7 @@
   margin: 0;
   font-family: "Vegur-Regular", sans-serif;
   background-color: rgb(249, 248, 248);
+  scroll-behavior: smooth;
 }
 .--btn {
   font-size: 1rem;
