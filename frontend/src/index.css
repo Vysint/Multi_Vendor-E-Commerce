@@ -11,6 +11,32 @@
   src: local("Vegur-Regular"), url("./fonts/Vegur-Regular.otf") format("otf");
 }
 
+@-moz-document url-prefix() {
+  /* Disable scrollbar Firefox */
+  html {
+    scrollbar-width: none;
+  }
+}
+body {
+  box-sizing: border-box;
+  padding-top: 120px;
+  margin: 0;
+  scrollbar-width: none;
+  font-family: "Vegur-Regular", sans-serif;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  background-color: rgb(249, 248, 248);
+  scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
@@ -56,8 +82,4 @@
   width: 100%;
   margin: auto;
   text-align: center;
-}
-body {
-  position: relative;
-  padding-top: 130px;
 }
