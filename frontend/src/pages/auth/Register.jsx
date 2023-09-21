@@ -6,7 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { useSignUpMutation } from "../../features/slices/usersApiSlice";
 import { setCredentials } from "../../features/slices/authSlice";
-import Card from "../../components/card/Card";
+import Card from "../../components/utils/card/Card";
 import { SpinnerImg } from "../../components/loader/Loader";
 import "./Login.css";
 

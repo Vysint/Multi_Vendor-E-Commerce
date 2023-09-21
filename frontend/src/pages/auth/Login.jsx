@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { toast } from "react-toastify";
-import Card from "../../components/card/Card";
 import { useLoginMutation } from "../../features/slices/usersApiSlice";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { setCredentials } from "../../features/slices/authSlice";
+import Card from "../../components/utils/card/Card";
 import "./Login.css";
 
 const Login = () => {

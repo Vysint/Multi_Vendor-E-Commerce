@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SpinnerImg } from "../../components/loader/Loader";
-import Card from "../../components/card/Card";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useResetPasswordMutation } from "../../features/slices/usersApiSlice";
+import Card from "../../components/utils/card/Card";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");

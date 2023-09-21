@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Card from "../../components/card/Card";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
-import { validateEmail } from "../../components/utils/validateEmail";
-import { Link } from "react-router-dom";
+import { validateEmail } from "../../components/validate/validateEmail";
+import Card from "../../components/utils/card/Card";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
