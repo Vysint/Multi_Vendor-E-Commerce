@@ -83,7 +83,7 @@ export const categoriesData = [
   },
   {
     id: 2,
-    title: "Cosmetics and body care",
+    title: "Cosmetics and Body Care",
     subTitle: "",
     image_Url:
       "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",
@@ -114,7 +114,7 @@ export const categoriesData = [
     title: "Gifts",
     subTitle: "",
     image_Url:
-      "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+      "https://res.cloudinary.com/dk7mw2ypf/image/upload/v1695300747/gifts_prsuzn.png",
   },
   {
     id: 7,
