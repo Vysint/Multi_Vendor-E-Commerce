@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { productData } from "../../../static/data";
 import ProductCard from "../card/ProductCard";
+import "./BestDeals.scss";
 
 const BestDeals = () => {
   const [data, setData] = useState([]);
@@ -12,16 +13,14 @@ const BestDeals = () => {
   }, []);
   return (
     <div className="bestdeals_container">
-      <div className="bestdeal_items">
-        <h1>Best Deals</h1>
-        <div className="bestdeals_item">
-          {data && data.length !== 0 && (
-            <>
-              {data &&
-                data.map((i, index) => <ProductCard data={i} key={index} />)}
-            </>
-          )}
-        </div>
+      <h1>Best Deals</h1>
+      <div className="bestdeals_item">
+        {data && data.length !== 0 && (
+          <>
+            {data &&
+              data.map((i, index) => <ProductCard data={i} key={index} />)}
+          </>
+        )}
       </div>
     </div>
   );
