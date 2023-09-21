@@ -11,9 +11,9 @@ import { IoIosArrowForward } from "react-icons/io";
 import { productData, categoriesData } from "../../static/data";
 import Dropdown from "./Dropdown";
 import Navbar from "./Navbar";
-import Card from "../card/Card";
 import InfoBox from "./InfoBox";
 import "./Header.scss";
+import Card from "../utils/card/Card";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,7 +26,7 @@ const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   window.addEventListener("scroll", () => {
-    if (window.screenY > 70) {
+    if (window.scrollY > 70) {
       setActive(true);
     } else {
       setActive(false);
