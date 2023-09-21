@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { brandingData, categoriesData } from "../../static/data";
 import "./Categories.scss";
 
+
 const Categories = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="categories_branding">
       <div className="branding_container">
         <div className="branding_items">
           {brandingData &&
@@ -20,8 +21,8 @@ const Categories = () => {
             ))}
         </div>
       </div>
-      {/* <div className="categories_container">
-        <h3>Shop by Category</h3>
+      <div className="categories_container" id="categories">
+        <h3>Shop by department</h3>
         <div className="categories_items">
           {categoriesData &&
             categoriesData.map((category) => {
@@ -35,13 +36,13 @@ const Categories = () => {
                   onClick={handleSubmit}
                 >
                   <img src={category.image_Url} alt="" />
-                  <h5>{category.title}</h5>
+                  <p>{category.title}</p>
                 </div>
               );
             })}
         </div>
-      </div> */}
-    </>
+      </div>
+    </div>
   );
 };
 
