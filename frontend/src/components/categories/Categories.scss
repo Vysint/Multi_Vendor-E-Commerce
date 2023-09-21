@@ -1,0 +1,35 @@
+.branding_container {
+  padding: 20px 5%;
+  margin-top: 20px;
+
+  .branding_items {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+
+    .branding_item {
+      display: flex;
+      gap: 10px;
+      background: transparent;
+      cursor: pointer;
+
+      & > .branding_text {
+        background: transparent;
+
+        & > h3 {
+          background: inherit;
+        }
+        & > p {
+          background: inherit;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
