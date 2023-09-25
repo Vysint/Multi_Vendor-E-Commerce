@@ -21,7 +21,7 @@ const Categories = () => {
         </div>
       </div>
       <div className="categories_container" id="categories">
-        <h3>Shop by department</h3>
+        <h3>Shop by Category</h3>
         <div className="categories_items">
           {categoriesData &&
             categoriesData.map((category) => {
