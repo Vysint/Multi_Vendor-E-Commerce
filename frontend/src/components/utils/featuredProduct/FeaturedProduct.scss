@@ -1,0 +1,13 @@
+.featured_container {
+  padding: 20px 5%;
+
+  & > h1 {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .featured_item {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+}
