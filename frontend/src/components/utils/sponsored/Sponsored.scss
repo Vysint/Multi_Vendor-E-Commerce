@@ -1,0 +1,18 @@
+.sponsored_container {
+  padding: 20px 5%;
+  background: #fff;
+
+  & > .sponsored_items {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    // border: 1px solid #ccc;
+    border-radius: 5px;
+
+    & > .sponsored_item {
+      background: transparent;
+    
+    }
+  }
+}
