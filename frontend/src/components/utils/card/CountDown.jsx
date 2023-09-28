@@ -24,7 +24,7 @@ const CountDown = ({ deadline = new Date().toString() }) => {
           {Object.entries({
             Days: time / DAY,
             Hours: (time / HOUR) % 24,
-            Mins: (time / MINUTE) % 60,
+            Minutes: (time / MINUTE) % 60,
             Seconds: (time / SECOND) % 60,
           }).map(([label, value]) => (
             <div key={label} className="item">
