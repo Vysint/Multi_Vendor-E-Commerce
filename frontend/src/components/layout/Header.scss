@@ -122,6 +122,12 @@
         position: absolute;
         top: 50px;
         left: 40px;
+        border-radius: 5px;
+
+        & > :hover {
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          border: 1px solid #ccc;
+        }
       }
     }
     .nav_items {
