@@ -12,8 +12,8 @@ import { productData, categoriesData } from "../../static/data";
 import Dropdown from "./Dropdown";
 import Navbar from "./Navbar";
 import InfoBox from "./InfoBox";
-import "./Header.scss";
 import Card from "../utils/card/Card";
+import "./Header.scss";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
