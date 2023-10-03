@@ -8,7 +8,7 @@ import fashion from "../../../assets/fashion.png";
 import shoe from "../../../assets/shoe.png";
 import ladies from "../../../assets/pet_care_1.png";
 import redshoe from "../../../assets/shoes_red.png";
-import macbook from "../../../assets/macbook_2.png";
+import macbook from "../../../assets/a6.png";
 import "./Hero.scss";
 
 const Hero = () => {
