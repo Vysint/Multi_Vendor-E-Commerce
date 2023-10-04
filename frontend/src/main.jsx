@@ -12,6 +12,7 @@ import Register from "./pages/auth/Register.jsx";
 import store from "./store.js";
 import { Provider } from "react-redux";
 import Home from "./pages/home/Home.jsx";
+import Products from "./pages/products/Products.jsx";
 import ForgetPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import "./index.css";
@@ -20,10 +21,15 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<Home />} />
+
+      {/* Authentication routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgotpassword" element={<ForgetPassword />} />
       <Route path="/resetpassword/:resetToken" element={<ResetPassword />} />
+
+      {/* Products route */}
+      <Route path="/products" element={<Products />} />
     </Route>
   )
 );
