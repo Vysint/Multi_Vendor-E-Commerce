@@ -18,6 +18,7 @@ import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import "./index.css";
 import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 import Events from "./pages/events/Events.jsx";
+import Faq from "./pages/FAQ/Faq.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,8 @@ const router = createBrowserRouter(
       <Route path="/products" element={<Products />} />
       <Route path="/best-selling" element={<BestSelling />} />
       <Route path="/events" element={<Events />} />
+      <Route path="/events" element={<Events />} />
+      <Route path="/faq" element={<Faq />} />
     </Route>
   )
 );
