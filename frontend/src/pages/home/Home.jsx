@@ -1,4 +1,5 @@
 import Footer from "../../components/layout/Footer";
+import Header from "../../components/layout/Header";
 import BestDeals from "../../components/utils/bestDeals/BestDeals";
 import Categories from "../../components/utils/categories/Categories";
 import FeaturedProduct from "../../components/utils/featuredProduct/FeaturedProduct";
@@ -8,6 +9,7 @@ import Sponsored from "../../components/utils/sponsored/Sponsored";
 const Home = () => {
   return (
     <div className="home">
+      <Header activeHeading={1} />
       <Hero />
       <Categories />
       <BestDeals />
