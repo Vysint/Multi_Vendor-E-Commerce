@@ -17,6 +17,7 @@ import ForgetPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import "./index.css";
 import BestSelling from "./pages/bestSelling/BestSelling.jsx";
+import Events from "./pages/events/Events.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       {/* Other navbar routes */}
       <Route path="/products" element={<Products />} />
       <Route path="/best-selling" element={<BestSelling />} />
+      <Route path="/events" element={<Events />} />
     </Route>
   )
 );
