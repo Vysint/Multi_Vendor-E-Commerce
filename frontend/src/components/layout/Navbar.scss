@@ -1,19 +1,21 @@
-.navbar_items{
+.navbar_items {
   flex-basis: 50%;
- display: flex;
- justify-content: space-between;
- background: #007bff;
-//  gap: 1rem;
-.nav_item > a{
-  text-decoration: none;
-  color: #000;
+  display: flex;
+  justify-content: space-between;
   background: #007bff;
-  color: #fff;
-  font-size: 1.2rem;
+  //  gap: 1rem;
+  .nav_item > a {
+    text-decoration: none;
+    color: #000;
+    background: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
 
-  &:hover{
+    &:hover {
+      border-bottom: 2px solid #fff;
+    }
+  }
+  & > .nav_item > .activeNavLink {
     border-bottom: 2px solid #fff;
   }
-
-}
 }

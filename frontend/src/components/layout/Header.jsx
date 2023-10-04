@@ -15,7 +15,7 @@ import InfoBox from "./InfoBox";
 import Card from "../utils/card/Card";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ activeHeading }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState("");
   const [dropdown, setDropdown] = useState(false);
@@ -177,7 +177,7 @@ const Header = () => {
         </div>
         <div className="nav_items">
           <div className="navbar">
-            <Navbar />
+            <Navbar active={activeHeading} />
           </div>
           <div className="nav_icons">
             <div>
