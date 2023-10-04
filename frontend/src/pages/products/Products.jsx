@@ -27,7 +27,7 @@ const Products = () => {
         {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
       </div>
       <div className="no_products">
-        {data && data.length === 0 ? <h1>No products found</h1> : null}
+        {data && data.length === 0 ? <h3>No Products Found!</h3> : null}
       </div>
     </div>
   );
