@@ -1,4 +1,3 @@
-import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
 import BestDeals from "../../components/utils/bestDeals/BestDeals";
 import Categories from "../../components/utils/categories/Categories";
