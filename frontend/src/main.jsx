@@ -16,6 +16,7 @@ import Products from "./pages/products/Products.jsx";
 import ForgetPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import "./index.css";
+import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,8 +29,9 @@ const router = createBrowserRouter(
       <Route path="/forgotpassword" element={<ForgetPassword />} />
       <Route path="/resetpassword/:resetToken" element={<ResetPassword />} />
 
-      {/* Products route */}
+      {/* Other navbar routes */}
       <Route path="/products" element={<Products />} />
+      <Route path="/best-selling" element={<BestSelling />} />
     </Route>
   )
 );
