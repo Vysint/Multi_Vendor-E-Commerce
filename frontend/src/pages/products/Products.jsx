@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
 import "./Products.scss";
+import Header from "../../components/layout/Header";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
@@ -22,12 +23,15 @@ const Products = () => {
   }, [categoryData]);
 
   return (
-    <div className="products_container">
-      <div className="products">
-        {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
-      </div>
-      <div className="no_products">
-        {data && data.length === 0 ? <h3>No Products Found!</h3> : null}
+    <div>
+      <Header activeHeading={3} />
+      <div className="products_container">
+        <div className="products">
+          {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
+        </div>
+        <div className="no_products">
+          {data && data.length === 0 ? <h3>No Products Found!</h3> : null}
+        </div>
       </div>
     </div>
   );
