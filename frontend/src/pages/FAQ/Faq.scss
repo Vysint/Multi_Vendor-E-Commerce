@@ -1,0 +1,39 @@
+.faq_container {
+  padding: 20px 5%;
+
+  & > .faqs {
+    & > h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    & > .faqs_items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      & > .faqs_item {
+        & > button {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          cursor: pointer;
+
+          & > :nth-child(1) {
+            font-size: 1.2rem;
+          }
+        }
+        & > div > p {
+          font-size: 1rem;
+          color: #999999;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}
