@@ -33,7 +33,11 @@ const Faqs = () => {
           <button onClick={() => toggleTab(1)}>
             <span>How do I track my order?</span>
             <span>
-              {activeTab === 1 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+              {activeTab === 1 ? (
+                <AiOutlineClose size={25} />
+              ) : (
+                <IoIosArrowForward size={25} />
+              )}
             </span>
           </button>
           {activeTab === 1 && (
@@ -49,7 +53,11 @@ const Faqs = () => {
         <div className="faqs_item">
           <button onClick={() => toggleTab(2)}>
             <span>What is your return policy?</span>
-            {activeTab === 2 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+            {activeTab === 2 ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <IoIosArrowForward size={25} />
+            )}
           </button>
           {activeTab === 2 && (
             <div>
@@ -65,7 +73,11 @@ const Faqs = () => {
         <div className="faqs_item">
           <button onClick={() => toggleTab(3)}>
             <span>How do I contact customer support?</span>
-            {activeTab === 3 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+            {activeTab === 3 ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <IoIosArrowForward size={25} />
+            )}
           </button>
           {activeTab === 3 && (
             <div>
@@ -80,7 +92,11 @@ const Faqs = () => {
         <div className="faqs_item">
           <button onClick={() => toggleTab(4)}>
             <span>Can I change or cancel my order?</span>
-            {activeTab === 4 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+            {activeTab === 4 ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <IoIosArrowForward size={25} />
+            )}
           </button>
           {activeTab === 4 && (
             <div>
@@ -96,18 +112,26 @@ const Faqs = () => {
         <div className="faqs_item">
           <button onClick={() => toggleTab(5)}>
             <span>Do you offer international shipping?</span>
-            {activeTab === 5 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+            {activeTab === 5 ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <IoIosArrowForward size={25} />
+            )}
           </button>
           {activeTab === 5 && (
             <div>
-              <p>Currently, we only offer shipping within the Africa.</p>
+              <p>Currently, we only offer shipping within Africa.</p>
             </div>
           )}
         </div>
         <div className="faqs_item">
           <button onClick={() => toggleTab(6)}>
             <span>What payment methods do you accept?</span>
-            {activeTab === 6 ? <AiOutlineClose  size={25}/> : <IoIosArrowForward  size={25}/>}
+            {activeTab === 6 ? (
+              <AiOutlineClose size={25} />
+            ) : (
+              <IoIosArrowForward size={25} />
+            )}
           </button>
           {activeTab === 6 && (
             <div>
