@@ -86,7 +86,7 @@ const Header = ({ activeHeading }) => {
           ) : null}
         </div>
         <div className="account_credentials">
-          <Link className="become_seller">
+          <Link className="become_seller" to="/dashboard">
             <button>
               <span>Become Seller</span>
               <IoIosArrowForward
