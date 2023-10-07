@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
 import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
 import "./Products.scss";
 
 const Products = () => {
