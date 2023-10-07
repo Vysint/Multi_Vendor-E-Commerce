@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
 import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 
 const BestSelling = () => {
   const [data, setData] = useState([]);
@@ -20,6 +21,7 @@ const BestSelling = () => {
           {data && data.map((i, index) => <ProductCard data={i} key={index} />)}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

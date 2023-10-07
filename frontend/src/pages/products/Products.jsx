@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
-import "./Products.scss";
 import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
+import "./Products.scss";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
@@ -33,6 +34,7 @@ const Products = () => {
           {data && data.length === 0 ? <h3>No Products Found!</h3> : null}
         </div>
       </div>
+      {/* <Footer /> */}
     </div>
   );
 };
