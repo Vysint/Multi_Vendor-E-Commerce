@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Button from "../utils/card/Button";
-import Logo from "../../assets/logo.png";
+import Button from "../../utils/card/Button";
+import Logo from "../../../assets/logo.png";
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -11,7 +11,7 @@ import {
   footerProductLinks,
   footerSupportLinks,
   footercompanyLinks,
-} from "../../static/data";
+} from "../../../static/data";
 import "./Footer.scss";
 
 const Footer = () => {

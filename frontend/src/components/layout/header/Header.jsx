@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo.png";
+import Logo from "../../../assets/logo.png";
 import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { LuShoppingCart } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { productData, categoriesData } from "../../static/data";
-import Dropdown from "./Dropdown";
-import Navbar from "./Navbar";
-import InfoBox from "./InfoBox";
-import Card from "../utils/card/Card";
+import { productData, categoriesData } from "../../../static/data";
+import Dropdown from "../dropdown/Dropdown";
+import Navbar from "../navbar/Navbar";
+import InfoBox from "../infoBox/InfoBox";
+import Card from "../../utils/card/Card";
 import "./Header.scss";
 
 const Header = ({ activeHeading }) => {
@@ -20,8 +20,9 @@ const Header = ({ activeHeading }) => {
   const [searchData, setSearchData] = useState("");
   const [dropdown, setDropdown] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-
   const [active, setActive] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const [openWishList, setOpenWishList] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -195,6 +196,8 @@ const Header = ({ activeHeading }) => {
               <span>1</span>
             </div>
           </div>
+          {/* Cart popup */}
+          {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
         </div>
       </div>
     </div>

@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { toast } from "react-toastify";
-import { useLogoutMutation } from "../../features/slices/usersApiSlice";
-import { clearCredentials } from "../../features/slices/authSlice";
-import { SpinnerImg } from "../loader/Loader";
+import { useLogoutMutation } from "../../../features/slices/usersApiSlice";
+import { clearCredentials } from "../../../features/slices/authSlice";
+import { SpinnerImg } from "../../loader/Loader";
 import "./InfoBox.scss";
 
 const InfoBox = ({ userInfo, openProfile, profileOpen }) => {

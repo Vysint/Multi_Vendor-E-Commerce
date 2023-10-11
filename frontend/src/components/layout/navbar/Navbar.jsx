@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { navItems } from "../../static/data";
+import { navItems } from "../../../static/data";
 import "./Navbar.scss";
 
 const Navbar = ({ active }) => {

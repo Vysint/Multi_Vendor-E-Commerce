@@ -1,3 +1,16 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+}
+
 .nav_container {
   display: flex;
   flex-direction: column;
@@ -46,6 +59,10 @@
       border-radius: 20px;
       border: 2px solid #ccc;
       justify-content: space-between;
+
+      @include respond(tablet) {
+        display: none;
+      }
       & > input {
         flex-basis: 90%;
         border: none;
