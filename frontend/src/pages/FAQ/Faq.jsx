@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "../../components/layout/Header";
+import Header from "../../components/layout/header/Header";
 import { IoIosArrowForward } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 import "./Faq.scss";

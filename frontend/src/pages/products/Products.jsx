@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
-import Header from "../../components/layout/Header";
+import Header from "../../components/layout/header/Header";
 import "./Products.scss";
 
 const Products = () => {

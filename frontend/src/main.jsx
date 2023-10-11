@@ -15,10 +15,10 @@ import Home from "./pages/home/Home.jsx";
 import Products from "./pages/products/Products.jsx";
 import ForgetPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword.jsx";
-import "./index.css";
 import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 import Events from "./pages/events/Events.jsx";
 import Faq from "./pages/FAQ/Faq.jsx";
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

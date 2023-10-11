@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { productData } from "../../static/data";
 import ProductCard from "../../components/utils/card/ProductCard";
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
+import Header from "../../components/layout/header/Header";
+import Footer from "../../components/layout/footer/Footer";
 
 const BestSelling = () => {
   const [data, setData] = useState([]);
