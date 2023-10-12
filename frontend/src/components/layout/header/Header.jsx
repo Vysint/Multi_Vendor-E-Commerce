@@ -14,6 +14,7 @@ import Navbar from "../navbar/Navbar";
 import InfoBox from "../infoBox/InfoBox";
 import Card from "../../utils/card/Card";
 import "./Header.scss";
+import Cart from "../cart/Cart";
 
 const Header = ({ activeHeading }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -188,7 +189,7 @@ const Header = ({ activeHeading }) => {
               />
               <span>0</span>
             </div>
-            <div>
+            <div onClick={() => setOpenCart(true)}>
               <LuShoppingCart
                 size={25}
                 style={{ background: "#007bff", color: "white" }}
