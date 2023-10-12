@@ -8,7 +8,7 @@
   height: 100%;
 
   & > .cart_items {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     min-height: fit-content;
@@ -33,9 +33,10 @@
       & > .cart {
         background: inherit;
         display: flex;
-        justify-content: space-between;
+        gap: 1rem;
         align-items: center;
         padding: 10px;
+        border-bottom: 1px solid #eee;
 
         & > h3 {
           background: transparent;
