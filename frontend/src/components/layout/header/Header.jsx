@@ -15,6 +15,7 @@ import InfoBox from "../infoBox/InfoBox";
 import Card from "../../utils/card/Card";
 import "./Header.scss";
 import Cart from "../cart/Cart";
+import WishList from "../cart/wishList/WishList";
 
 const Header = ({ activeHeading }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -182,7 +183,7 @@ const Header = ({ activeHeading }) => {
             <Navbar active={activeHeading} />
           </div>
           <div className="nav_icons">
-            <div>
+            <div onClick={() => setOpenWishList(true)}>
               <AiOutlineHeart
                 size={25}
                 style={{ background: "#007bff", color: "white" }}
@@ -192,13 +193,21 @@ const Header = ({ activeHeading }) => {
             <div onClick={() => setOpenCart(true)}>
               <LuShoppingCart
                 size={25}
-                style={{ background: "#007bff", color: "white" }}
+                style={{
+                  background: "#007bff",
+                  color: "white",
+                  cursor: "pointer",
+                }}
               />
               <span>1</span>
             </div>
           </div>
           {/* Cart popup */}
           {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+
+          {/* Wishlist popup */}
+
+          {openWishList ? <WishList setOpenWishList={setOpenWishList} /> : null}
         </div>
       </div>
     </div>
