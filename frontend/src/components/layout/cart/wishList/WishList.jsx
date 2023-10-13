@@ -80,7 +80,7 @@ const CartSingle = ({ data }) => {
         <BsCartPlus
           size={25}
           style={{ cursor: "pointer" }}
-          title="Add to Cart"
+          title="Add to cart"
         />
       </div>
     </div>
