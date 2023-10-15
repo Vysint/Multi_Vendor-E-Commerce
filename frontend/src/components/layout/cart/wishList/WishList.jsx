@@ -86,3 +86,4 @@ const CartSingle = ({ data }) => {
     </div>
   );
 };
+
