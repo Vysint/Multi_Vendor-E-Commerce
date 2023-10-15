@@ -19,6 +19,7 @@ import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 import Events from "./pages/events/Events.jsx";
 import Faq from "./pages/FAQ/Faq.jsx";
 import "./index.css";
+import ProductDetails from "./pages/productDetails/ProductDetails.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,9 @@ const router = createBrowserRouter(
       <Route path="/events" element={<Events />} />
       <Route path="/events" element={<Events />} />
       <Route path="/faq" element={<Faq />} />
+
+      {/* Products details route */}
+      <Route path="/product/:id" element={<ProductDetails />} />
     </Route>
   )
 );
