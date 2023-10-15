@@ -18,8 +18,8 @@ import ResetPassword from "./pages/auth/ResetPassword.jsx";
 import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 import Events from "./pages/events/Events.jsx";
 import Faq from "./pages/FAQ/Faq.jsx";
+import ProductDetailsPage from "./pages/productDetails/ProductDetailsPage.jsx";
 import "./index.css";
-import ProductDetails from "./pages/productDetails/ProductDetails.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,7 +40,7 @@ const router = createBrowserRouter(
       <Route path="/faq" element={<Faq />} />
 
       {/* Products details route */}
-      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/product/:id" element={<ProductDetailsPage />} />
     </Route>
   )
 );
