@@ -186,7 +186,7 @@ const Header = ({ activeHeading }) => {
             <div onClick={() => setOpenWishList(true)}>
               <AiOutlineHeart
                 size={25}
-                style={{ background: "#007bff", color: "white" }}
+                style={{ background: "#007bff", color: "white", cursor:"pointer" }}
               />
               <span>0</span>
             </div>
