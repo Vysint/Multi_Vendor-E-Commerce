@@ -1,0 +1,17 @@
+.suggested_container {
+  padding: 20px 5%;
+  background: #fff;
+  & > h2 {
+    background: inherit;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  & > .suggested_item {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    background: inherit;
+    padding-top: 20px;
+  }
+}
