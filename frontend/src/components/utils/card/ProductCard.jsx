@@ -20,7 +20,7 @@ const ProductCard = ({ data }) => {
   return (
     <>
       <div className="card_container">
-        <div className="card_items"></div>
+        {/* <div className="card_items"></div> */}
         <Link to={`/product/${product_name}`}>
           <img src={data.image_Url[0].url} alt="" />
         </Link>
