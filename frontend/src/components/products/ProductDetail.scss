@@ -1,0 +1,136 @@
+.products_details_container {
+  & > .products_details_items {
+    padding: 20px 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    background: #fff;
+
+    & > .images_section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: inherit;
+      & > img {
+        width: 50%;
+      }
+      & > .tiny_images {
+        display: flex;
+        background: transparent;
+        gap: 1rem;
+        & > img {
+          height: 200px;
+          cursor: pointer;
+        }
+        & > .border {
+          outline: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    & > .products_details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: inherit;
+
+      & > h1 {
+        font-size: 2rem;
+        background: inherit;
+      }
+      & > p {
+        line-height: 1.5;
+        background: inherit;
+      }
+
+      & > .prices {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        background: inherit;
+
+        & > h3 {
+          background: transparent;
+          color: #008400;
+        }
+        & > h4 {
+          color: red;
+          text-decoration: line-through;
+        }
+      }
+      & > .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: inherit;
+
+        & > div {
+          & > button {
+            padding: 4px 11px;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+          }
+          & > span {
+            padding: 4px 11px;
+            background: #fff;
+          }
+        }
+      }
+      & > .cart {
+        background: #fff;
+        & > span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: #007bff;
+          width: 150px;
+          padding: 5px 10px;
+          color: #fff;
+          border-radius: 2px;
+          font-size: 1.2rem;
+          cursor: pointer;
+        }
+      }
+      & > .shop_details {
+        background: #fff;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        & > .shop_titles {
+          background: transparent;
+          display: flex;
+          gap: 5px;
+          flex-direction: column;
+
+          & > h3 {
+            color: #007bff;
+            background: inherit;
+          }
+          & > h5 {
+            background: inherit;
+          }
+        }
+        & > .message {
+          background: inherit;
+
+          & > span {
+            display: flex;
+            align-items: center;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+}

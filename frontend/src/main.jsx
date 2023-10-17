@@ -40,7 +40,7 @@ const router = createBrowserRouter(
       <Route path="/faq" element={<Faq />} />
 
       {/* Products details route */}
-      <Route path="/product/:id" element={<ProductDetailsPage />} />
+      <Route path="/product/:name" element={<ProductDetailsPage />} />
     </Route>
   )
 );
