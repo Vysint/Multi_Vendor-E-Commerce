@@ -1,0 +1,11 @@
+.profile_container {
+  padding: 0px 5%;
+  display: flex;
+  background: #eee;
+  height: 100vh;
+
+  & > .profile_sidebar {
+    width: 335px;
+    background: #eee;
+  }
+}

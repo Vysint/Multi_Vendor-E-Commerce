@@ -1,0 +1,26 @@
+.sidebar_profile {
+  width: 100%;
+  padding-top: 8px;
+  padding-top: 1.5rem;
+  background: #eee;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+
+  & > .person_profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: inherit;
+
+    & > span {
+      padding-left: 1rem;
+      background: inherit;
+      font-size: 1.2rem;
+    }
+    & > .span_profile {
+      color: red;
+    }
+  }
+}
