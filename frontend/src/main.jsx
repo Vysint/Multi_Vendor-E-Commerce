@@ -19,8 +19,9 @@ import BestSelling from "./pages/bestSelling/BestSelling.jsx";
 import Events from "./pages/events/Events.jsx";
 import Faq from "./pages/FAQ/Faq.jsx";
 import ProductDetailsPage from "./pages/productDetails/ProductDetailsPage.jsx";
-import "./index.css";
 import Profile from "./pages/profile/Profile.jsx";
+import PrivateRoute from "./components/private/PrivateRoute.jsx";
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,9 +44,10 @@ const router = createBrowserRouter(
       {/* Products details route */}
       <Route path="/product/:name" element={<ProductDetailsPage />} />
 
-      {/* User Profile route */}
-
-      <Route path="/profile" element={<Profile />} />
+      {/* Private Routes */}
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/profile" element={<Profile />} />
+      </Route>
     </Route>
   )
 );
