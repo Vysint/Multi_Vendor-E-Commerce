@@ -1,0 +1,82 @@
+.address_container {
+  background: #eee;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 20px;
+
+  & > .address_title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: inherit;
+
+    & > h1 {
+      font-size: 25px;
+      font-weight: 600;
+      color: #000000ba;
+      padding-bottom: 10px;
+      background: transparent;
+    }
+
+    & > .address_new {
+      background: inherit;
+
+      & > span {
+        padding: 5px 10px;
+        cursor: pointer;
+        background: #007bff;
+        border-radius: 3px;
+        color: #fff;
+      }
+    }
+  }
+  & > .address_item {
+    width: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    height: 70px;
+    box-shadow: var(--box-shadow);
+
+    & > .cards {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: inherit;
+      padding-left: 10px;
+
+      & > h5 {
+        background: transparent;
+        font-weight: 600;
+        font-size: 12px;
+      }
+    }
+    & > .cards_1 {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: inherit;
+
+      & > h6 {
+        font-size: 12px;
+        background: transparent;
+      }
+
+      & > h5 {
+        font-size: 12px;
+        background: transparent;
+      }
+    }
+
+    & > .button_item {
+      padding-right: 10px;
+      background: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

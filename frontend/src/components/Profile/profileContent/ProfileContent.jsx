@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineCamera } from "react-icons/ai";
+import { AiOutlineArrowRight, AiOutlineCamera } from "react-icons/ai";
+import { MdOutlineTrackChanges } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { DataGrid } from "@material-ui/data-grid";
+import PaymentMethod from "./utils/PaymentMethod";
+import Address from "./utils/Address";
 import "./ProfileContent.scss";
 
 const ProfileContent = ({ active }) => {
@@ -111,6 +116,326 @@ const ProfileContent = ({ active }) => {
       )}
 
       {/* Orders */}
+
+      {active === 2 && (
+        <div>
+          <AllOrders />
+        </div>
+      )}
+
+      {/* Refund */}
+      {active === 3 && (
+        <div>
+          <AllRefundOrders />
+        </div>
+      )}
+
+      {/* Track order */}
+
+      {active === 5 && (
+        <div style={{ width: "100%" }}>
+          <TrackOrder />
+        </div>
+      )}
+
+      {/* Payment Methods */}
+
+      {active === 6 && (
+        <div>
+          <PaymentMethod />
+        </div>
+      )}
+
+      {/* User Address */}
+
+      {active === 7 && (
+        <div>
+          <Address />
+        </div>
+      )}
+    </div>
+  );
+};
+const AllOrders = () => {
+  const orders = [
+    {
+      _id: "7463hvbfbhfbrtr28820221",
+      orderItems: [
+        {
+          name: "Iphone 14 pro max",
+        },
+      ],
+      totalPrice: 120,
+      orderStatus: "Processing",
+    },
+  ];
+
+  const columns = [
+    { field: "id", headerName: "Order ID", minWidth: 250, flex: 0.7 },
+
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 220,
+      flex: 0.7,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "status") === "Delivered"
+          ? "greenColor"
+          : "redColor";
+      },
+    },
+    {
+      field: "itemsQty",
+      headerName: "Items Qty",
+      type: "number",
+      minWidth: 220,
+      flex: 0.7,
+    },
+
+    {
+      field: "total",
+      headerName: "Total",
+      type: "number",
+      minWidth: 220,
+      flex: 0.8,
+    },
+
+    {
+      field: " ",
+      flex: 1,
+      minWidth: 220,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/order/${params.id}`}>
+              <button style={{ border: "none", cursor: "pointer" }}>
+                <AiOutlineArrowRight size={20} />
+              </button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+
+  const row = [];
+
+  orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "US$ " + item.totalPrice,
+        status: item.orderStatus,
+      });
+    });
+
+  return (
+    <div
+      style={{ paddingLeft: "20px", paddingTop: "2rem", background: "#eee" }}
+    >
+      <DataGrid
+        rows={row}
+        columns={columns}
+        pageSize={10}
+        disableSelectionOnClick
+        autoHeight
+      />
+    </div>
+  );
+};
+
+const AllRefundOrders = () => {
+  const orders = [
+    {
+      _id: "7463hvbfbhfbrtr28820221",
+      orderItems: [
+        {
+          name: "Iphone 14 pro max",
+        },
+      ],
+      totalPrice: 120,
+      orderStatus: "Processing",
+    },
+  ];
+
+  const columns = [
+    { field: "id", headerName: "Order ID", minWidth: 250, flex: 0.7 },
+
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 220,
+      flex: 0.7,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "status") === "Delivered"
+          ? "greenColor"
+          : "redColor";
+      },
+    },
+    {
+      field: "itemsQty",
+      headerName: "Items Qty",
+      type: "number",
+      minWidth: 220,
+      flex: 0.7,
+    },
+
+    {
+      field: "total",
+      headerName: "Total",
+      type: "number",
+      minWidth: 220,
+      flex: 0.8,
+    },
+
+    {
+      field: " ",
+      flex: 1,
+      minWidth: 220,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/order/${params.id}`}>
+              <button style={{ border: "none", cursor: "pointer" }}>
+                <AiOutlineArrowRight size={20} />
+              </button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+
+  const row = [];
+
+  orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "US$ " + item.totalPrice,
+        status: item.orderStatus,
+      });
+    });
+
+  return (
+    <div
+      style={{
+        paddingLeft: "20px",
+        paddingTop: "2rem",
+        background: "#eee",
+      }}
+    >
+      <DataGrid
+        rows={row}
+        columns={columns}
+        pageSize={10}
+        autoHeight
+        disableSelectionOnClick
+      />
+    </div>
+  );
+};
+const TrackOrder = () => {
+  const orders = [
+    {
+      _id: "7463hvbfbhfbrtr28820221",
+      orderItems: [
+        {
+          name: "Iphone 14 pro max",
+        },
+      ],
+      totalPrice: 120,
+      orderStatus: "Processing",
+    },
+  ];
+
+  const columns = [
+    { field: "id", headerName: "Order ID", minWidth: 250, flex: 0.7 },
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 220,
+      flex: 0.7,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "status") === "Delivered"
+          ? "greenColor"
+          : "redColor";
+      },
+    },
+    {
+      field: "itemsQty",
+      headerName: "Items Qty",
+      type: "number",
+      minWidth: 220,
+      flex: 0.7,
+    },
+
+    {
+      field: "total",
+      headerName: "Total",
+      type: "number",
+      minWidth: 220,
+      flex: 0.8,
+    },
+    {
+      field: " ",
+      flex: 1,
+      minWidth: 220,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/order/${params.id}`}>
+              <button style={{ border: "none", cursor: "pointer" }}>
+                <MdOutlineTrackChanges size={20} />
+              </button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+
+  const row = [];
+
+  orders &&
+    orders.forEach((item) => {
+      row.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        total: "US$ " + item.totalPrice,
+        status: item.orderStatus,
+      });
+    });
+
+  return (
+    <div
+      style={{
+        paddingLeft: "20px",
+        paddingTop: "2rem",
+        background: "#eee",
+        width: "100%",
+      }}
+    >
+      <div style={{ width: "100%" }}>
+        <DataGrid
+          rows={row}
+          columns={columns}
+          pageSize={10}
+          autoHeight
+          disableSelectionOnClick
+        />
+      </div>
     </div>
   );
 };
