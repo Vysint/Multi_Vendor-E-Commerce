@@ -19,13 +19,11 @@ import WishList from "../cart/wishList/WishList";
 
 const Header = ({ activeHeading }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchData, setSearchData] = useState("");
   const [dropdown, setDropdown] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
-  // const [openSearch, setOpenSearch] = useState(true);
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -37,16 +35,6 @@ const Header = ({ activeHeading }) => {
     }
   });
 
-  const handleSearchChange = (e) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-
-    const filteredProducts = productData.filter((product) =>
-      product.name.toLowerCase().includes(term.toLowerCase())
-    );
-    setSearchData(filteredProducts);
-  };
-
   const openDropdown = () => {
     setDropdown(!dropdown);
   };
@@ -54,9 +42,20 @@ const Header = ({ activeHeading }) => {
     setProfileOpen(!profileOpen);
   };
 
-  const resetSearchData = () => {
-    setSearchData("");
-    setSearchTerm("")
+  const resetSearchTerm = () => {
+    setSearchTerm("");
+  };
+
+  const searchData =
+    searchTerm.length === 0
+      ? []
+      : productData.filter((product) =>
+          product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+  const onSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
   };
 
   return (
@@ -73,30 +72,29 @@ const Header = ({ activeHeading }) => {
           <input
             type="text"
             placeholder="Search Products..."
-            onChange={handleSearchChange}
+            onChange={onSearchChange}
             value={searchTerm}
           />
           <AiOutlineSearch size={30} className="outline" />
-          {searchData && searchData.length !== 0 ? (
+          {searchData.length > 0 ? (
             <div className="search_data">
-              {searchData &&
-                searchData.map((i, index) => {
-                  const d = i.name;
-                  const product_name = d.replace(/\s+/g, "-");
-                  return (
-                    <Link
-                      key={index}
-                      onClick={resetSearchData}
-                      to={`/product/${product_name}`}
-                    >
-                      <div className="image_search">
-                        <img src={i.image_Url[0].url} alt="" />
+              {searchData.map((i, index) => {
+                const d = i.name;
+                const product_name = d.replace(/\s+/g, "-");
+                return (
+                  <Link
+                    key={index}
+                    onClick={resetSearchTerm}
+                    to={`/product/${product_name}`}
+                  >
+                    <div className="image_search">
+                      <img src={i.image_Url[0].url} alt="" />
 
-                        <h1>{i.name}</h1>
-                      </div>
-                    </Link>
-                  );
-                })}
+                      <h1>{i.name}</h1>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           ) : null}
         </div>
