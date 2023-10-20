@@ -25,6 +25,7 @@ const Header = ({ activeHeading }) => {
   const [active, setActive] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
+  // const [openSearch, setOpenSearch] = useState(true);
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -52,6 +53,12 @@ const Header = ({ activeHeading }) => {
   const openProfile = () => {
     setProfileOpen(!profileOpen);
   };
+
+  const resetSearchData = () => {
+    setSearchData("");
+    setSearchTerm("")
+  };
+
   return (
     <div className="nav_container">
       <div className="nav_logo_section">
@@ -77,9 +84,14 @@ const Header = ({ activeHeading }) => {
                   const d = i.name;
                   const product_name = d.replace(/\s+/g, "-");
                   return (
-                    <Link key={index} to={`/product/${product_name}`}>
+                    <Link
+                      key={index}
+                      onClick={resetSearchData}
+                      to={`/product/${product_name}`}
+                    >
                       <div className="image_search">
                         <img src={i.image_Url[0].url} alt="" />
+
                         <h1>{i.name}</h1>
                       </div>
                     </Link>
@@ -186,7 +198,11 @@ const Header = ({ activeHeading }) => {
             <div onClick={() => setOpenWishList(true)}>
               <AiOutlineHeart
                 size={25}
-                style={{ background: "#007bff", color: "white", cursor:"pointer" }}
+                style={{
+                  background: "#007bff",
+                  color: "white",
+                  cursor: "pointer",
+                }}
               />
               <span>0</span>
             </div>

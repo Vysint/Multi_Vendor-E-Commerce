@@ -1,6 +1,6 @@
 @mixin respond($breakpoint) {
   @if $breakpoint == tablet {
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 800px) {
       @content;
     }
   }
@@ -59,10 +59,11 @@
       border-radius: 20px;
       border: 2px solid #ccc;
       justify-content: space-between;
+      position: relative;
 
-      @include respond(tablet) {
-        display: none;
-      }
+      // @include respond(tablet) {
+      //   display: none;
+      // }
       & > input {
         flex-basis: 90%;
         border: none;
@@ -72,6 +73,43 @@
         }
         &::placeholder {
           font-size: 1rem;
+        }
+      }
+
+      & > .search_data {
+        position: absolute;
+        min-height: 30vh;
+        z-index: 9;
+        box-shadow: var(--box-shadow);
+        padding: 10px;
+        top: 4rem;
+        overflow-y: scroll;
+        border-radius: 5px;
+        background: #fff;
+
+        & > a {
+          text-decoration: none;
+          color: #000;
+          background: #fff;
+
+          & > .image_search {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2rem;
+
+            & > img {
+              width: 100px;
+              height: fit-content;
+            }
+
+            & > h1 {
+              font-size: 1rem;
+              background: transparent;
+              font-weight: 400;
+            }
+          }
         }
       }
       .outline {
