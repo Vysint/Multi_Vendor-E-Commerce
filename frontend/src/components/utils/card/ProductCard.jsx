@@ -8,7 +8,7 @@ import {
   AiOutlineEye,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import ProductDetails from "./ProductDetails";
+import ProductOverview from "./ProductOverview";
 import "./ProductCard.scss";
 
 const ProductCard = ({ data }) => {
@@ -123,7 +123,7 @@ const ProductCard = ({ data }) => {
             title="Add to Cart"
           />
           {open ? (
-            <ProductDetails open={open} setOpen={setOpen} data={data} />
+            <ProductOverview open={open} setOpen={setOpen} data={data} />
           ) : null}
         </div>
       </div>

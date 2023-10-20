@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/layout/header/Header";
 import Footer from "../../components/layout/footer/Footer";
@@ -8,19 +7,16 @@ import SuggestedProduct from "../../components/products/suggestedProduct/Suggest
 
 const ProductDetailsPage = () => {
   const { name } = useParams();
-  const [data, setData] = useState(null);
 
   const productName = name.replace(/-/g, " ");
 
-  useEffect(() => {
-    const data = productData.find((i) => i.name === productName);
-    setData(data);
-  }, [productName]);
+  const data = productData.find((i) => i.name === productName);
+
   return (
     <>
       <Header />
       <ProductDetail data={data} />
-      {data && <SuggestedProduct data={data} />}
+      <SuggestedProduct data={data} />
       <Footer />
     </>
   );
