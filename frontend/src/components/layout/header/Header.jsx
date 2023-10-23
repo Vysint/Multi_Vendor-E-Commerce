@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/logo.png";
-import { AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineHeart, AiOutlineMenu } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { LuShoppingCart } from "react-icons/lu";
@@ -62,6 +62,12 @@ const Header = ({ activeHeading }) => {
     <>
       <div className="nav_container">
         <div className="nav_logo_section">
+          <div className="menu">
+            <AiOutlineMenu
+              size={20}
+              style={{ color: "#fff", background: "transparent" }}
+            />
+          </div>
           <div className="logo">
             <Link to="/" className="link">
               <img src={Logo} alt="" />
@@ -228,7 +234,6 @@ const Header = ({ activeHeading }) => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };
