@@ -1,3 +1,16 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+}
+
 .categories_branding {
   .branding_container {
     padding: 20px 5%;
@@ -48,6 +61,11 @@
       gap: 2rem;
       grid-template-columns: repeat(5, 1fr);
       padding-top: 1rem;
+
+      @include respond(tablet) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
 
       & > .categories_item {
         background: inherit;
