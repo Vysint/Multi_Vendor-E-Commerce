@@ -1,3 +1,16 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+}
+
 .hero_container {
   width: 100vw;
   padding: 20px 5%;
@@ -35,6 +48,20 @@
         background: none;
         & > h3 {
           background: inherit;
+        }
+        & > .font_title {
+          color: #000;
+          font-size: 2.4rem;
+
+          @include respond(tablet) {
+            font-size: 2rem;
+          }
+        }
+
+        & > #font_style {
+          @include respond(tablet) {
+            color: #fff;
+          }
         }
         & > a {
           background: none;

@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="gallery_item img-2">
           <img src={bag} alt="Bag" />
           <div className="hero_text">
-            <h3 style={{ color: "#000", fontSize: "2.4rem" }}>
+            <h3 className="font_title" id="font_style">
               Bag these styles!
             </h3>
             <Link to="/products">
@@ -89,9 +89,7 @@ const Hero = () => {
         <div className="gallery_item img-10">
           <img src={sale} alt="" style={{ width: "204%" }} />
           <div className="hero_text">
-            <h3 style={{ color: "#000", fontSize: "2.4rem" }}>
-              All set, get the best! Upto 50% off
-            </h3>
+            <h3 className="font_title">All set, get the best! Upto 50% off</h3>
             <Link to="/products">
               <button>Shop for the best!</button>
             </Link>
