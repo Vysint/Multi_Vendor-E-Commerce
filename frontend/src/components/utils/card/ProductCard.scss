@@ -3,7 +3,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   position: relative;
-  padding: 10px 10px 20px;
+  padding: 10px 10px 30px;
   background: #fff;
   & > a {
     background: inherit;
@@ -39,7 +39,7 @@
       & > .price_text {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
         background: inherit;
         padding-bottom: 5px;
         color: #008400;
