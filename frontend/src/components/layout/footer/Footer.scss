@@ -34,9 +34,9 @@
     }
   }
   & > .footer_items_2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     background: inherit;
     border-top: 1px solid #fff;
     padding: 5px 5%;
