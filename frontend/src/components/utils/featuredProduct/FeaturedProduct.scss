@@ -1,3 +1,16 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+}
+
 .featured_container {
   padding: 20px 5%;
 
@@ -9,5 +22,10 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
+
+    @include respond(tablet) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
