@@ -67,6 +67,11 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
+      @include respond(mobile){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       & > .categories_item {
         background: inherit;
         padding: 10px;

@@ -27,5 +27,9 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
+    @include respond(mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
