@@ -58,7 +58,7 @@ const ProductDetail = ({ data }) => {
                   <span>{count}</span>
                   <button onClick={() => setCount(count + 1)}>+</button>
                 </div>
-                <div className="hearts">
+                <div className="hearts" style={{ background: "transparent" }}>
                   {click ? (
                     <AiFillHeart
                       size={30}

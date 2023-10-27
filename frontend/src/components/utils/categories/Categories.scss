@@ -9,6 +9,11 @@
       @content;
     }
   }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
 }
 
 .categories_branding {
@@ -27,11 +32,19 @@
       border-radius: 5px;
       border: 1px solid #eee;
 
+      @include respond(mobile) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .branding_item {
         display: flex;
         gap: 10px;
         background: transparent;
         cursor: pointer;
+        @include respond(mobile) {
+          padding-bottom: 2rem;
+        }
 
         & > .branding_text {
           background: transparent;
@@ -67,7 +80,7 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      @include respond(mobile){
+      @include respond(mobile) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }

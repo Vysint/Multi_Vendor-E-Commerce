@@ -83,3 +83,21 @@ body::-webkit-scrollbar {
   margin: auto;
   text-align: center;
 }
+
+@keyframes anime {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes anime-opa {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

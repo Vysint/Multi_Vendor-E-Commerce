@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import "./ProductOverview.scss";
 
-const ProductDetail = ({ open, setOpen, data }) => {
+const ProductOverview = ({ open, setOpen, data }) => {
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
   const [select, setSelect] = useState(false);
@@ -127,4 +127,4 @@ const ProductDetail = ({ open, setOpen, data }) => {
   );
 };
 
-export default ProductDetail;
+export default ProductOverview;

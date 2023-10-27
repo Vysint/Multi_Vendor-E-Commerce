@@ -1,3 +1,20 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .footer_container {
   display: flex;
   flex-direction: column;
@@ -9,6 +26,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
+
+    @include respond(mobile) {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
     & > h1 {
       color: #fff;
@@ -41,6 +64,11 @@
     border-top: 1px solid #fff;
     padding: 5px 5%;
     color: #fff;
+
+    @include respond(mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
     & > ul {
       list-style: none;
       background: inherit;
@@ -85,6 +113,14 @@
     align-items: center;
     padding: 10px 5%;
     background: inherit;
+    border-top: 1px solid #fff;
+
+    @include respond(mobile) {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
 
     & > span {
       background: inherit;

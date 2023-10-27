@@ -9,6 +9,11 @@
       @content;
     }
   }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
 }
 .products_container {
   .products {
@@ -18,6 +23,11 @@
     @include respond(tablet){
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond(mobile){
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

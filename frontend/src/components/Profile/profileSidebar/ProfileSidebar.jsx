@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { RxPerson } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import "./ProfileSidebar.scss";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
 import {
   AiOutlineCreditCard,
@@ -13,6 +12,7 @@ import { TbAddressBookOff } from "react-icons/tb";
 import { useLogoutMutation } from "../../../features/slices/usersApiSlice";
 import { clearCredentials } from "../../../features/slices/authSlice";
 import { toast } from "react-toastify";
+import "./ProfileSidebar.scss";
 
 const ProfileSidebar = ({ active, setActive }) => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const ProfileSidebar = ({ active, setActive }) => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
-      toast.success("Logout successful");
+      // toast.success("Logout successful");
       navigate("/");
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
@@ -100,7 +100,12 @@ const ProfileSidebar = ({ active, setActive }) => {
           color={active === 8 && "red"}
           style={{ cursor: "pointer", background: "transparent" }}
         />
-        <span className={active === 8 ? "span_profile" : ""}>Log Out</span>
+        <span
+          className={active === 8 ? "span_profile" : ""}
+          onClick={logoutHandler}
+        >
+          Log Out
+        </span>
       </div>
     </div>
   );

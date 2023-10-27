@@ -9,7 +9,14 @@
       @content;
     }
   }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
 }
+
+
 
 .nav_container {
   display: flex;
@@ -19,19 +26,19 @@
   top: 0;
   z-index: 8;
 
-  .nav_logo_section {
+  & > .nav_logo_section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     padding: 20px 5%;
     background: #007bff;
-    .logo {
+    & > .logo {
       display: flex;
       flex-basis: 10%;
       background: inherit;
 
-      .link {
+      & > .link {
         display: flex;
         gap: 5px;
         text-decoration: none;
@@ -50,7 +57,7 @@
         }
       }
     }
-    .nav_search {
+    & > .nav_search {
       display: flex;
       flex-basis: 40%;
       padding: 5px 10px;
@@ -62,6 +69,10 @@
 
       @include respond(tablet) {
         flex-basis: 50%;
+      }
+
+      @include respond(mobile) {
+        display: none;
       }
       & > input {
         flex-basis: 90%;
@@ -111,66 +122,119 @@
           }
         }
       }
-      .outline {
+      & > .outline {
         background: rgb(210, 193, 5);
         padding: 5px;
         border-radius: 20px;
         margin-right: -5px;
       }
     }
-    .menu {
+    & > .menu {
       background: transparent;
       display: none;
-    }
-  }
-  .account_credentials {
-    display: flex;
-    flex-basis: 20%;
-    justify-content: space-between;
-    background: #007bff;
 
-    @include respond(tablet) {
-      flex-basis: 30%;
+      @include respond(mobile) {
+        display: block;
+      }
     }
-
-    & > a {
-      background: #007bff;
+    & > .account_credentials {
       display: flex;
+      flex-basis: 20%;
       justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      padding: 5px;
-      & > span {
+      background: #007bff;
+
+      @include respond(tablet) {
+        flex-basis: 30%;
+      }
+      @include respond(mobile) {
+        display: none;
+      }
+
+      & > a {
+        background: #007bff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        padding: 5px;
+        & > span {
+          background: transparent;
+          color: #fff;
+          font-size: 1.2rem;
+        }
+      }
+      & > .become_seller > button {
+        display: flex;
+        padding: 5px 0 5px 10px;
         background: transparent;
-        color: #fff;
-        font-size: 1.2rem;
+        border: 1.5px solid #fff;
+        align-items: center;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        @include respond(mobile) {
+          display: none;
+        }
+        & > span {
+          font-size: 1.2rem;
+          background: transparent;
+          color: #fff;
+        }
+      }
+
+      & > .profile_picture {
+        @include respond(mobile) {
+          display: none;
+        }
+      }
+
+      & > .sign_in {
+        display: flex;
+        gap: 5px;
+
+        @include respond(mobile) {
+          display: none;
+        }
       }
     }
-    .become_seller > button {
-      display: flex;
-      padding: 5px 0 5px 10px;
-      background: transparent;
-      border: 1.5px solid #fff;
-      align-items: center;
-      border-radius: 5px;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      & > span {
-        font-size: 1.2rem;
+    & > .open_cart {
+      display: none;
+
+      @include respond(mobile) {
+        display: block;
+        position: relative;
         background: transparent;
-        color: #fff;
+
+        & > span {
+          position: absolute;
+          top: -10px;
+          right: 0;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgb(193, 193, 5);
+        }
       }
     }
   }
-  .nav_items_section {
+
+  & > .nav_items_section {
     display: flex;
     padding: 10px 5%;
     justify-content: space-between;
     align-items: center;
     background: #007bff;
     border-top: 1px solid #fff;
-    .category {
+
+    @include respond(mobile) {
+      display: none;
+    }
+    & > .category {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -179,7 +243,11 @@
       position: relative;
       cursor: pointer;
 
-      .drop_down {
+      @include respond(mobile) {
+        display: none;
+      }
+
+      & > .drop_down {
         position: absolute;
         top: 50px;
         left: 40px;
@@ -191,14 +259,14 @@
         }
       }
     }
-    .nav_items {
+    & > .nav_items {
       display: flex;
       flex-basis: 70%;
       justify-content: space-between;
       background: #007bff;
       position: relative;
 
-      .navbar {
+      & > .navbar {
         flex-basis: 70%;
         align-items: center;
         background: #007bff;
@@ -213,11 +281,13 @@
         gap: 1rem;
         background: #007bff;
 
+        @include respond(mobile) {
+          display: none;
+        }
+
         & > div:nth-child(1) {
           background: transparent;
           position: relative;
-          // width: 40px;
-          // height: 40px;
           & > span {
             position: absolute;
             width: 15px;
@@ -235,8 +305,6 @@
         & > div:nth-child(2) {
           background: transparent;
           position: relative;
-          // width: 40px;
-          // height: 40px;
 
           & > span {
             position: absolute;
@@ -251,6 +319,192 @@
             right: 0px;
             font-size: 0.8rem;
           }
+        }
+      }
+    }
+
+    & > #become_seller {
+      display: none;
+      @include respond(mobile) {
+        display: block;
+        text-decoration: none;
+        background: transparent;
+        display: flex;
+        align-self: flex-start;
+
+        & > button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #007bff;
+          border: 2px solid #fff;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+
+          & > span {
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    & > .user_info {
+      display: none;
+      @include respond(mobile) {
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+        margin-bottom: 1rem;
+      }
+    }
+
+    & > .links {
+      display: flex;
+      align-self: flex-start;
+      background: #007bff;
+
+      & > a {
+        text-decoration: none;
+        background: none;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  & > .mobile_nav_section {
+    display: none;
+
+    @include respond(mobile) {
+      width: 50%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      top: 4.39rem;
+      background: #007bff;
+      padding: 20px 20px;
+      border-top: 0.5px solid #fff;
+      animation-name: anime;
+      animation-duration: 2s;
+
+      & > .icon_dropdown {
+        display: flex;
+        justify-content: space-between;
+        background: inherit;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+        & > .open_wishlist_dropdown {
+          background: inherit;
+          position: relative;
+          cursor: pointer;
+
+          & > span {
+            position: absolute;
+            right: -7px;
+            top: -10px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgb(210, 193, 5);
+            border: 1px solid #007bff;
+          }
+        }
+        & > .close_dropdown {
+          background-color: inherit;
+          cursor: pointer;
+        }
+      }
+
+      & > .navigation_search {
+        width: 100%;
+        border-radius: 3px;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+
+        & > input {
+          width: 100%;
+          padding: 5px 10px;
+          border-radius: 3px;
+          border: none;
+        }
+        & > .search_data_1 {
+          position: absolute;
+          background: #fff;
+          margin-top: 1rem;
+          padding: 10px;
+          z-index: 20;
+
+          & > a {
+            text-decoration: none;
+            background: inherit;
+            color: #000;
+
+            & > .image_search {
+              background: inherit;
+              display: flex;
+              gap: 10px;
+
+              & > img {
+                width: 40px;
+                height: fit-content;
+              }
+              & > h1 {
+                font-size: 12px;
+                font-weight: 300;
+              }
+            }
+          }
+        }
+      }
+
+      & > .navigation_items {
+        background: #007bff;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+        & > .items_nav {
+          background: inherit;
+        }
+      }
+      & > .become_seller {
+        background: #007bff;
+        display: flex;
+        align-self: flex-start;
+        text-decoration: none;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+
+        & > button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #007bff;
+          padding: 5px 10px;
+          border: 2px solid #fff;
+          border-radius: 3px;
+
+          & > span {
+            background: inherit;
+            color: #fff;
+            font-size: 1.3rem;
+          }
+        }
+      }
+
+      & > .links {
+        background: #007bff;
+
+        & > a {
+          background: inherit;
+          color: #fff;
+          text-decoration: none;
+          font-size: 1.2rem;
         }
       }
     }

@@ -1,3 +1,21 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+
 .info_box {
   position: absolute;
   top: 50px;
@@ -10,18 +28,34 @@
   border-radius: 5px;
   width: 250px;
   box-shadow: var(--box-shadow);
+
+  @include respond(mobile){
+    position: absolute;
+    right: -7rem;
+    
+  }
   & > span {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+
+    @include respond(mobile){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     & > img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top;
+
+      @include respond(mobile) {
+        display: none;
+      }
     }
   }
   & > div {
@@ -36,7 +70,11 @@
       color: #fff;
       border-radius: 5px;
       border: none;
-      border: 2px solid rgb(210, 193, 5);;
+      border: 2px solid rgb(210, 193, 5);
+
+      @include respond(mobile) {
+        padding: 5px 10px;
+      }
     }
   }
   .close{

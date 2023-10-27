@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="gallery_item img-2">
           <img src={bag} alt="Bag" />
           <div className="hero_text">
-            <h3 className="font_title" id="font_style">
+            <h3 className="font_title">
               Bag these styles!
             </h3>
             <Link to="/products">
