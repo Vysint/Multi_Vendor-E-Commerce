@@ -1,3 +1,20 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .details_container {
   padding: 20px 5%;
   background: #fff;
@@ -13,6 +30,7 @@
       display: flex;
       justify-content: space-between;
       background: inherit;
+
       & > .relative {
         position: relative;
         background: transparent;
@@ -46,17 +64,33 @@
       display: flex;
       padding-top: 20px;
       background: #f5f6fb;
+      width: 100%;
+      @include respond(xSmall){
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        
+      }
 
       & > .seller_item_1 {
         display: flex;
         flex-direction: column;
         background: inherit;
         width: 50%;
-
+        @include respond(xSmall){
+          width: 100%;
+        }
+        
         & > .seller_details {
           display: flex;
           gap: 1.5rem;
           background: transparent;
+          @include respond(xSmall){
+            display: flex;
+            justify-content: space-between;
+          }
+          
 
           & > div {
             background: transparent;
@@ -75,6 +109,10 @@
           padding: 10px 0;
           line-height: 1.4;
           background: transparent;
+          // @include respond(xSmall){
+          //   width: 250px;
+          // }
+         
         }
       }
 
@@ -83,6 +121,10 @@
         justify-content: flex-end;
         width: 50%;
         background: #f5f6fb;
+        @include respond(xSmall){
+          display: flex;
+          flex-direction: column;
+        }
 
         & > .seller_text {
           display: flex;

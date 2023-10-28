@@ -46,7 +46,10 @@ const CartSingle = ({ data }) => {
             US${totalPrice}
           </h4>
         </div>
-        <RxCross1 style={{ cursor: "pointer" }} />
+        <RxCross1
+          style={{ cursor: "pointer", background: "transparent" }}
+          size={35}
+        />
       </div>
     </div>
   );

@@ -9,21 +9,8 @@
       @content;
     }
   }
-}
-
-@mixin respond($breakpoint) {
-  @if $breakpoint == tablet {
-    @media screen and (min-width: 768px) and (max-width: 1000px) {
-      @content;
-    }
-  }
-  @if $breakpoint== mobile {
-    @media screen and (min-width: 480px) and (max-width: 767px) {
-      @content;
-    }
-  }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
@@ -51,7 +38,7 @@
         "img-2 img-2"
         "img-6 img-7"
         "img-10 img10";
-        margin-top: -3rem;
+      margin-top: -3rem;
     }
     @include respond(xSmall) {
       display: grid;
@@ -62,6 +49,7 @@
         "img-2 img-2"
         "img-6 img-7"
         "img-10 img10";
+      margin-top: -3rem;
     }
 
     .gallery_item {
@@ -108,7 +96,6 @@
             border: 1px solid #000;
             font-size: 1rem;
             cursor: pointer;
-            // transition: 0.5s ease-in-out;
           }
           & > button:hover {
             outline: 1px solid #000;
@@ -143,7 +130,7 @@
           }
         }
       }
-      @include respond(xSmall){
+      @include respond(xSmall) {
         & > .hero_text {
           & > .font_title {
             font-size: 2.5rem;
@@ -216,13 +203,12 @@
       }
       @include respond(xSmall) {
         & > .hero_text {
-          width: 300px;
+          width: 150px;
           & > .font_title {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
         }
       }
-
     }
   }
 }

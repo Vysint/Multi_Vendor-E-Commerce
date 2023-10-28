@@ -10,7 +10,7 @@
     }
   }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
@@ -32,6 +32,11 @@
       flex-direction: column;
       gap: 2rem;
     }
+    @include respond(xSmall){
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
     & > h1 {
       color: #fff;
@@ -46,6 +51,10 @@
       display: flex;
       gap: 2rem;
       align-items: center;
+      @include respond(xSmall){
+        display: flex;
+        
+      }
 
       & > input {
         padding: 10px 20px;
@@ -53,6 +62,9 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        @include respond(xSmall){
+          width: 100%;
+        }
       }
     }
   }
@@ -68,6 +80,12 @@
     @include respond(mobile) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(xSmall){
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     & > ul {
       list-style: none;
@@ -121,6 +139,13 @@
       justify-content: center;
       gap: 10px;
     }
+    @include respond(xSmall){
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
 
     & > span {
       background: inherit;
@@ -130,6 +155,10 @@
       background: inherit;
       & > img {
         background: inherit;
+        @include respond(xSmall){
+          width: 100%;
+        }
+        
       }
     }
   }

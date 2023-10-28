@@ -1,3 +1,20 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .content_container {
   width: 100%;
   background: #eee;
@@ -54,11 +71,19 @@
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        @include respond(xSmall){
+          display: flex;
+          flex-direction: column;
+          gap: 0px
+        }
 
         & > .inputs {
           width: 50%;
           background: inherit;
           padding-bottom: 10px;
+          @include respond(xSmall){
+            width: 100%;
+          }
 
           & > label {
             display: block;

@@ -1,3 +1,20 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .payment_container {
   background: #eee;
   width: 100%;
@@ -17,6 +34,9 @@
       color: #000000ba;
       padding-bottom: 10px;
       background: transparent;
+      @include respond(xSmall){
+        font-size: 16px;
+      }
     }
     & > .payment_new {
       background: inherit;
@@ -27,6 +47,9 @@
         background: #007bff;
         border-radius: 3px;
         color: #fff;
+        @include respond(xSmall){
+          font-size: 12px;
+        }
       }
     }
   }
@@ -38,8 +61,13 @@
     align-items: center;
     justify-content: space-between;
     background: #fff;
-    height: 70px;
+    height: 150px;
     box-shadow: var(--box-shadow);
+    padding: 20px;
+    @include respond(xSmall){
+      display: flex;
+      flex-direction: column;
+    }
 
     & > .cards {
       display: flex;

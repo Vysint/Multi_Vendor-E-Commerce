@@ -10,7 +10,7 @@
     }
   }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
@@ -22,9 +22,14 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     background: #fff;
-    @include respond(mobile){
+    @include respond(mobile) {
       display: grid;
       grid-template-columns: 1fr;
+    }
+    @include respond(xSmall) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     & > .images_section {
@@ -33,8 +38,15 @@
       justify-content: center;
       align-items: center;
       background: inherit;
+      
       & > img {
         width: 50%;
+        @include respond(mobile){
+          width: 50%;
+        }
+        @include respond(xSmall){
+          width: 50%;
+        }
       }
       & > .tiny_images {
         display: flex;
@@ -43,6 +55,12 @@
         & > img {
           height: 200px;
           cursor: pointer;
+          @include respond(mobile){
+            height: 200px;
+          }
+          @include respond(xSmall){
+            height: 100px;
+          }
         }
         & > .border {
           outline: 1px solid #ccc;
@@ -149,6 +167,13 @@
             background: #007bff;
             color: #fff;
             border-radius: 2px;
+            @include respond(tablet){
+              font-size: 12px;
+            }
+            @include respond(xSmall){
+              font-size: 12px;
+            }
+            
           }
         }
       }

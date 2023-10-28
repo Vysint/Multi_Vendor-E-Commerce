@@ -10,13 +10,11 @@
     }
   }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
 }
-
-
 
 .nav_container {
   display: flex;
@@ -74,6 +72,9 @@
       @include respond(mobile) {
         display: none;
       }
+      @include respond(xSmall) {
+        display: none;
+      }
       & > input {
         flex-basis: 90%;
         border: none;
@@ -88,7 +89,7 @@
 
       & > .search_data {
         position: absolute;
-        min-height: 30vh;
+        max-height: 50vh;
         z-index: 9;
         box-shadow: var(--box-shadow);
         padding: 10px;
@@ -136,6 +137,9 @@
       @include respond(mobile) {
         display: block;
       }
+      @include respond(xSmall) {
+        display: block;
+      }
     }
     & > .account_credentials {
       display: flex;
@@ -147,6 +151,9 @@
         flex-basis: 30%;
       }
       @include respond(mobile) {
+        display: none;
+      }
+      @include respond(xSmall) {
         display: none;
       }
 
@@ -177,6 +184,9 @@
         @include respond(mobile) {
           display: none;
         }
+        @include respond(xSmall) {
+          display: none;
+        }
         & > span {
           font-size: 1.2rem;
           background: transparent;
@@ -188,6 +198,9 @@
         @include respond(mobile) {
           display: none;
         }
+        @include respond(xSmall) {
+          display: none;
+        }
       }
 
       & > .sign_in {
@@ -197,12 +210,33 @@
         @include respond(mobile) {
           display: none;
         }
+        @include respond(xSmall) {
+          display: none;
+        }
       }
     }
     & > .open_cart {
       display: none;
 
       @include respond(mobile) {
+        display: block;
+        position: relative;
+        background: transparent;
+
+        & > span {
+          position: absolute;
+          top: -10px;
+          right: 0;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgb(193, 193, 5);
+        }
+      }
+      @include respond(xSmall) {
         display: block;
         position: relative;
         background: transparent;
@@ -234,6 +268,9 @@
     @include respond(mobile) {
       display: none;
     }
+    @include respond(xSmall) {
+      display: none;
+    }
     & > .category {
       display: flex;
       justify-content: flex-start;
@@ -244,6 +281,9 @@
       cursor: pointer;
 
       @include respond(mobile) {
+        display: none;
+      }
+      @include respond(xSmall) {
         display: none;
       }
 
@@ -282,6 +322,9 @@
         background: #007bff;
 
         @include respond(mobile) {
+          display: none;
+        }
+        @include respond(xSmall) {
           display: none;
         }
 
@@ -349,11 +392,41 @@
           }
         }
       }
+      @include respond(xSmall) {
+        display: block;
+        text-decoration: none;
+        background: transparent;
+        display: flex;
+        align-self: flex-start;
+
+        & > button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #007bff;
+          border: 2px solid #fff;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+
+          & > span {
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+          }
+        }
+      }
     }
 
     & > .user_info {
       display: none;
       @include respond(mobile) {
+        display: flex;
+        justify-content: flex-start;
+        align-self: flex-start;
+        margin-bottom: 1rem;
+      }
+      @include respond(xSmall) {
         display: flex;
         justify-content: flex-start;
         align-self: flex-start;
@@ -437,9 +510,11 @@
         & > .search_data_1 {
           position: absolute;
           background: #fff;
+          max-height: 50vh;
           margin-top: 1rem;
           padding: 10px;
           z-index: 20;
+          overflow-y: scroll;
 
           & > a {
             text-decoration: none;
@@ -499,6 +574,154 @@
 
       & > .links {
         background: #007bff;
+
+        & > a {
+          background: inherit;
+          color: #fff;
+          text-decoration: none;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    @include respond(xSmall) {
+      width: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      top: 4.39rem;
+      background: #007bff;
+      padding: 20px 20px;
+      border-top: 0.5px solid #fff;
+      animation-name: anime_small;
+      animation-duration: 2s;
+
+      & > .icon_dropdown {
+        display: flex;
+        justify-content: space-between;
+        background: inherit;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+        & > .open_wishlist_dropdown {
+          background: inherit;
+          position: relative;
+          cursor: pointer;
+
+          & > span {
+            position: absolute;
+            right: -7px;
+            top: -10px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgb(210, 193, 5);
+            border: 1px solid #007bff;
+          }
+        }
+        & > .close_dropdown {
+          background-color: inherit;
+          cursor: pointer;
+        }
+      }
+
+      & > .navigation_search {
+        width: 100%;
+        border-radius: 3px;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+
+        & > input {
+          width: 100%;
+          padding: 5px 10px;
+          border-radius: 3px;
+          border: none;
+        }
+        & > .search_data_1 {
+          position: absolute;
+          background: #fff;
+          max-height: 50vh;
+          overflow-y: scroll;
+          margin-top: 1rem;
+          padding: 10px;
+          z-index: 20;
+
+          & > a {
+            text-decoration: none;
+            background: inherit;
+            color: #000;
+
+            & > .image_search {
+              background: inherit;
+              display: flex;
+              gap: 10px;
+
+              & > img {
+                width: 40px;
+                height: fit-content;
+              }
+              & > h1 {
+                font-size: 12px;
+                font-weight: 300;
+              }
+            }
+          }
+        }
+      }
+
+      & > .navigation_items {
+        background: #007bff;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+        & > .items_nav {
+          background: inherit;
+        }
+      }
+      & > .become_seller {
+        background: #007bff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        animation-name: anime-opa;
+        animation-duration: 3s;
+
+        & > button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #007bff;
+          padding: 5px 10px;
+          border: 2px solid #fff;
+          border-radius: 3px;
+
+          & > span {
+            background: inherit;
+            color: #fff;
+            font-size: 1.3rem;
+          }
+        }
+      }
+
+      & > .user_info {
+        @include respond(xSmall) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      & > .links {
+        background: #007bff;
+
+        @include respond(xSmall) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
         & > a {
           background: inherit;

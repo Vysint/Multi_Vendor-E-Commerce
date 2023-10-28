@@ -16,6 +16,12 @@
   }
 }
 .products_container {
+  @include respond(mobile){
+    margin-top: -3rem;
+  }
+  @include respond(xSmall){
+    margin-top: -3rem;
+  }
   .products {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -28,6 +34,10 @@
     @include respond(mobile){
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(xSmall){
+      display: grid;
+      grid-template-columns: 1fr;
     }
   }
 }

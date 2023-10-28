@@ -1,3 +1,20 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .sidebar_profile {
   width: 100%;
   padding-top: 8px;
@@ -18,6 +35,12 @@
       padding-left: 1rem;
       background: inherit;
       font-size: 1.2rem;
+      @include respond(mobile){
+        display: none;
+      }
+      @include respond(xSmall){
+        display: none;
+      }
     }
     & > .span_profile {
       color: red;

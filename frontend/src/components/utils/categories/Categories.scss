@@ -10,7 +10,7 @@
     }
   }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
@@ -35,6 +35,10 @@
       @include respond(mobile) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+      }
+      @include respond(xSmall){
+        display: grid;
+        gap: 1rem;
       }
 
       .branding_item {
@@ -83,6 +87,10 @@
       @include respond(mobile) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+      }
+      @include respond(xSmall){
+        display: grid;
+        grid-template-columns: 1fr
       }
 
       & > .categories_item {

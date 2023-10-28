@@ -27,7 +27,7 @@ const Wishlist = ({ setOpenWishList }) => {
         <div className="cart_item">
           <div className="close_cart">
             <RxCross1
-              size={23}
+              size={25}
               style={{ cursor: "pointer", background: "transparent" }}
               onClick={() => setOpenWishList(false)}
             />
@@ -58,7 +58,10 @@ const CartSingle = ({ data }) => {
   return (
     <div className="cart_item_container">
       <div className="cart_item_single">
-        <RxCross1 style={{ cursor: "pointer" }} size={20} />
+        <RxCross1
+          style={{ cursor: "pointer", background: "transparent" }}
+          size={35}
+        />
         <img
           src="https://bonik-react.vercel.app/assets/images/products/Fashion/Clothes/1.SilverHighNeckSweater.png"
           alt=""
@@ -78,12 +81,11 @@ const CartSingle = ({ data }) => {
           </h4>
         </div>
         <BsCartPlus
-          size={25}
-          style={{ cursor: "pointer" }}
+          size={35}
+          style={{ cursor: "pointer", background: "transparent" }}
           title="Add to cart"
         />
       </div>
     </div>
   );
 };
-

@@ -10,7 +10,7 @@
     }
   }
   @if $breakpoint == xSmall {
-    @media screen and (min-width: 300px) and (max-width: 479px) {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
       @content;
     }
   }
@@ -27,6 +27,15 @@
     align-self: flex-start;
     justify-content: center;
     gap: 1rem;
+  }
+
+  @include respond(xSmall){
+    background: #007bff;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
   }
 
   & > .nav_item {

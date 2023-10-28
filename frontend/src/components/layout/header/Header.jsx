@@ -18,9 +18,9 @@ import Dropdown from "../dropdown/Dropdown";
 import Navbar from "../navbar/Navbar";
 import InfoBox from "../infoBox/InfoBox";
 import Card from "../../utils/card/Card";
-import "./Header.scss";
 import Cart from "../cart/Cart";
 import WishList from "../cart/wishList/WishList";
+import "./Header.scss";
 
 const Header = ({ activeHeading }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -186,6 +186,8 @@ const Header = ({ activeHeading }) => {
               </Link>
             )}
           </div>
+          {/* Cart popup */}
+          {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
         </div>
         <div className="nav_items_section">
           {/* categories */}

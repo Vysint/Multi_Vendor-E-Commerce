@@ -1,9 +1,25 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
 .address_container {
   background: #eee;
   width: 100%;
   padding-left: 20px;
   padding-top: 20px;
-
   & > .address_title {
     width: 100%;
     display: flex;
@@ -17,10 +33,14 @@
       color: #000000ba;
       padding-bottom: 10px;
       background: transparent;
+      @include respond(xSmall){
+        font-size: 16px;
+      }
     }
 
     & > .address_new {
       background: inherit;
+
 
       & > span {
         padding: 5px 10px;
@@ -28,6 +48,9 @@
         background: #007bff;
         border-radius: 3px;
         color: #fff;
+        @include respond(xSmall){
+          font-size: 12px;
+        }
       }
     }
   }
@@ -40,6 +63,13 @@
     background: #fff;
     height: 70px;
     box-shadow: var(--box-shadow);
+    padding: 2px;
+    @include respond(xSmall){
+      display: flex;
+      flex-direction: column;
+      height: 150px;
+
+    }
 
     & > .cards {
       display: flex;
@@ -59,6 +89,10 @@
       align-items: center;
       gap: 5px;
       background: inherit;
+      @include respond(xSmall){
+        display: flex;
+        flex-direction: column;
+      }
 
       & > h6 {
         font-size: 12px;
