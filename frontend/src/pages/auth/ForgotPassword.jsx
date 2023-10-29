@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
 import { validateEmail } from "../../components/validate/validateEmail";
-import Card from "../../components/utils/card/Card";
+import "./Login.scss";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -32,35 +32,34 @@ const ForgetPassword = () => {
   return (
     <div className="auth">
       {isLoading && <SpinnerImg />}
-      <Card>
-        <div className="form">
-          <h2 className="title">Forgot Password</h2>
-          <form className="form1" onSubmit={submitHandler}>
-            <div className="inputs">
-              <label>Email Address</label>
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
 
-            <button
-              type="submit"
-              className="--btn --btn-primary --btn-block"
-              style={{ margin: "2rem 0 1rem 0" }}
-            >
-              Reset Email
-            </button>
-            <Link to="/login" className="back_link">
-              Back to login
-            </Link>
-          </form>
-        </div>
-      </Card>
+      <div className="form">
+        <h2 className="title">Forgot Password</h2>
+        <form className="form1" onSubmit={submitHandler}>
+          <div className="inputs">
+            <label>Email Address</label>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="--btn --btn-primary --btn-block"
+            style={{ margin: "2rem 0 1rem 0" }}
+          >
+            Reset Email
+          </button>
+          <Link to="/login" className="back_link">
+            Back to login
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };
