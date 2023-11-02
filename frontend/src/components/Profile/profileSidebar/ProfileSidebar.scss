@@ -23,6 +23,8 @@
   border-right: 1px solid #ccc;
   height: 100vh;
 
+ 
+
   & > .person_profile {
     display: flex;
     align-items: center;
@@ -35,10 +37,10 @@
       padding-left: 1rem;
       background: inherit;
       font-size: 1.2rem;
-      @include respond(mobile){
+      @include respond(mobile) {
         display: none;
       }
-      @include respond(xSmall){
+      @include respond(xSmall) {
         display: none;
       }
     }

@@ -21,11 +21,16 @@
   background: #eee;
   height: 100vh;
 
+  @include respond(mobile){
+    
+  }
+
   & > .profile_sidebar {
     width: 335px;
     background: #eee;
     @include respond(mobile) {
       width: 50px;
+     
     }
     @include respond(xSmall) {
       width: 50px;

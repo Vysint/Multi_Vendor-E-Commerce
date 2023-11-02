@@ -19,90 +19,148 @@
   width: 100%;
   background: #eee;
 
-  & > .profile_container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 2rem;
-    height: 200px;
-
-    & > .relative {
-      position: relative;
-      background: transparent;
-      height: 150px;
-
-      & > img {
-        width: 150px;
-        height: 100%;
-        background: transparent;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: top;
-        border: 3px solid #007bff;
-      }
-      & > .camera {
-        position: absolute;
-        right: 5px;
-        bottom: 10px;
-        width: 30px;
-        height: 30px;
-        background: #e3e9ee;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-    }
-  }
-
-  & > .form_container {
-    width: 100%;
-    background: inherit;
-    padding-left: 20px;
-
-    & > form {
-      background: inherit;
+  & > div {
+    background: #eee;
+    & > .profile_container {
+      display: flex;
+      justify-content: center;
       width: 100%;
-      & > .form_inputs {
-        width: 100%;
-        background: inherit;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        @include respond(xSmall){
+      padding-top: 2rem;
+      height: 200px;
+
+      & > .relative {
+        position: relative;
+        background: transparent;
+        height: 150px;
+
+        & > img {
+          width: 150px;
+          height: 100%;
+          background: transparent;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: top;
+          border: 3px solid #007bff;
+        }
+        & > .camera {
+          position: absolute;
+          right: 5px;
+          bottom: 10px;
+          width: 30px;
+          height: 30px;
+          background: #e3e9ee;
+          border-radius: 50%;
           display: flex;
-          flex-direction: column;
-          gap: 0px
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
         }
-
-        & > .inputs {
-          width: 50%;
-          background: inherit;
-          padding-bottom: 10px;
-          @include respond(xSmall){
-            width: 100%;
-          }
-
-          & > label {
-            display: block;
-            padding-bottom: 5px;
-            background: inherit;
-          }
-        }
-      }
-
-      & > button {
-        padding: 5px 12px;
-        background: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 1.2rem;
       }
     }
+
+    & > .form_container {
+      width: 100%;
+      padding-left: 20px;
+      background: #eee;
+
+      & > form {
+        background: inherit;
+        width: 100%;
+
+        & > .form_inputs {
+          width: 100%;
+          background: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          @include respond(xSmall) {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+          }
+
+          & > .inputs {
+            width: 50%;
+            background: #eee;
+            padding-bottom: 1rem;
+            @include respond(xSmall) {
+              width: 100%;
+            }
+            & > label {
+              display: block;
+              padding-bottom: 5px;
+              background-color: inherit;
+              font-size: 1.2rem;
+            }
+            & > input {
+              outline: none;
+              padding: 0.5rem;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              width: 90%;
+              @include respond(mobile) {
+                width: 100%;
+              }
+            }
+            & > input:focus {
+              box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+              border: 1px solid #007bff;
+              cursor: pointer;
+            }
+            & > input:valid {
+              background: rgb(215, 238, 245);
+            }
+          }
+        }
+
+        & > button {
+          padding: 5px 12px;
+          background: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    //   & > form {
+    //     background: inherit;
+    //     width: 100%;
+    //     & > .form_inputs {
+    //
+    //       @include respond(xSmall) {
+    //         display: flex;
+    //         flex-direction: column;
+    //         gap: 0px;
+    //       }
+
+    //       & > .inputs {
+    //
+    //         @include respond(xSmall) {
+    //           width: 100%;
+    //         }
+
+    //         & > label {
+    //           display: block;
+    //           padding-bottom: 5px;
+    //           background: inherit;
+    //         }
+    //       }
+    //     }
+
+    //     & > button {
+    //       padding: 5px 12px;
+    //       background: #007bff;
+    //       color: #fff;
+    //       border: none;
+    //       border-radius: 3px;
+    //       cursor: pointer;
+    //       font-size: 1.2rem;
+    //     }
+    //   }
+    // }
   }
 
   & > div {

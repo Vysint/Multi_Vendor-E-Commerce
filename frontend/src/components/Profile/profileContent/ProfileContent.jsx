@@ -30,7 +30,7 @@ const ProfileContent = ({ active }) => {
     <div className="content_container">
       {/* Profile */}
       {active === 1 && (
-        <>
+        <div>
           <div className="profile_container">
             <div className="relative">
               <img src={userInfo.imageURL} alt="" />
@@ -112,7 +112,7 @@ const ProfileContent = ({ active }) => {
               <button type="submit">Update Profile</button>
             </form>
           </div>
-        </>
+        </div>
       )}
 
       {/* Orders */}
