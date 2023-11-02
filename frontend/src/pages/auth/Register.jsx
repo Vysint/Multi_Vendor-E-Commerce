@@ -8,7 +8,7 @@ import { useSignUpMutation } from "../../features/slices/usersApiSlice";
 import { setCredentials } from "../../features/slices/authSlice";
 import { SpinnerImg } from "../../components/loader/Loader";
 import "./Login.scss";
-const Login = () => {
+const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -166,4 +166,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
