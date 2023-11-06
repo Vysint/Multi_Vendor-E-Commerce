@@ -41,6 +41,7 @@ const shopSchema = new mongoose.Schema(
     avatar: {
       type: String,
       required: true,
+      default: "https://i.ibb.co/3k2BG3T/profile.png",
     },
     zipCode: {
       type: Number,
@@ -56,7 +57,7 @@ const shopSchema = new mongoose.Schema(
   }
 );
 // Hash Password
-userSchema.pre("save", async function (next) {
+shopSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -64,7 +65,7 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 // Compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+shopSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
