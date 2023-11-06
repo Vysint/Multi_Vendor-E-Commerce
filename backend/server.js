@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const shopRoutes = require("./routes/shopRoutes");
 
 const app = express();
 dotenv.config();
@@ -29,6 +30,8 @@ app.use(
 
 // Routes
 app.use("/api/v2/users", userRoutes);
+
+app.use("/api/v2/shop", shopRoutes);
 
 //Error middlewares
 app.use(errorHandler);
