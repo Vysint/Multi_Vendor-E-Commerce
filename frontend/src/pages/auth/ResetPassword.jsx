@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SpinnerImg } from "../../components/loader/Loader";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useResetPasswordMutation } from "../../features/slices/usersApiSlice";
+import { useResetPasswordMutation } from "../../features/api/usersApiSlice";
 import "./Login.scss";
 
 const ResetPassword = () => {
