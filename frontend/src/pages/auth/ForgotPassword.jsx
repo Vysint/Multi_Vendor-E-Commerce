@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SpinnerImg } from "../../components/loader/Loader";
-import { useForgotPasswordMutation } from "../../features/slices/usersApiSlice";
+import { useForgotPasswordMutation } from "../../features/api/usersApiSlice";
 import { validateEmail } from "../../components/validate/validateEmail";
 import "./Login.scss";
 
