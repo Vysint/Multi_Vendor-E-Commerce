@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
-import { useSignUpMutation } from "../../features/slices/usersApiSlice";
+import { useSignUpMutation } from "../../features/api/usersApiSlice";
 import { setCredentials } from "../../features/slices/authSlice";
 import { SpinnerImg } from "../../components/loader/Loader";
 import "./Login.scss";
