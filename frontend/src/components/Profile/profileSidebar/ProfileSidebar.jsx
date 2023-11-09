@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { MdOutlineTrackChanges } from "react-icons/md";
 import { TbAddressBookOff } from "react-icons/tb";
-import { useLogoutMutation } from "../../../features/slices/usersApiSlice";
+import { useLogoutMutation } from "../../../features/api/usersApiSlice";
 import { clearCredentials } from "../../../features/slices/authSlice";
 import { toast } from "react-toastify";
 import "./ProfileSidebar.scss";
