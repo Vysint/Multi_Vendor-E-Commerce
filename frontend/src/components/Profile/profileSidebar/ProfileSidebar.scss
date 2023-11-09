@@ -1,0 +1,51 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.sidebar_profile {
+  width: 100%;
+  padding-top: 8px;
+  padding-top: 1.5rem;
+  background: #eee;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+
+ 
+
+  & > .person_profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: inherit;
+
+    & > span {
+      padding-left: 1rem;
+      background: inherit;
+      font-size: 1.2rem;
+      @include respond(mobile) {
+        display: none;
+      }
+      @include respond(xSmall) {
+        display: none;
+      }
+    }
+    & > .span_profile {
+      color: red;
+    }
+  }
+}

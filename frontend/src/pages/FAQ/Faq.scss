@@ -1,0 +1,63 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.faq_container {
+  padding: 20px 5%;
+
+  @include respond(mobile){
+    margin-top: -3rem;
+  }
+  @include respond(xSmall){
+    margin-top: -3rem;
+  }
+
+  & > .faqs {
+    & > h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    & > .faqs_items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      & > .faqs_item {
+        & > button {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          cursor: pointer;
+
+          & > :nth-child(1) {
+            font-size: 1.2rem;
+          }
+        }
+        & > div > p {
+          font-size: 1rem;
+          color: #999999;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}

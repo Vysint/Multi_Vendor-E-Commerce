@@ -1,0 +1,48 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.suggested_container {
+  padding: 20px 5%;
+  background: #fff;
+  & > h2 {
+    background: inherit;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  & > .suggested_item {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    background: inherit;
+    padding-top: 20px;
+
+    @include respond(tablet) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond(mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(xSmall) {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
+}

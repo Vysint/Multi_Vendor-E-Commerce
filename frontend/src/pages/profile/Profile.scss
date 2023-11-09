@@ -1,0 +1,39 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.profile_container {
+  padding: 0px 5%;
+  display: flex;
+  background: #eee;
+  height: 100vh;
+
+  @include respond(mobile){
+    
+  }
+
+  & > .profile_sidebar {
+    width: 335px;
+    background: #eee;
+    @include respond(mobile) {
+      width: 50px;
+     
+    }
+    @include respond(xSmall) {
+      width: 50px;
+    }
+  }
+}
