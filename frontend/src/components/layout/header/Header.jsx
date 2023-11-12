@@ -138,7 +138,7 @@ const Header = ({ activeHeading }) => {
             <span>1</span>
           </div>
           <div className="account_credentials">
-            <Link className="become_seller" to="/create-shop">
+            <Link className="become_seller" to="/shop-login">
               <button>
                 <span>Become Seller</span>
                 <IoIosArrowForward
@@ -335,7 +335,7 @@ const Header = ({ activeHeading }) => {
               <Navbar active={activeHeading} />
             </div>
             {/* become _seller */}
-            <Link className="become_seller" id="become_seller" to="/create-shop">
+            <Link className="become_seller" id="become_seller" to="/shop-login">
               <button>
                 <span>Become Seller</span>
                 <IoIosArrowForward
