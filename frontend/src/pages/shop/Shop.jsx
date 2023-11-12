@@ -1,10 +1,10 @@
-import ShopCreate from "../../components/shop/ShopCreate";
+import ShopRegister from "../../components/shop/ShopRegister";
 
 const Shop = () => {
   return (
     <>
       {/* <Header /> */}
-      <ShopCreate />
+      <ShopRegister />
     </>
   );
 };
