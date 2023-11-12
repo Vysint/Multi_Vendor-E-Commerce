@@ -21,8 +21,9 @@ import Faq from "./pages/FAQ/Faq.jsx";
 import ProductDetailsPage from "./pages/productDetails/ProductDetailsPage.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import PrivateRoute from "./components/private/PrivateRoute.jsx";
-import "./index.css";
+import ShopLogin from "./components/shop/shopLogin.jsx"
 import Shop from "./pages/shop/Shop.jsx";
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/create-shop" element={<Shop />} />
+        <Route  path="/shop-login" element={<ShopLogin />}/>
       </Route>
     </Route>
   )
