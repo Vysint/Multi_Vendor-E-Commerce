@@ -10,6 +10,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
     signUp: builder.mutation({
       query: (data) => ({
@@ -17,12 +18,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/logout`,
         method: "POST",
       }),
+      invalidatesTags: ["User"],
     }),
     forgotPassword: builder.mutation({
       query: (data) => ({
@@ -30,6 +33,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["User"],
     }),
     resetPassword: builder.mutation({
       query: ({ resetToken, ...password }) => ({
@@ -37,6 +41,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: password,
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
