@@ -1,32 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "",
-  email: "",
-  password: "",
-  phoneNumber: "",
-  address: "",
-  zipCode: "",
-  avatar: "",
+  seller: localStorage.getItem("seller")
+    ? JSON.parse(localStorage.getItem("seller"))
+    : null,
+  shopInfo: {
+    name: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    address: "",
+    zipCode: "",
+    avatar: "",
+  },
 };
 
 const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    shopRegister: (state, action) => {
-      const profile = action.payload;
-      state.name = profile.name;
-      state.email = profile.email;
-      state.password = profile.password;
-      state.phoneNumber = profile.phoneNumber;
-      state.address = profile.address;
-      state.zipCode = profile.zipCode;
-      state.avatar = profile.avatar;
+    setShopCredentials: (state, action) => {
+      state.shopInfo = action.payload;
+    },
+    setSellerCredentials: (state, action) => {
+      state.seller = action.payload;
+      localStorage.setItem("seller", JSON.stringify(action.payload));
+    },
+    clearShopCredentials: (state) => {
+      state.shopInfo = null;
+      localStorage.removeItem("shopInfo");
     },
   },
 });
 
-export const { shopRegister } = shopSlice.actions;
+export const {
+  setShopCredentials,
+  setSellerCredentials,
+  clearShopCredentials,
+} = shopSlice.actions;
 
 export default shopSlice.reducer;
