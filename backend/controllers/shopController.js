@@ -1,10 +1,9 @@
+const Shop = require("../models/shopModel");
+const verifyShopToken = require("../utils/jwtShop");
+
 // @desc   Register a new shop
 // route   POST /api/v2/shop/register
 // @access Public
-
-const Shop = require("../models/shopModel");
-const verifyToken = require("../utils/jwt");
-
 exports.registerShop = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -58,17 +57,15 @@ exports.registerShop = async (req, res, next) => {
       zipCode: req.body.zipCode,
     });
     if (newShop) {
-      verifyToken(res, newShop._id);
-      res
-        .status(201)
-        .json({
-          _id: newShop._id,
-          email: newShop.email,
-          avatar: newShop.avatar,
-          address: newShop.address,
-          phoneNumber: newShop.phoneNumber,
-          zipCode: newShop.zipCode,
-        });
+      verifyShopToken(res, newShop._id);
+      res.status(201).json({
+        _id: newShop._id,
+        email: newShop.email,
+        avatar: newShop.avatar,
+        address: newShop.address,
+        phoneNumber: newShop.phoneNumber,
+        zipCode: newShop.zipCode,
+      });
     } else {
       res.status(401);
       throw new Error("Invalid user data.");
