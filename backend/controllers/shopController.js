@@ -118,10 +118,6 @@ exports.shopLogin = async (req, res, next) => {
 // @access Private
 
 exports.getSeller = (req, res, next) => {
-  const shop = {
-    _id: req.seller._id,
-    name: req.seller.name,
-    email: req.seller.email,
-  };
+  const shop = req.seller;
   res.status(200).json(shop);
 };
