@@ -5,11 +5,11 @@ const verifyShopToken = (res, shopId) => {
     expiresIn: "1d",
   });
 
-  res.cookie("jwt_token", token, {
+  res.cookie("shop_token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",
-    maxAge: 24 * 60 * 60 * 1000,
+    maxAge: 24 * 60 * 60, //Seconds for 1day
   });
 };
 
