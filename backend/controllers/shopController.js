@@ -74,3 +74,41 @@ exports.registerShop = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Login a seller
+// route   POST /api/v2/shop/login
+// @access Public
+
+exports.shopLogin = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  // Validate request
+  try {
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("Please add email and password");
+    }
+  } catch (err) {
+    return next(err);
+  }
+
+  // Check if user exists
+  try {
+    const shop = await Shop.findOne({ email });
+    if (!shop) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    // Check password validity
+    const isPasswordValid = await shop.comparePassword(password);
+
+    if (!isPasswordValid) {
+      res.status(400);
+      throw new Error("password is incorrect");
+    }
+    verifyShopToken(res, shop._id);
+    res.status(200).json(shop);
+  } catch (err) {
+    return next(err);
+  }
+};
