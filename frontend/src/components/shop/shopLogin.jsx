@@ -35,7 +35,6 @@ const ShopLogin = () => {
       dispatch(setShopCredentials({ ...res }));
       dispatch(setSellerCredentials(res.name));
       // navigate("/dashboard");
-      window.location.reload(true);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
@@ -46,7 +45,7 @@ const ShopLogin = () => {
       {isLoading && <SpinnerImg />}
 
       <div className="form">
-        <h2>Login as a seller</h2>
+        <h2>Login to your shop</h2>
         <form className="form1" onSubmit={submitHandler}>
           <div className="inputs">
             <label>Email Address</label>

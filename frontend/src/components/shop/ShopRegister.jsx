@@ -90,7 +90,7 @@ const ShopRegister = () => {
     <div className="auth">
       {isLoading && <SpinnerImg />}
       <div className="form">
-        <h2 className="title">Register as a seller</h2>
+        <h2 className="title">Register your shop</h2>
         <form className="form1" onSubmit={handleSubmit}>
           <div className="inputs">
             <label> Full Name</label>
