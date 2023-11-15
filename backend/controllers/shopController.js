@@ -112,3 +112,16 @@ exports.shopLogin = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Get a seller
+// route   POST /api/v2/shop/get_seller
+// @access Private
+
+exports.getSeller = (req, res, next) => {
+  const shop = {
+    _id: req.seller._id,
+    name: req.seller.name,
+    email: req.seller.email,
+  };
+  res.status(200).json(shop);
+};
