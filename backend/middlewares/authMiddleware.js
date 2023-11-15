@@ -9,6 +9,12 @@ const protect = async (req, res, next) => {
     if (token) {
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      // Check if th token is expired
+      if (decoded.exp < Date.now() / 1000) {
+        res.status(401);
+        throw new Error("Token has expired, please login again");
+      }
       // Get user from the token
       req.user = await User.findById(decoded.userId).select("-password");
       next();
