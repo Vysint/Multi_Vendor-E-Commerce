@@ -1,11 +1,18 @@
 const express = require("express");
-const { registerShop, shopLogin } = require("../controllers/shopController");
+const {
+  registerShop,
+  shopLogin,
+  getSeller,
+} = require("../controllers/shopController");
 const { fileUpload } = require("../utils/fileUpload");
+const protectShop = require("../middlewares/shopMiddleware");
 
 const router = express.Router();
 
 router.post("/register", fileUpload.single("file"), registerShop);
 
 router.post("/login", shopLogin);
+
+router.get("/get_seller", protectShop, getSeller);
 
 module.exports = router;
