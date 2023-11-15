@@ -12,7 +12,15 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Shop"],
     }),
+    shopLogin: builder.mutation({
+      query: (data) => ({
+        url: `${SHOP_URL}/login`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Shop"],
+    }),
   }),
 });
 
-export const { useRegisterShopMutation } = shopApiSlice;
+export const { useRegisterShopMutation, useShopLoginMutation } = shopApiSlice;
