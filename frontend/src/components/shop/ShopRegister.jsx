@@ -6,10 +6,7 @@ import { RxAvatar } from "react-icons/rx";
 import { toast } from "react-toastify";
 import { useRegisterShopMutation } from "../../features/api/shopApiSlice";
 
-import {
-  setShopCredentials,
-  setSellerCredentials,
-} from "../../features/slices/shopSlice";
+import { setShopCredentials } from "../../features/slices/shopSlice";
 import { useDispatch } from "react-redux";
 
 const ShopRegister = () => {
@@ -76,11 +73,10 @@ const ShopRegister = () => {
         ...userData,
         avatar: imageURL,
       };
-      console.log(userData);
       const res = await registerShop(formData).unwrap();
       dispatch(setShopCredentials({ ...res }));
-      dispatch(setSellerCredentials(userData.name)); //
-      navigate("/");
+      navigate(`/shop/${res._id}`);
+      // dispatch(setSellerCredentials(userData.name)); //
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }

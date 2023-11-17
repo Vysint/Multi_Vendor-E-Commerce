@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-import { SpinnerImg } from "../../components/loader/Loader";
+import { SpinnerImg } from "../loader/Loader";
 import { useShopLoginMutation } from "../../features/api/shopApiSlice";
 import { toast } from "react-toastify";
-import {
-  setSellerCredentials,
-  setShopCredentials,
-} from "../../features/slices/shopSlice";
+import { setShopCredentials } from "../../features/slices/shopSlice";
 
 const ShopLogin = () => {
   const [email, setEmail] = useState("");
@@ -17,24 +14,17 @@ const ShopLogin = () => {
   const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
-  const { seller } = useSelector((state) => state.shop);
+
   const navigate = useNavigate();
 
   const [shopLogin, { isLoading }] = useShopLoginMutation();
-
-  useEffect(() => {
-    if (seller) {
-      navigate("/");
-    }
-  }, [navigate, seller]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await shopLogin({ email, password }).unwrap();
       dispatch(setShopCredentials({ ...res }));
-      dispatch(setSellerCredentials(res.name));
-      // navigate("/dashboard");
+      navigate(`/shop/${res._id}`);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
