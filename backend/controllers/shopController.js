@@ -117,7 +117,18 @@ exports.shopLogin = async (req, res, next) => {
 // route   POST /api/v2/shop/get_seller
 // @access Private
 
-exports.getSeller = (req, res, next) => {
-  const shop = req.seller;
-  res.status(200).json(shop);
+exports.getSeller = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    if (id === req.seller._id.toString()) {
+      const seller = await Shop.findById(id);
+      res.status(200).json(seller);
+    } else {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+  } catch (err) {
+    return next(err);
+  }
 };
