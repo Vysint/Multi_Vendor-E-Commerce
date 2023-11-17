@@ -13,6 +13,6 @@ router.post("/register", fileUpload.single("file"), registerShop);
 
 router.post("/login", shopLogin);
 
-router.get("/get_seller", protectShop, getSeller);
+router.get("/:id", protectShop, getSeller);
 
 module.exports = router;
