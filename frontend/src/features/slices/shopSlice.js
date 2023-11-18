@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  seller: localStorage.getItem("seller")
-    ? JSON.parse(localStorage.getItem("seller"))
-    : null,
+  isSeller: false,
   shopInfo: {
     name: "",
     email: "",
@@ -20,15 +18,8 @@ const shopSlice = createSlice({
   initialState,
   reducers: {
     setShopCredentials: (state, action) => {
+      state.isSeller = true;
       state.shopInfo = action.payload;
-    },
-    setSellerCredentials: (state, action) => {
-      state.seller = action.payload;
-      localStorage.setItem("seller", JSON.stringify(action.payload));
-    },
-    clearShopCredentials: (state) => {
-      state.shopInfo = null;
-      localStorage.removeItem("shopInfo");
     },
   },
 });
