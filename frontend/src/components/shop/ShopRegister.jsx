@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { SpinnerImg } from "../loader/Loader";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useRegisterShopMutation } from "../../features/api/shopApiSlice";
 
 import { setShopCredentials } from "../../features/slices/shopSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShopRegister = () => {
   const [userData, setUserData] = useState({
@@ -21,11 +21,17 @@ const ShopRegister = () => {
   });
 
   const [visible, setVisible] = useState(false);
-
   const [registerShop, { isLoading }] = useRegisterShopMutation();
   const dispatch = useDispatch();
-
+  const { isSeller, shopInfo } = useSelector((state) => state.shop);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (isSeller === true) {
+      navigate(`/shop/${shopInfo._id}`);
+    }
+  }, [navigate, isSeller, shopInfo]);
 
   const handleInputChange = (e) => {
     setUserData((prev) => {

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { SpinnerImg } from "../loader/Loader";
@@ -14,10 +14,17 @@ const ShopLogin = () => {
   const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
+  const { isSeller, shopInfo } = useSelector((state) => state.shop);
 
   const navigate = useNavigate();
 
   const [shopLogin, { isLoading }] = useShopLoginMutation();
+
+  useEffect(() => {
+    if (isSeller === true) {
+      navigate(`/shop/${shopInfo._id}`);
+    }
+  }, [navigate, isSeller, shopInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
