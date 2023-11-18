@@ -54,7 +54,7 @@ const router = createBrowserRouter(
         <Route path="/create-shop" element={<ShopRegister />} />
         <Route path="/shop-login" element={<ShopLogin />} />
       </Route>
-      {/* Seller private routes */}
+      {/* Seller private route */}
       <Route path="" element={<SellerProtectedRoute />}>
         <Route path="/shop/:id" element={<Shop />} />
       </Route>
