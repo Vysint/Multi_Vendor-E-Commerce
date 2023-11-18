@@ -1,10 +1,9 @@
-import ShopRegister from "../../components/shop/ShopRegister";
+import ShopDashboard from "../../components/shop/shopDashboard";
 
 const Shop = () => {
   return (
     <>
-      {/* <Header /> */}
-      <ShopRegister />
+      <ShopDashboard />
     </>
   );
 };
