@@ -20,7 +20,16 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Shop"],
     }),
+    getSeller: builder.query({
+      query: (id) => ({
+        url: `${SHOP_URL}/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterShopMutation, useShopLoginMutation } = shopApiSlice;
+export const {
+  useRegisterShopMutation,
+  useShopLoginMutation,
+  useGetSellerQuery,
+} = shopApiSlice;
