@@ -25,6 +25,7 @@ import ShopLogin from "./components/shop/shopLogin.jsx";
 import "./index.css";
 import ShopRegister from "./components/shop/ShopRegister.jsx";
 import Shop from "./pages/shop/Shop.jsx";
+import SellerProtectedRoute from "./components/private/SellerProtectedRoute.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,9 @@ const router = createBrowserRouter(
         <Route path="/profile" element={<Profile />} />
         <Route path="/create-shop" element={<ShopRegister />} />
         <Route path="/shop-login" element={<ShopLogin />} />
+      </Route>
+      {/* Seller private routes */}
+      <Route path="" element={<SellerProtectedRoute />}>
         <Route path="/shop/:id" element={<Shop />} />
       </Route>
     </Route>
