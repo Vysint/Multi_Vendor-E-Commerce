@@ -21,11 +21,12 @@ import Faq from "./pages/FAQ/Faq.jsx";
 import ProductDetailsPage from "./pages/productDetails/ProductDetailsPage.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import PrivateRoute from "./components/private/PrivateRoute.jsx";
-import ShopLogin from "./components/shop/shopLogin.jsx";
+import ShopLogin from "./components/shop/auth/ShopLogin.jsx";
 import "./index.css";
-import ShopRegister from "./components/shop/ShopRegister.jsx";
-import Shop from "./pages/shop/Shop.jsx";
+import ShopRegister from "./components/shop/auth/ShopRegister.jsx";
 import SellerProtectedRoute from "./components/private/SellerProtectedRoute.jsx";
+import ShopDashboard from "./pages/shop/dashboard/ShopDashboard.jsx";
+import ShopHomePage from "./pages/shop/ShopHomePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,7 +57,8 @@ const router = createBrowserRouter(
       </Route>
       {/* Seller private routes */}
       <Route path="" element={<SellerProtectedRoute />}>
-        <Route path="/shop/:id" element={<Shop />} />
+        <Route path="/shop/:id" element={<ShopHomePage />} />
+        <Route path="/dashboard" element={<ShopDashboard />} />
       </Route>
     </Route>
   )
