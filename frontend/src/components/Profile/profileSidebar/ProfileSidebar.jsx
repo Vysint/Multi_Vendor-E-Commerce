@@ -25,7 +25,6 @@ const ProfileSidebar = ({ active, setActive }) => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
-      // toast.success("Logout successful");
       navigate("/");
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
