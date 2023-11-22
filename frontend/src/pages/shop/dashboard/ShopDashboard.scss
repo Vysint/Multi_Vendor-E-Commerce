@@ -1,0 +1,37 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 0px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.shop_sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 5%;
+  & > .sidebar_container {
+    width: 330px;
+    @include respond(tablet){
+      width: 200px;
+    }
+    @include respond(mobile){
+      width: 70px;
+    }
+    @include respond(xSmall){
+      width: 50px;
+    }
+    
+  }
+}
