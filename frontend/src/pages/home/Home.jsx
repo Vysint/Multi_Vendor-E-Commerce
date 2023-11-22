@@ -7,7 +7,7 @@ import Sponsored from "../../components/utils/sponsored/Sponsored";
 import Footer from '../../components/layout/footer/Footer'
 const Home = () => {
   return (
-    <div className="home">
+    <>
       <Header activeHeading={1} />
       <Hero />
       <Categories />
@@ -15,7 +15,7 @@ const Home = () => {
       <FeaturedProduct />
       <Sponsored />
       <Footer />
-    </div>
+    </>
   );
 };
 
