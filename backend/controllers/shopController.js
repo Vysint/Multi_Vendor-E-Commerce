@@ -1,5 +1,6 @@
 const Shop = require("../models/shopModel");
 const verifyShopToken = require("../utils/jwtShop");
+const jwt = require("jsonwebtoken");
 
 // @desc   Register a new shop
 // route   POST /api/v2/shop/register
@@ -110,6 +111,27 @@ exports.shopLogin = async (req, res, next) => {
     res.status(200).json(shop);
   } catch (err) {
     return next(err);
+  }
+};
+
+// @desc   Get shop Login Status
+// route   GET /api/v2/shop/loggedin
+// @access private
+
+exports.loginStatus = async (req, res, next) => {
+  const token = req.cookies.shop_token;
+
+  if (!token) {
+    return res.json(false);
+  }
+
+  // Verify token
+  const verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+  if (verifiedToken) {
+    return res.json(true);
+  } else {
+    return res.json(false);
   }
 };
 
