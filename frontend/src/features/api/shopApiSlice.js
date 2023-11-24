@@ -25,6 +25,11 @@ export const shopApiSlice = apiSlice.injectEndpoints({
         url: `${SHOP_URL}/${id}`,
       }),
     }),
+    getLoginStatus: builder.query({
+      query: () => ({
+        url: `${SHOP_URL}/loggedin`,
+      }),
+    }),
   }),
 });
 
@@ -32,4 +37,5 @@ export const {
   useRegisterShopMutation,
   useShopLoginMutation,
   useGetSellerQuery,
+  useGetLoginStatusQuery
 } = shopApiSlice;
