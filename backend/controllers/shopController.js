@@ -118,7 +118,7 @@ exports.shopLogin = async (req, res, next) => {
 // route   GET /api/v2/shop/loggedin
 // @access private
 
-exports.loginStatus = async (req, res, next) => {
+exports.loginStatus = async (req, res) => {
   const token = req.cookies.shop_token;
 
   if (!token) {
