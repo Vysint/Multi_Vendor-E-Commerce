@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
 import { toast } from "react-toastify";
 import { useLoginMutation } from "../../features/api/usersApiSlice";
 import { SpinnerImg } from "../../components/loader/Loader";
@@ -34,7 +33,6 @@ const Login = () => {
       dispatch(setCredentials({ ...res }));
       toast.success("Login successful");
       navigate("/");
-      window.location.reload(true);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
