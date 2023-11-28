@@ -18,16 +18,17 @@ const shopSlice = createSlice({
   initialState,
   reducers: {
     setShopCredentials: (state, action) => {
-      state.isSeller = true;
       state.shopInfo = action.payload;
+    },
+    setLogin: (state, action) => {
+      state.isSeller = action.payload;
     },
   },
 });
 
 export const {
   setShopCredentials,
-  setSellerCredentials,
-  clearShopCredentials,
+  setLogin
 } = shopSlice.actions;
 
 export default shopSlice.reducer;
