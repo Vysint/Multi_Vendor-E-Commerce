@@ -6,7 +6,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { SpinnerImg } from "../../loader/Loader";
 import { useShopLoginMutation } from "../../../features/api/shopApiSlice";
 import { toast } from "react-toastify";
-import { setShopCredentials } from "../../../features/slices/shopSlice";
+import { setLogin, setShopCredentials } from "../../../features/slices/shopSlice";
 
 const ShopLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const ShopLogin = () => {
   const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
-  const { isSeller, shopInfo } = useSelector((state) => state.shop);
+  const { isSeller} = useSelector((state) => state.shop);
 
   const navigate = useNavigate();
 
@@ -22,17 +22,17 @@ const ShopLogin = () => {
 
   useEffect(() => {
     if (isSeller === true) {
-      // navigate(`/shop/${shopInfo._id}`);
       navigate("/dashboard");
     }
-  }, [navigate, isSeller, shopInfo]);
+  }, [navigate, isSeller]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await shopLogin({ email, password }).unwrap();
-      dispatch(setShopCredentials({ ...res }));
-      navigate(`/shop/${res._id}`);
+      dispatch(setShopCredentials(res));
+      dispatch(setLogin(true))
+      navigate(`/dashboard`);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
