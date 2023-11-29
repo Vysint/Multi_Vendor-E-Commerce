@@ -7,6 +7,7 @@ import { useGetLoginStatusQuery } from "./features/api/shopApiSlice";
 import { setLogin } from "./features/slices/shopSlice";
 const App = () => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { seller } = useSelector((state) => state.shop);
   const { data } = useGetLoginStatusQuery();
   const dispatch = useDispatch();
 
@@ -16,6 +17,12 @@ const App = () => {
       navigate("/");
     }
   }, [navigate, userInfo]);
+
+  useEffect(() => {
+    if (seller) {
+      navigate("/dashboard");
+    }
+  }, [navigate, seller]);
 
   useEffect(() => {
     async function loginStatus() {
