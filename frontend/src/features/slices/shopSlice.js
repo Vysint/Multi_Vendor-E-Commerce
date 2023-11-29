@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isSeller: false,
+  seller: false,
   shopInfo: {
     name: "",
     email: "",
@@ -21,14 +21,11 @@ const shopSlice = createSlice({
       state.shopInfo = action.payload;
     },
     setLogin: (state, action) => {
-      state.isSeller = action.payload;
+      state.seller = action.payload;
     },
   },
 });
 
-export const {
-  setShopCredentials,
-  setLogin
-} = shopSlice.actions;
+export const { setShopCredentials, setLogin } = shopSlice.actions;
 
 export default shopSlice.reducer;
