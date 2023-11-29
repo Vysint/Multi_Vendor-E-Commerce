@@ -6,7 +6,10 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { SpinnerImg } from "../../loader/Loader";
 import { useShopLoginMutation } from "../../../features/api/shopApiSlice";
 import { toast } from "react-toastify";
-import { setLogin, setShopCredentials } from "../../../features/slices/shopSlice";
+import {
+  setLogin,
+  setShopCredentials,
+} from "../../../features/slices/shopSlice";
 
 const ShopLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,24 +17,24 @@ const ShopLogin = () => {
   const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
-  const { isSeller} = useSelector((state) => state.shop);
+  const { seller } = useSelector((state) => state.shop);
 
   const navigate = useNavigate();
 
   const [shopLogin, { isLoading }] = useShopLoginMutation();
 
   useEffect(() => {
-    if (isSeller === true) {
+    if (seller) {
       navigate("/dashboard");
     }
-  }, [navigate, isSeller]);
+  }, [navigate, seller]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await shopLogin({ email, password }).unwrap();
       dispatch(setShopCredentials(res));
-      dispatch(setLogin(true))
+      dispatch(setLogin(true));
       navigate(`/dashboard`);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
