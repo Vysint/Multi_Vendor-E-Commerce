@@ -9,7 +9,8 @@ import {
 import App from "./App.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
-import store from "./store.js";
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import Home from "./pages/home/Home.jsx";
 import Products from "./pages/products/Products.jsx";
@@ -27,6 +28,7 @@ import ShopRegister from "./components/shop/auth/ShopRegister.jsx";
 import SellerProtectedRoute from "./components/private/SellerProtectedRoute.jsx";
 import ShopDashboard from "./pages/shop/dashboard/ShopDashboard.jsx";
 import ShopHomePage from "./pages/shop/ShopHomePage.jsx";
+import { SpinnerImg } from "./components/loader/Loader.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,7 +58,7 @@ const router = createBrowserRouter(
       {/*  Seller authentication routes */}
       <Route path="/shop-login" element={<ShopLogin />} />
       <Route path="/create-shop" element={<ShopRegister />} />
-      
+
       {/* Seller private routes */}
       <Route path="" element={<SellerProtectedRoute />}>
         <Route path="/shop/:id" element={<ShopHomePage />} />
@@ -67,9 +69,11 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={<SpinnerImg />} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
 );
