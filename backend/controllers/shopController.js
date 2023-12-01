@@ -105,7 +105,7 @@ exports.shopLogin = async (req, res, next) => {
 
     if (!isPasswordValid) {
       res.status(400);
-      throw new Error("password is incorrect");
+      throw new Error("Password is incorrect");
     }
     verifyShopToken(res, shop._id);
     res.status(200).json(shop);
