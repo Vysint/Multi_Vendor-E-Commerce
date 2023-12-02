@@ -32,8 +32,9 @@
       box-shadow: var(--box-shadow);
       overflow-y: scroll;
       position: sticky;
-      top: 10px;
-      left: 0;
+      margin-top: 20px;
+      // top: 10px;
+      // left: 0;
       z-index: 10;
     }
     & > .shop_profile_data {
