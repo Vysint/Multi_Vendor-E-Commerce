@@ -1,16 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  seller: false,
-  shopInfo: {
-    name: "",
-    email: "",
-    password: "",
-    phoneNumber: "",
-    address: "",
-    zipCode: "",
-    avatar: "",
-  },
+  shopInfo: localStorage.getItem("shopInfo")
+    ? JSON.parse(localStorage.getItem("shopInfo"))
+    : null,
 };
 
 const shopSlice = createSlice({
@@ -19,13 +12,15 @@ const shopSlice = createSlice({
   reducers: {
     setShopCredentials: (state, action) => {
       state.shopInfo = action.payload;
+      localStorage.setItem("shopInfo", JSON.stringify(action.payload));
     },
-    setLogin: (state, action) => {
-      state.seller = action.payload;
+    clearCredentials: (state) => {
+      state.shopInfo = null;
+      localStorage.removeItem("shopInfo");
     },
   },
 });
 
-export const { setShopCredentials, setLogin } = shopSlice.actions;
+export const { setShopCredentials, clearCredentials } = shopSlice.actions;
 
 export default shopSlice.reducer;
