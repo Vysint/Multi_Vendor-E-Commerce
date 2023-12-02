@@ -5,20 +5,17 @@ import "./ShopInfo.scss";
 
 const ShopInfo = ({ isOwner }) => {
   const { shopInfo } = useSelector((state) => state.shop);
+
+  const { id } = useParams();
+
+  console.log(id);
+
+  
   return (
     <div className="shop_info_container">
       <div className="info_data_container">
         <div className="info_data">
-          <img
-            src={shopInfo.avatar}
-            alt=""
-            style={{
-              width: "150px",
-              height: "150px",
-              objectFit: "cover",
-              borderRadius: "50%",
-            }}
-          />
+          <img src={shopInfo.avatar} alt="" />
         </div>
         <h3>{shopInfo.name}</h3>
         <p>{shopInfo.description}</p>
@@ -41,15 +38,15 @@ const ShopInfo = ({ isOwner }) => {
       </div>
       <div className="address_info">
         <h5>Joined On</h5>
-        <h4>4/5</h4>
+        <h4>{shopInfo.createdAt?.slice(0, 10)}</h4>
       </div>
 
       {isOwner && (
         <div className="isOwner">
-          <div className="isOwner_edit_button">
+          <div className="isOwner_button --btn">
             <span>Edit Shop</span>
           </div>
-          <div className="isOwner_logout_button">
+          <div className="isOwner_button --btn">
             <span>Log Out</span>
           </div>
         </div>
