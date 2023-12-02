@@ -26,12 +26,6 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Shop"],
     }),
-    getLoginStatus: builder.query({
-      query: () => ({
-        url: `${SHOP_URL}/loggedin`,
-      }),
-      providesTags: ["Shop"],
-    }),
   }),
 });
 
