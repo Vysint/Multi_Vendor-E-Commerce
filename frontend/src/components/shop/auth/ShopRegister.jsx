@@ -5,10 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { toast } from "react-toastify";
 import { useRegisterShopMutation } from "../../../features/api/shopApiSlice";
-import {
-  setLogin,
-  setShopCredentials,
-} from "../../../features/slices/shopSlice";
+import { setShopCredentials } from "../../../features/slices/shopSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ShopRegister = () => {
@@ -25,14 +22,14 @@ const ShopRegister = () => {
   const [visible, setVisible] = useState(false);
   const [registerShop, { isLoading }] = useRegisterShopMutation();
   const dispatch = useDispatch();
-  const { isSeller } = useSelector((state) => state.shop);
+  const { shopInfo } = useSelector((state) => state.shop);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isSeller === true) {
+    if (shopInfo) {
       navigate(`/dashboard`);
     }
-  }, [navigate, isSeller]);
+  }, [navigate, shopInfo]);
 
   const handleInputChange = (e) => {
     setUserData((prev) => {
@@ -81,10 +78,8 @@ const ShopRegister = () => {
         avatar: imageURL,
       };
       const res = await registerShop(formData).unwrap();
-      dispatch(setShopCredentials(res));
-      dispatch(setLogin(true));
+      dispatch(setShopCredentials({ ...res }));
       navigate(`/dashboard`);
-      // dispatch(setSellerCredentials(userData.name)); //
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
