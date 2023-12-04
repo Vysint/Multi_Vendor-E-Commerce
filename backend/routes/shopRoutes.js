@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.post("/register", fileUpload.single("file"), registerShop);
 router.post("/login", shopLogin);
-router.get("/loggedin", protectShop, loginStatus);
 router.get("/:id", protectShop, getSeller);
 
 module.exports = router;
+ 
