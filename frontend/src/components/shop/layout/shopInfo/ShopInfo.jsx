@@ -1,32 +1,42 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useGetSellerQuery } from "../../../../features/api/shopApiSlice";
+import { SpinnerImg } from "../../../loader/Loader";
 import "./ShopInfo.scss";
 
 const ShopInfo = ({ isOwner }) => {
   const { shopInfo } = useSelector((state) => state.shop);
 
   const { id } = useParams();
+  const { data, isLoading, isError } = useGetSellerQuery(id);
 
-  console.log(id);
+  if (isLoading) {
+    return <SpinnerImg />;
+  }
 
-  
+  if (isError || !data) {
+    return <div>Something went wrong</div>;
+  }
+  console.log(data);
+
+  //console.log(id);
+
   return (
     <div className="shop_info_container">
       <div className="info_data_container">
         <div className="info_data">
-          <img src={shopInfo.avatar} alt="" />
+          <img src={data.avatar} alt="" />
         </div>
-        <h3>{shopInfo.name}</h3>
-        <p>{shopInfo.description}</p>
+        <h3>{data.name}</h3>
+        <p>{data.description}</p>
       </div>
       <div className="address_info">
         <h5>Address</h5>
-        <h4>{shopInfo.address}</h4>
+        <h4>{data.address}</h4>
       </div>
       <div className="address_info">
         <h5>Phone Number</h5>
-        <h4>0{shopInfo.phoneNumber}</h4>
+        <h4>0{data.phoneNumber}</h4>
       </div>
       <div className="address_info">
         <h5>Total Products</h5>
@@ -38,7 +48,7 @@ const ShopInfo = ({ isOwner }) => {
       </div>
       <div className="address_info">
         <h5>Joined On</h5>
-        <h4>{shopInfo.createdAt?.slice(0, 10)}</h4>
+        <h4>{data.createdAt?.slice(0, 10)}</h4>
       </div>
 
       {isOwner && (
