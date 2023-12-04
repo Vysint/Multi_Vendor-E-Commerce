@@ -21,9 +21,7 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["Shop"],
     }),
     getSeller: builder.query({
-      query: (id) => ({
-        url: `${SHOP_URL}/${id}`,
-      }),
+      query: (id) => `${SHOP_URL}/${id}`,
       providesTags: ["Shop"],
     }),
   }),
