@@ -33,7 +33,6 @@ exports.registerShop = async (req, res, next) => {
   // Check if shop already exists
 
   let existingShop;
-
   try {
     existingShop = await Shop.findOne({ email });
 
@@ -113,43 +112,14 @@ exports.shopLogin = async (req, res, next) => {
     return next(err);
   }
 };
-
-// @desc   Get shop Login Status
-// route   GET /api/v2/shop/loggedin
-// @access private
-
-exports.loginStatus = async (req, res) => {
-  const token = req.cookies.shop_token;
-
-  if (!token) {
-    return res.json(false);
-  }
-
-  // Verify token
-  const verifiedToken = jwt.verify(token, process.env.JWT_SECRET);
-
-  if (verifiedToken) {
-    return res.json(true);
-  } else {
-    return res.json(false);
-  }
-};
-
 // @desc   Get a seller
-// route   POST /api/v2/shop/get_seller
+// route   POST /api/v2/shop/:id
 // @access Private
 
 exports.getSeller = async (req, res, next) => {
-  const { id } = req.params;
-
   try {
-    if (id === req.seller._id.toString()) {
-      const seller = await Shop.findById(id);
-      res.status(200).json(seller);
-    } else {
-      res.status(401);
-      throw new Error("User not authorized");
-    }
+    const seller = req.seller;
+    res.status(200).json(seller);
   } catch (err) {
     return next(err);
   }
