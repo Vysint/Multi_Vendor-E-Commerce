@@ -8,7 +8,7 @@ const verifyToken = (res, userId) => {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",
-    expiresIn: 24 * 60 * 60, //Seconds for 1 day
+    expiresIn: 24 * 60 * 60 * 1000, //Seconds for 1 day
   });
 };
 module.exports = verifyToken;

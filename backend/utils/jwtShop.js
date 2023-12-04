@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 
 const verifyShopToken = (res, shopId) => {
-  const token = jwt.sign({ shopId }, process.env.JWT_SECRET, {
+  const shop_token = jwt.sign({ shopId }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
 
-  res.cookie("shop_token", token, {
+  res.cookie("shop_token", shop_token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",
-    maxAge: 24 * 60 * 60, //Seconds for 1day
+    maxAge: 24 * 60 * 60 * 1000 , //milliseconds for 1day
   });
 };
 
