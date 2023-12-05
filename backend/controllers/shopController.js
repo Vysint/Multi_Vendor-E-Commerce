@@ -124,3 +124,15 @@ exports.getSeller = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Logout a seller
+// route   POST /api/v2/shop/logout
+// @access Public
+
+exports.logoutSeller = async (req, res, next) => {
+  res.cookie("shop_token", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ Message: "Seller Logged Out" });
+};
