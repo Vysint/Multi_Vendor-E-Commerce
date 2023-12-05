@@ -6,8 +6,8 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import "./ProductDetail.scss";
 import ProductDetailsInfo from "./productDetailsInfo/ProductDetailsInfo";
+import "./ProductDetail.scss";
 
 const ProductDetail = ({ data }) => {
   const [count, setCount] = useState(1);
