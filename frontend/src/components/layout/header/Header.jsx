@@ -11,8 +11,7 @@ import {
 import { BiUserCircle } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { LuShoppingCart } from "react-icons/lu";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { productData, categoriesData } from "../../../static/data";
 import Dropdown from "../dropdown/Dropdown";
 import Navbar from "../navbar/Navbar";
@@ -32,6 +31,7 @@ const Header = ({ activeHeading }) => {
   const [openNav, setOpenNav] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
+  const { shopInfo } = useSelector((state) => state.shop);
 
   const navigate = useNavigate();
 
@@ -138,16 +138,20 @@ const Header = ({ activeHeading }) => {
             <span>1</span>
           </div>
           <div className="account_credentials">
-            <Link className="become_seller" to="/shop-login">
-              <button>
-                <span>Become Seller</span>
-                <IoIosArrowForward
-                  size={25}
-                  style={{ background: "transparent", paddingTop: "4px" }}
-                  color="#fff"
-                />
-              </button>
-            </Link>
+            {shopInfo ? (
+              <Link className="become_seller" to="/dashboard">
+                <button>
+                  <span>Go Dashboard</span>
+                </button>
+              </Link>
+            ) : (
+              <Link className="become_seller" to="/shop-login">
+                <button>
+                  <span>Become Seller</span>
+                </button>
+              </Link>
+            )}
+
             {userInfo ? (
               <div
                 style={{ background: "transparent", position: "relative" }}
@@ -335,16 +339,19 @@ const Header = ({ activeHeading }) => {
               <Navbar active={activeHeading} />
             </div>
             {/* become _seller */}
-            <Link className="become_seller" id="become_seller" to="/shop-login">
-              <button>
-                <span>Become Seller</span>
-                <IoIosArrowForward
-                  size={25}
-                  style={{ background: "transparent", paddingTop: "4px" }}
-                  color="#fff"
-                />
-              </button>
-            </Link>
+            {shopInfo ? (
+              <Link className="become_seller" to="/dashboard">
+                <button>
+                  <span>Go Dashboard</span>
+                </button>
+              </Link>
+            ) : (
+              <Link className="become_seller" to="/shop-login">
+                <button>
+                  <span>Become Seller</span>
+                </button>
+              </Link>
+            )}
             {userInfo ? (
               <div
                 style={{ background: "transparent", position: "relative" }}
@@ -362,8 +369,8 @@ const Header = ({ activeHeading }) => {
                     borderRadius: "50%",
                     cursor: "pointer",
                     border: "2px solid #fff",
-                    animationName:"anime-opa",
-                    animationDuration:"3s"
+                    animationName: "anime-opa",
+                    animationDuration: "3s",
                   }}
                 />
               </div>
