@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   useGetSellerQuery,
   useLogoutSellerMutation,
 } from "../../../../features/api/shopApiSlice";
 import { SpinnerImg } from "../../../loader/Loader";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
 import { clearCredentials } from "../../../../features/slices/shopSlice";
 import "./ShopInfo.scss";
 
@@ -15,16 +14,7 @@ const ShopInfo = ({ isOwner }) => {
   const { data, isLoading, isError } = useGetSellerQuery(id);
   const [logout] = useLogoutSellerMutation();
 
-  const { shopInfo } = useSelector((state) => state.shop);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!shopInfo) {
-  //     navigate("/");
-  //   }
-  // }, [navigate, shopInfo]);
 
   if (isLoading) {
     return <SpinnerImg />;
@@ -38,7 +28,6 @@ const ShopInfo = ({ isOwner }) => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
-      // navigate("/");
       toast.success("Seller Logout Successful");
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
