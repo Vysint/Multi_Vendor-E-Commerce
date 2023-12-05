@@ -12,7 +12,7 @@ const DashboardHeader = () => {
   return (
     <div className="dashboard_container">
       <div className="logo">
-        <Link to="/dashboard" className="link">
+        <Link to="/" className="link">
           <img src={Logo} alt="" />
           <h3>Mayfair</h3>
         </Link>
