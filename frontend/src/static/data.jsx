@@ -120,7 +120,8 @@ export const categoriesData = [
     id: 7,
     title: "Pet Care",
     subTitle: "",
-    image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+    image_Url:
+      "https://res.cloudinary.com/dk7mw2ypf/image/upload/v1682417307/cld-sample.jpg",
   },
   {
     id: 8,
