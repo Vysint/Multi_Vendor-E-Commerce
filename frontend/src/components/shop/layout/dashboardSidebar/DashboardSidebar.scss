@@ -31,27 +31,30 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 
     & > a {
       text-decoration: none;
-    }
-    & > .item_text {
-      font-size: 18px;
-      font-weight: 400;
+      display: flex;
+      gap: 10px;
 
-      @include respond(mobile) {
-        display: none;
-      }
-      @include respond(xSmall){
-        display: none;
-      }
-    }
+      & > h5 {
+        font-size: 1.1rem;
+        color: #333;
 
-    & > .text_crimson {
-      color: crimson;
-    }
-    & > .text_grey {
-      color: #555;
+        @include respond(mobile) {
+          display: none;
+        }
+        @include respond(xSmall) {
+          display: none;
+        }
+      }
+      & > .text_crimson {
+        color: crimson;
+      }
+      & > .text_grey {
+        color: #555;
+      }
     }
   }
 }

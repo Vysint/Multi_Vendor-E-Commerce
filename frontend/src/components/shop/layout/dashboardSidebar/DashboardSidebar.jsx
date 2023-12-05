@@ -19,12 +19,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 1 ? "crimson" : "#555"}`}
           />
+          <h5 className={` ${active === 1 ? "text_crimson" : "text_grey"}`}>
+            Dashboard
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 1 ? "text_crimson" : "text_grey"}`}
-        >
-          Dashboard
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-orders">
@@ -32,22 +30,18 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 2 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 2 ? "text_crimson" : "text_grey"}`}>
+            All Orders
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 2 ? "text_crimson" : "text_grey"}`}
-        >
-          All Orders
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-products">
           <FiPackage size={20} color={`${active === 3 ? "crimson" : "#555"}`} />
+          <h5 className={`${active === 3 ? "text_crimson" : "text_grey"}`}>
+            All Products
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 3 ? "text_crimson" : "text_grey"}`}
-        >
-          All Products
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-create-product">
@@ -55,12 +49,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 4 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 4 ? "text_crimson" : "text_grey"}`}>
+            Create Product
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 4 ? "text_crimson" : "text_grey"}`}
-        >
-          Create Product
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-events">
@@ -68,12 +60,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 5 ? "crimson" : "#555"}`}
           />
+          <h5 className={` ${active === 5 ? "text_crimson" : "text_grey"}`}>
+            All Events
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 5 ? "text_crimson" : "text_grey"}`}
-        >
-          All Events
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-create-event">
@@ -81,12 +71,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 6 ? "crimson" : "#555"}`}
           />
+          <h5 className={` ${active === 6 ? "text_crimson" : "text_grey"}`}>
+            Create an Event
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 6 ? "text_crimson" : "text_grey"}`}
-        >
-          Create an Event
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-withdraw-money">
@@ -94,12 +82,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 7 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 7 ? "text_crimson" : "text_grey"}`}>
+            Withdraw Money
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 7 ? "text_crimson" : "text_grey"}`}
-        >
-          Withdraw Money
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-messages">
@@ -107,12 +93,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 8 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 8 ? "text_crimson" : "text_grey"}`}>
+            Message Inbox
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 8 ? "text_crimson" : "text_grey"}`}
-        >
-          Message Inbox
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-coupons">
@@ -120,12 +104,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 9 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 9 ? "text_crimson" : "text_grey"}`}>
+            Discount Codes
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${active === 9 ? "text_crimson" : "text_grey"}`}
-        >
-          Discount Codes
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/dashboard-refunds">
@@ -133,14 +115,10 @@ const DashboardSidebar = ({ active }) => {
             size={20}
             color={`${active === 10 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 10 ? "text_crimson" : "text_grey"}`}>
+            Refunds
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${
-            active === 10 ? "text_crimson" : "text_grey"
-          }`}
-        >
-          Refunds
-        </h5>
       </div>
       <div className="sidebar_single_item">
         <Link to="/settings">
@@ -148,14 +126,10 @@ const DashboardSidebar = ({ active }) => {
             size={25}
             color={`${active === 11 ? "crimson" : "#555"}`}
           />
+          <h5 className={`${active === 11 ? "text_crimson" : "text_grey"}`}>
+            Settings
+          </h5>
         </Link>
-        <h5
-          className={`item_text ${
-            active === 11 ? "text_crimson" : "text_grey"
-          }`}
-        >
-          Settings
-        </h5>
       </div>
     </div>
   );
