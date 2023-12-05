@@ -1,0 +1,79 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+
+.shop_profile_container {
+  width: 100%;
+
+  & > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > .shop_profile_items {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+
+      & > .profile_items {
+        display: flex;
+        align-items: center;
+        & > h5 {
+          font-weight: 600;
+          font-size: 1.2rem;
+          color: #333;
+        }
+        & > .colored_text {
+          color: crimson;
+        }
+      }
+    }
+    & > .--btn {
+      background: #007bff;
+      width: 150px;
+    }
+    & > a {
+      text-decoration: none;
+      background: #007bff;
+      color: #fff;
+      
+      & > span {
+        background: transparent;
+        
+      }
+    }
+  }
+
+  & > .product_data_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    @include respond(tablet) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(mobile) {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @include respond(xSmall) {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
+}
