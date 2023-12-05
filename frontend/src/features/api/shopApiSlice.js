@@ -24,6 +24,13 @@ export const shopApiSlice = apiSlice.injectEndpoints({
       query: (id) => `${SHOP_URL}/${id}`,
       providesTags: ["Shop"],
     }),
+    logoutSeller: builder.mutation({
+      query: () => ({
+        url: `${SHOP_URL}/logout`,
+        method: "POST",
+      }),
+      invalidatesTags: ["Shop"],
+    }),
   }),
 });
 
@@ -31,5 +38,5 @@ export const {
   useRegisterShopMutation,
   useShopLoginMutation,
   useGetSellerQuery,
-  useGetLoginStatusQuery,
+  useLogoutSellerMutation,
 } = shopApiSlice;
