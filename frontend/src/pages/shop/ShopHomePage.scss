@@ -32,12 +32,33 @@
       box-shadow: var(--box-shadow);
       overflow-y: scroll;
       position: sticky;
+      top: 20px;
       margin-top: 20px;
       z-index: 10;
+
+      @include respond(tablet) {
+        width: 35%;
+      }
+      @include respond(mobile) {
+        width: 45%;
+      }
+      @include respond(xSmall) {
+        display: none;
+      }
     }
     & > .shop_profile_data {
       width: 72%;
       border-radius: 4px;
+      margin-top: 20px;
+      @include respond(tablet) {
+        width: 60%;
+      }
+      @include respond(mobile) {
+        width: 50%;
+      }
+      @include respond(xSmall) {
+        width: 100%;
+      }
     }
   }
 }
