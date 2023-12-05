@@ -8,7 +8,7 @@ const SellerProtectedRoute = () => {
   return shopInfo ? (
     <Outlet />
   ) : (
-    <Navigate to="/shop-login" state={{ from: location }} replace />
+    <Navigate to="/" state={{ from: location }} replace />
   );
 };
 
