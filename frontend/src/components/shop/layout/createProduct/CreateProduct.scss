@@ -1,0 +1,110 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: 768px) and (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpoint== mobile {
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $breakpoint == xSmall {
+    @media screen and (min-width: 300px) and (max-width: 479px) {
+      @content;
+    }
+  }
+}
+.create_product_container {
+  padding: 20px 5%;
+  width: 60%;
+  background: #fff;
+  height: 80vh;
+  overflow-y: scroll;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid #eee;
+  & > h5 {
+    text-align: center;
+    background: transparent;
+    font-size: 1.9rem;
+  }
+  & > form {
+    background: #fff;
+
+    & > div {
+      background: #fff;
+      padding-bottom: 1rem;
+      & > label {
+        background: transparent;
+        & > span {
+          color: crimson;
+        }
+      }
+
+      & > input {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        height: 35px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 0 10px;
+        appearance: none;
+      }
+
+      & > textarea {
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      & > .input_file {
+        background: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      & > .image_uploader {
+        background: #fff;
+        & > label {
+          background: #fff;
+          display: block;
+          margin-top: 10px;
+        }
+
+        & > img {
+          width: 150px;
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+      }
+      & > select {
+        margin-left: 10px;
+        padding: 5px 10px;
+        width: 40%;
+        border: 1px solid #ccc;
+      }
+      & > textarea:focus {
+        outline: 0.5px solid #007bff;
+      }
+      & > input:focus {
+        outline: 0.5px solid #007bff;
+      }
+
+      & > div {
+        background: #fff;
+        width: 100%;
+        & > input {
+          padding: 5px 10px;
+          width: 100%;
+          background: #007bff;
+          border: none;
+          border-radius: 4px;
+          color: #fff;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
