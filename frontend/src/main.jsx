@@ -63,7 +63,7 @@ const router = createBrowserRouter(
         <Route path="/shop/:id" element={<ShopHomePage />} />
         <Route path="/dashboard" element={<ShopDashboard />} />
         <Route
-          path="//dashboard-create-product"
+          path="/dashboard-create-product"
           element={<ShopCreateProductPage />}
         />
       </Route>
