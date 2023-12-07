@@ -33,7 +33,6 @@ const CreateProduct = () => {
     let files = Array.from(e.target.files);
     setImages((prevImages) => [...prevImages, ...files]);
   };
-  console.log(images);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

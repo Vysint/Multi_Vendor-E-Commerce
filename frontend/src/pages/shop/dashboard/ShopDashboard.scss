@@ -27,7 +27,7 @@
       width: 200px;
     }
     @include respond(mobile){
-      width: 70px;
+      width: 50px;
     }
     @include respond(xSmall){
       width: 50px;
