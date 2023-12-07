@@ -10,6 +10,7 @@ const ShopDashboard = () => {
         <div className="sidebar_container">
           <DashboardSidebar active={1} />
         </div>
+        <div></div>
       </div>
     </>
   );
