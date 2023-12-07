@@ -14,6 +14,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter your product category!"],
     },
+    tags: {
+      type: String,
+    },
     originalPrice: {
       type: Number,
     },
