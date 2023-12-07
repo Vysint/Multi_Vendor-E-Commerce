@@ -1,0 +1,15 @@
+.shop_create_product_page {
+  padding: 0px 5%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  & > .shop_create_product_sidebar {
+    width: 330px;
+  }
+  & > .shop_create_product {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
