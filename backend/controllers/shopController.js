@@ -1,6 +1,5 @@
 const Shop = require("../models/shopModel");
 const verifyShopToken = require("../utils/jwtShop");
-const jwt = require("jsonwebtoken");
 
 // @desc   Register a new shop
 // route   POST /api/v2/shop/register
