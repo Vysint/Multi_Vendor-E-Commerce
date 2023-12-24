@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 const useCloudinaryImageUpload = () => {
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(null);
 
   const uploadImage = async (image) => {
     try {
@@ -27,17 +28,23 @@ const useCloudinaryImageUpload = () => {
           }
         );
 
+        if (!response.ok) {
+          throw new Error("Image type not supported, upload png, jpeg, jpg");
+        }
+
         const imgData = await response.json();
         imageUrl = imgData.secure_url;
       }
       setUploading(false);
+      setError(null);
       return imageUrl;
-    } catch (err) {
+    } catch (error) {
       setUploading(false);
-      toast.error(err?.message || "Image upload failed");
+      setError(error?.message);
+      throw error;
     }
   };
-  return { uploadImage, uploading };
+  return { uploadImage, uploading, error };
 };
 
 export default useCloudinaryImageUpload;
