@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useRegisterShopMutation } from "../../../features/api/shopApiSlice";
 import { setShopCredentials } from "../../../features/slices/shopSlice";
 import { useDispatch, useSelector } from "react-redux";
+import useCloudinaryImageUpload from "../../hooks/imageCloudinary";
 
 const ShopRegister = () => {
   const [userData, setUserData] = useState({
@@ -24,6 +25,8 @@ const ShopRegister = () => {
   const dispatch = useDispatch();
   const { shopInfo } = useSelector((state) => state.shop);
   const navigate = useNavigate();
+
+  const { uploadImage, uploading, error } = useCloudinaryImageUpload();
 
   useEffect(() => {
     if (shopInfo) {
@@ -47,39 +50,21 @@ const ShopRegister = () => {
 
     // Handle image upload
     try {
-      let imageURL;
-      if (
-        userData.avatar &&
-        (userData.avatar.type === "image/jpeg" ||
-          userData.avatar.type === "image/jpg" ||
-          userData.avatar.type === "image/png")
-      ) {
-        const image = new FormData();
-        image.append("file", userData.avatar);
-        image.append("cloud_name", "dk7mw2ypf");
-        image.append("upload_preset", "aqoxs4ms");
+      let imageURL = await uploadImage(userData.avatar);
 
-        // Save to cloudinary
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dk7mw2ypf/image/upload",
-          {
-            method: "POST",
-            body: image,
-          }
-        );
+      if (imageURL) {
+        // Save User
+        const formData = {
+          ...userData,
+          avatar: imageURL,
+        };
 
-        const imgData = await response.json();
-        imageURL = imgData.secure_url;
+        const res = await registerShop(formData).unwrap();
+        dispatch(setShopCredentials({ ...res }));
+        navigate("/dashboard");
+      } else {
+        toast.error(error);
       }
-
-      // Save the user
-      const formData = {
-        ...userData,
-        avatar: imageURL,
-      };
-      const res = await registerShop(formData).unwrap();
-      dispatch(setShopCredentials({ ...res }));
-      navigate(`/dashboard`);
     } catch (err) {
       toast.error(err?.data?.message || err.error?.message);
     }
@@ -87,7 +72,7 @@ const ShopRegister = () => {
 
   return (
     <div className="auth">
-      {isLoading && <SpinnerImg />}
+      {(isLoading || uploading) && <SpinnerImg />}
       <div className="form">
         <h2 className="title">Register your shop</h2>
         <form className="form1" onSubmit={handleSubmit}>
@@ -191,6 +176,11 @@ const ShopRegister = () => {
               </label>
             </div>
           </div>
+          {error && (
+            <p style={{ color: "red", margin: "1rem 0px" }}>
+              Image type not supported. Upload PNG, JPEG or JPG
+            </p>
+          )}
           <button
             type="submit"
             className="--btn --btn-primary --btn-block"
