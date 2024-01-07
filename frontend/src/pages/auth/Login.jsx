@@ -41,7 +41,6 @@ const Login = () => {
   return (
     <div className="auth">
       {isLoading && <SpinnerImg />}
-
       <div className="form">
         <h2>Login</h2>
         <form className="form1" onSubmit={submitHandler}>
