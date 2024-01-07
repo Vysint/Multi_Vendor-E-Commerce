@@ -33,13 +33,10 @@ const productSchema = new mongoose.Schema(
         type: String,
       },
     ],
-    shopId: {
-      type: String,
-      required: true,
-    },
     shop: {
-      type: Object,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "Shop",
     },
     sold_out: {
       type: Number,
