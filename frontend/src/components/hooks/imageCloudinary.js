@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const useCloudinaryImageUpload = () => {
   const [uploading, setUploading] = useState(false);
