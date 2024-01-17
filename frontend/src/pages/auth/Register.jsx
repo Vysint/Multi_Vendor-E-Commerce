@@ -7,6 +7,7 @@ import { RxAvatar } from "react-icons/rx";
 import { useSignUpMutation } from "../../features/api/usersApiSlice";
 import { setCredentials } from "../../features/slices/authSlice";
 import { SpinnerImg } from "../../components/loader/Loader";
+import useCloudinaryImageUpload from "../../components/hooks/imageCloudinary";
 import "./Login.scss";
 const Register = () => {
   const [name, setName] = useState("");
@@ -20,6 +21,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [signUp, { isLoading }] = useSignUpMutation();
+
+  const { uploadImage, uploading, error } = useCloudinaryImageUpload();
 
   useEffect(() => {
     if (userInfo) {
@@ -35,41 +38,23 @@ const Register = () => {
     e.preventDefault();
     try {
       // Handle image upload
-      let imageURL;
-      if (
-        profileImage &&
-        (profileImage.type === "image/jpeg" ||
-          profileImage.type === "image/jpg" ||
-          profileImage.type === "image/png")
-      ) {
-        const image = new FormData();
-        image.append("file", profileImage);
-        image.append("cloud_name", "dk7mw2ypf");
-        image.append("upload_preset", "aqoxs4ms");
+      let imageURL = await uploadImage(profileImage);
 
-        // Save image to cloudinary
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dk7mw2ypf/image/upload",
-          {
-            method: "POST",
-            body: image,
-          }
-        );
-        const imgData = await response.json();
-        imageURL = imgData.secure_url;
+      if (imageURL) {
+        const formData = {
+          name,
+          email,
+          password,
+          imageURL,
+        };
+        // Save the user
+        const res = await signUp(formData).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate("/");
+        toast.success("Sign up is successful");
+      } else {
+        toast.error(error);
       }
-
-      // Save the user
-      const formData = {
-        name,
-        email,
-        password,
-        imageURL,
-      };
-      const res = await signUp(formData).unwrap();
-      dispatch(setCredentials({ ...res }));
-      navigate("/");
-      toast.success("Sign up is successful");
     } catch (err) {
       toast.error(err?.data?.message || err?.error?.message);
     }
@@ -77,7 +62,7 @@ const Register = () => {
 
   return (
     <div className="auth">
-      {isLoading && <SpinnerImg />}
+      {(isLoading || uploading) && <SpinnerImg />}
       <div className="form">
         <h2 className="title">Register</h2>
         <form className="form1" onSubmit={handleSubmit}>
