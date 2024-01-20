@@ -1,5 +1,4 @@
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   useGetSellerQuery,
   useLogoutSellerMutation,
@@ -10,8 +9,8 @@ import { clearCredentials } from "../../../../features/slices/shopSlice";
 import "./ShopInfo.scss";
 
 const ShopInfo = ({ isOwner }) => {
-  const { id } = useParams();
-  const { data, isLoading, isError } = useGetSellerQuery(id);
+  const { shopInfo } = useSelector((state) => state.shop);
+  const { data, isLoading, isError } = useGetSellerQuery(shopInfo._id);
   const [logout] = useLogoutSellerMutation();
 
   const dispatch = useDispatch();
