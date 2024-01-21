@@ -46,29 +46,43 @@ const CreateProduct = () => {
     try {
       setLoading(true);
       let imageUrls = [];
+      let allUploadsSuccessful = true;
 
       await Promise.all(
         images.map(async (image) => {
-          const imgURL = await uploadImage(image);
-          if (imgURL) {
-            imageUrls.push(imgURL);
-          } else {
-            toast.error(error);
+          try {
+            const imgURL = await uploadImage(image);
+            if (imgURL) {
+              imageUrls.push(imgURL);
+            } else {
+              allUploadsSuccessful = false;
+              toast.error(error);
+            }
+          } catch (uploadError) {
+            allUploadsSuccessful = false;
+            toast.error(uploadError.message);
           }
         })
       );
       // After all images are uploaded, create the product
-      const formData = {
-        ...product,
-        images: imageUrls,
-      };
-      await createProduct(formData).unwrap();
 
-      // Navigate after successful product creation
-      navigate("/products");
-      setLoading(false);
+      if (allUploadsSuccessful) {
+        const formData = {
+          ...product,
+          images: imageUrls,
+        };
+
+        await createProduct(formData).unwrap();
+        // Navigate after successful product creation
+        navigate("/products");
+      } else {
+        toast.error("Some image uploads failed, please try again.");
+      }
     } catch (err) {
+      setLoading(false);
       toast.error(err?.data?.message || err?.error?.message);
+    } finally {
+      setLoading(false);
     }
   };
 
