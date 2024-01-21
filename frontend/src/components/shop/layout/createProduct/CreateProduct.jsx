@@ -178,7 +178,7 @@ const CreateProduct = () => {
         <br />
         <div>
           <label>
-            Upload Images<span>*</span>
+            Upload Images<span>*</span> (PNG, JPEG or JPG)
           </label>
           <input
             className="input_file"
