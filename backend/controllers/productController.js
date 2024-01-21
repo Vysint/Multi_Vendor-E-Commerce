@@ -42,7 +42,7 @@ exports.createProduct = async (req, res, next) => {
       originalPrice,
       discountPrice,
       quantity,
-      images: req.query.images,
+      images: req.body.images,
       shop: req.seller._id,
     });
 
