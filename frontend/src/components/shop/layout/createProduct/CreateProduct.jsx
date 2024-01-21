@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../../../../static/data";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { toast } from "react-toastify";
+import useCloudinaryImageUpload from "../../../hooks/imageCloudinary";
 import "./CreateProduct.scss";
+import { useCreateProductMutation } from "../../../../features/api/productApiSlice";
+import { SpinnerImg } from "../../../loader/Loader";
 
 const CreateProduct = () => {
   const [product, setProduct] = useState({
@@ -11,19 +14,22 @@ const CreateProduct = () => {
     description: "",
     category: "",
     tags: "",
-    originalPrice: 0,
-    discountPrice: 0,
-    quantity: 0,
+    originalPrice: "",
+    discountPrice: "",
+    quantity: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const [images, setImages] = useState([]);
-  const { shopInfo } = useSelector((state) => state.shop);
-  const dispatch = useDispatch();
+  const { uploadImage, uploading, error } = useCloudinaryImageUpload();
+  const [createProduct] = useCreateProductMutation();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setProduct((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      return { ...prev, [name]: value };
     });
   };
 
@@ -36,9 +42,39 @@ const CreateProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      setLoading(true);
+      let imageUrls = [];
+
+      await Promise.all(
+        images.map(async (image) => {
+          const imgURL = await uploadImage(image);
+          if (imgURL) {
+            imageUrls.push(imgURL);
+          } else {
+            toast.error(error);
+          }
+        })
+      );
+      // After all images are uploaded, create the product
+      const formData = {
+        ...product,
+        images: imageUrls,
+      };
+      await createProduct(formData).unwrap();
+
+      // Navigate after successful product creation
+      navigate("/products");
+      setLoading(false);
+    } catch (err) {
+      toast.error(err?.data?.message || err?.error?.message);
+    }
   };
+
   return (
     <div className="create_product_container">
+      {(loading || uploading) && <SpinnerImg />}
       <h5>Create Product</h5>
       {/* Create a product form */}
       <form onSubmit={handleSubmit}>
@@ -84,8 +120,8 @@ const CreateProduct = () => {
             required
           >
             <option value="Choose a Category">Choose a Category</option>
-            {categoriesData.map((i) => (
-              <option key={i.title} value={i.title}>
+            {categoriesData.map((i, index) => (
+              <option key={index} value={i.title}>
                 {i.title}
               </option>
             ))}
@@ -161,8 +197,8 @@ const CreateProduct = () => {
               />
             </label>
             {images &&
-              images.map((i) => (
-                <img src={URL.createObjectURL(i)} key={i} alt="" />
+              images.map((i, index) => (
+                <img src={URL.createObjectURL(i)} key={index} alt="" />
               ))}
           </div>
           <br />
