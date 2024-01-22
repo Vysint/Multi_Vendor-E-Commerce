@@ -35,7 +35,7 @@ app.use("/api/v2/users", userRoutes);
 
 app.use("/api/v2/shop", shopRoutes);
 
-app.use("/api/v2/products", productRoutes);
+app.use("/api/v2/product", productRoutes);
 
 //Error middlewares
 app.use(errorHandler);
