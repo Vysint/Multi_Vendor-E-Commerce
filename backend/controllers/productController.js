@@ -51,3 +51,18 @@ exports.createProduct = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Get all products of a shop
+// route   POST /api/v2/products/:id
+// @access Private
+
+exports.getProducts = async (req, res, next) => {
+  try {
+    const products = await Product.find({ shop: req.seller._id }).sort(
+      "-createdAt"
+    );
+    res.status(200).json(products);
+  } catch (err) {
+    return next(err);
+  }
+};
