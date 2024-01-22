@@ -76,7 +76,7 @@ const CreateProduct = () => {
         // Navigate after successful product creation
         navigate("/products");
       } else {
-        toast.error("Some image uploads failed, please try again.");
+        toast.error("Some image uploads failed. Please try again (PNG, JPEG or JPG types).");
       }
     } catch (err) {
       setLoading(false);
