@@ -46,7 +46,7 @@ exports.createProduct = async (req, res, next) => {
       shop: req.seller._id,
     });
 
-    res.status(200).json(product);
+    res.status(201).json(product);
   } catch (err) {
     return next(err);
   }
