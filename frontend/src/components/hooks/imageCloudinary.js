@@ -39,7 +39,7 @@ const useCloudinaryImageUpload = () => {
       return imageUrl;
     } catch (error) {
       setUploading(false);
-      setError(error?.message);
+      setError(error?.data?.message);
       throw error;
     }
   };
