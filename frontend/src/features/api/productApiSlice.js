@@ -12,7 +12,12 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+    getProducts: builder.query({
+      query: () => `${PRODUCT_URL}`,
+      providesTags: ["Product"],
+    }),
   }),
 });
 
-export const { useCreateProductMutation } = productApiSlice;
+export const { useCreateProductMutation, useGetProductsQuery } =
+  productApiSlice;
