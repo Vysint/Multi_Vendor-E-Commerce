@@ -28,6 +28,7 @@ import SellerProtectedRoute from "./components/private/SellerProtectedRoute.jsx"
 import ShopDashboard from "./pages/shop/dashboard/ShopDashboard.jsx";
 import ShopHomePage from "./pages/shop/ShopHomePage.jsx";
 import ShopCreateProductPage from "./pages/shop/ShopCreateProduct/ShopCreateProductPage.jsx";
+import ShopAllProducts from "./pages/shop/shopAllProducts/ShopAllProducts.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,6 +67,7 @@ const router = createBrowserRouter(
           path="/dashboard-create-product"
           element={<ShopCreateProductPage />}
         />
+        <Route path="/dashboard-products" element={<ShopAllProducts />} />
       </Route>
     </Route>
   )
