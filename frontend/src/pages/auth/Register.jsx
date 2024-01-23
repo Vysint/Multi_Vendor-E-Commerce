@@ -15,12 +15,13 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  const [signUp, { isLoading }] = useSignUpMutation();
+  const [signUp] = useSignUpMutation();
 
   const { uploadImage, uploading, error } = useCloudinaryImageUpload();
 
@@ -37,6 +38,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       // Handle image upload
       let imageURL = await uploadImage(profileImage);
 
@@ -54,15 +56,17 @@ const Register = () => {
         toast.success("Sign up is successful");
       } else {
         toast.error(error);
+        setLoading(false);
       }
     } catch (err) {
+      setLoading(false);
       toast.error(err?.data?.message || err?.error?.message);
     }
   };
 
   return (
     <div className="auth">
-      {(isLoading || uploading) && <SpinnerImg />}
+      {(loading || uploading) && <SpinnerImg />}
       <div className="form">
         <h2 className="title">Register</h2>
         <form className="form1" onSubmit={handleSubmit}>
