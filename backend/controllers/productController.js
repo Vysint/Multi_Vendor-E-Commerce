@@ -53,7 +53,7 @@ exports.createProduct = async (req, res, next) => {
 };
 
 // @desc   Get all products of a shop
-// route   POST /api/v2/products/:id
+// route   POST /api/v2/products
 // @access Private
 
 exports.getProducts = async (req, res, next) => {
