@@ -29,7 +29,7 @@ const InfoBox = ({ userInfo, openProfile, profileOpen }) => {
         <div className="info_box">
           <AiOutlineClose className="close" size={20} onClick={openProfile} />
           <span>
-            <img src={userInfo.imageURL} alt="" />
+            <img src={userInfo.imageURL[0].secure_url} alt="" />
             <h3>{userInfo.name}</h3>
           </span>
           <div>

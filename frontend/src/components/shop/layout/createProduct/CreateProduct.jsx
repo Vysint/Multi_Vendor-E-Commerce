@@ -74,7 +74,7 @@ const CreateProduct = () => {
 
         await createProduct(formData).unwrap();
         // Navigate after successful product creation
-        navigate("/dashboard");
+        navigate("/dashboard-products");
       } else {
         toast.error("Some image uploads failed. Please try again (PNG, JPEG or JPG types).");
       }

@@ -158,8 +158,8 @@ const Header = ({ activeHeading }) => {
                 className="profile_picture"
               >
                 <img
-                  src={userInfo.imageURL}
-                  alt="Profile Picture"
+                  src={userInfo.imageURL[0].secure_url}
+                  alt="img"
                   onClick={openProfile}
                   style={{
                     width: "40px",
@@ -358,8 +358,8 @@ const Header = ({ activeHeading }) => {
                 className="user_info"
               >
                 <img
-                  src={userInfo.imageURL}
-                  alt="Profile Picture"
+                  src={userInfo.imageURL[0].secure_url}
+                  alt="Pic"
                   onClick={profileLink}
                   style={{
                     width: "40px",

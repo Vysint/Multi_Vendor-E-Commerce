@@ -33,7 +33,7 @@ const ProfileContent = ({ active }) => {
         <div>
           <div className="profile_container">
             <div className="relative">
-              <img src={userInfo.imageURL} alt="" />
+              <img src={userInfo.imageURL[0].secure_url} alt="" />
               <div className="camera">
                 <AiOutlineCamera style={{ background: "transparent" }} />
               </div>

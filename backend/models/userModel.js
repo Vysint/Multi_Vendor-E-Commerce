@@ -52,11 +52,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
-    imageURL: {
-      type: String,
-      required: [true, "Please add a photo"],
-      default: "https://i.ibb.co/3k2BG3T/profile.png",
-    },
+    imageURL: [
+      {
+        public_id: {
+          type: String,
+        },
+        secure_url: {
+          type: String,
+          required: [true, "Please add a photo"],
+          default: "https://i.ibb.co/3k2BG3T/profile.png",
+        },
+      },
+    ],
     createdAt: {
       type: Date,
       default: Date.now(),
