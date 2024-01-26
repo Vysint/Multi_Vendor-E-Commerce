@@ -75,7 +75,7 @@ const DashboardHeader = () => {
             />
           </Link>
           <Link to={`/shop/${shopInfo._id}`}>
-            <img src={shopInfo.avatar} alt="" />
+            <img src={shopInfo.avatar[0].secure_url} alt="" />
           </Link>
         </div>
       </div>

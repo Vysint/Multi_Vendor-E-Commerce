@@ -37,7 +37,7 @@ const ShopInfo = ({ isOwner }) => {
     <div className="shop_info_container">
       <div className="info_data_container">
         <div className="info_data">
-          <img src={data.avatar} alt="" />
+          <img src={data.avatar[0].secure_url} alt="" />
         </div>
         <h3>{data.name}</h3>
         <p>{data.description}</p>
