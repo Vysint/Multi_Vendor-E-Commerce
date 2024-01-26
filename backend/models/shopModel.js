@@ -38,11 +38,16 @@ const shopSchema = new mongoose.Schema(
       type: String,
       default: "Seller",
     },
-    avatar: {
-      type: String,
-      required: true,
-      default: "https://i.ibb.co/3k2BG3T/profile.png",
-    },
+    avatar: [
+      {
+        public_id: {
+          type: String,
+        },
+        secure_url: {
+          type: String,
+        },
+      },
+    ],
     zipCode: {
       type: Number,
       required: true,
