@@ -66,3 +66,18 @@ exports.getProducts = async (req, res, next) => {
     return next(err);
   }
 };
+
+// @desc   Delete a products 
+// route   POST /api/v2/products/:id
+// @access Private
+exports.deleteProduct = async(req, res, next) => {
+  const {id}  = req.params;
+   try{
+
+   }catch(err){
+    
+   }
+  
+}
+
+
