@@ -32,7 +32,11 @@ const useCloudinaryImageUpload = () => {
         }
 
         const imgData = await response.json();
-        imageUrl = imgData.secure_url;
+        imageUrl = {
+          public_id: imgData.public_id,
+          secure_url: imgData.secure_url,
+        };
+        // imageUrl = imgData.secure_url;
       }
       setUploading(false);
       setError(null);
