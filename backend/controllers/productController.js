@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const deleteImage = require("../utils/cloudinary");
 
 // @desc   Create a product
 // route   POST /api/v2/products/create-product
@@ -67,17 +68,22 @@ exports.getProducts = async (req, res, next) => {
   }
 };
 
-// @desc   Delete a products 
+// @desc   Delete a products
 // route   POST /api/v2/products/:id
 // @access Private
-exports.deleteProduct = async(req, res, next) => {
-  const {id}  = req.params;
-   try{
-
-   }catch(err){
-    
-   }
-  
-}
-
-
+exports.deleteProduct = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const product = await Product.findById(id);
+    if (!product) {
+      res.status(400);
+      throw new Error("Product not found");
+    }
+    if (product.shop.toString() !== req.seller._id) {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+    await deleteImage(product.images[0].public_id);
+    await product.deleteOne();
+  } catch (err) {}
+};
