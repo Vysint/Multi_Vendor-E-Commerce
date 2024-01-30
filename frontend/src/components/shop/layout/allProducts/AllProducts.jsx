@@ -14,10 +14,9 @@ import "./AllProducts.scss";
 import { toast } from "react-toastify";
 
 const AllProducts = () => {
-  const { data, isLoading, isError } = useGetProductsQuery();
-
   const [loading, setLoading] = useState(false);
 
+  const { data, isLoading, isError } = useGetProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
   const shortenText = (text, n) => {
@@ -97,12 +96,11 @@ const AllProducts = () => {
                   const {
                     _id,
                     name,
-                    category,
                     discountPrice,
                     quantity,
                     sold_out,
                   } = product;
-                  const product_name = category.replace(/\s+/g, "-");
+                  const product_name = name.replace(/\s+/g, "-");
 
                   return (
                     <tr key={_id}>
