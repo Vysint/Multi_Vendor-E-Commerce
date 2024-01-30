@@ -27,18 +27,12 @@ const AllProducts = () => {
     return text;
   };
 
-  if (isError || !data) {
-    return (
-      <div style={{ background: "transparent" }}>Something went wrong</div>
-    );
-  }
-
   const productDelete = async (id) => {
     setLoading(true);
     try {
       const res = await deleteProduct(id).unwrap();
-      window.location.reload();
       toast.success(res?.message);
+      window.location.reload();
     } catch (err) {
       toast.error(err);
       setLoading(false);
