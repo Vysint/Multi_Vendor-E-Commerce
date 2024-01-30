@@ -20,7 +20,9 @@ const ShopInfo = ({ isOwner }) => {
   }
 
   if (isError || !data) {
-    return <div>Something went wrong</div>;
+    return (
+      <div style={{ background: "transparent" }}>Something went wrong</div>
+    );
   }
 
   const logoutHandler = async () => {

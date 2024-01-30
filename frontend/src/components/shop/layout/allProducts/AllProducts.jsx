@@ -27,6 +27,12 @@ const AllProducts = () => {
     return text;
   };
 
+  if (isError || !data) {
+    return (
+      <div style={{ background: "transparent" }}>Something went wrong</div>
+    );
+  }
+
   const productDelete = async (id) => {
     setLoading(true);
     try {
@@ -93,13 +99,8 @@ const AllProducts = () => {
             <tbody>
               {currentItems &&
                 currentItems.map((product, index) => {
-                  const {
-                    _id,
-                    name,
-                    discountPrice,
-                    quantity,
-                    sold_out,
-                  } = product;
+                  const { _id, name, discountPrice, quantity, sold_out } =
+                    product;
                   const product_name = name.replace(/\s+/g, "-");
 
                   return (
