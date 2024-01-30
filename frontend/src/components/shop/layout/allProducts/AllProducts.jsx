@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useGetProductsQuery } from "../../../../features/api/productApiSlice";
+import {
+  useDeleteProductMutation,
+  useGetProductsQuery,
+} from "../../../../features/api/productApiSlice";
 import { SpinnerImg } from "../../../loader/Loader";
 import { AiOutlineEye } from "react-icons/ai";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -8,9 +11,14 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import ReactPaginate from "react-paginate";
 import "./AllProducts.scss";
+import { toast } from "react-toastify";
 
 const AllProducts = () => {
   const { data, isLoading, isError } = useGetProductsQuery();
+
+  const [loading, setLoading] = useState(false);
+
+  const [deleteProduct] = useDeleteProductMutation();
 
   const shortenText = (text, n) => {
     if (text.length > n) {
@@ -19,7 +27,18 @@ const AllProducts = () => {
     }
     return text;
   };
-  const productDelete = async (id) => {};
+
+  const productDelete = async (id) => {
+    setLoading(true);
+    try {
+      const res = await deleteProduct(id).unwrap();
+      window.location.reload();
+      toast.success(res?.message);
+    } catch (err) {
+      toast.error(err);
+      setLoading(false);
+    }
+  };
 
   const confirmDelete = (id) => {
     confirmAlert({
@@ -56,7 +75,7 @@ const AllProducts = () => {
   // End Pagination
   return (
     <div className="all_products">
-      {isLoading && <SpinnerImg />}
+      {(isLoading || loading) && <SpinnerImg />}
       <div className="table">
         {!isLoading && data && data.length === 0 ? (
           <p>--No products found, please add a product...</p>
