@@ -18,7 +18,7 @@ const eventSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    finish_date: {
+    end_date: {
       type: Date,
       required: true,
     },
@@ -31,6 +31,7 @@ const eventSchema = new mongoose.Schema(
     },
     originalPrice: {
       type: Number,
+      required: [true, "Please enter your event product price!"],
     },
     discountPrice: {
       type: Number,
