@@ -9,6 +9,7 @@ const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
 const shopRoutes = require("./routes/shopRoutes");
 const productRoutes = require("./routes/productRoutes");
+const eventRoutes = require("./routes/eventRoutes");
 
 const app = express();
 dotenv.config();
@@ -36,6 +37,8 @@ app.use("/api/v2/users", userRoutes);
 app.use("/api/v2/shop", shopRoutes);
 
 app.use("/api/v2/products", productRoutes);
+
+app.use("/api/v2/events", eventRoutes);
 
 //Error middlewares
 app.use(errorHandler);
