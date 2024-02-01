@@ -29,6 +29,7 @@ import ShopDashboard from "./pages/shop/dashboard/ShopDashboard.jsx";
 import ShopHomePage from "./pages/shop/ShopHomePage.jsx";
 import ShopCreateProductPage from "./pages/shop/ShopCreateProduct/ShopCreateProductPage.jsx";
 import ShopAllProducts from "./pages/shop/shopAllProducts/ShopAllProducts.jsx";
+import CreateEventPage from "./pages/shop/event/CreateEventPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -68,6 +69,7 @@ const router = createBrowserRouter(
           element={<ShopCreateProductPage />}
         />
         <Route path="/dashboard-products" element={<ShopAllProducts />} />
+        <Route path="/dashboard-create-event" element={<CreateEventPage />} />
       </Route>
     </Route>
   )
