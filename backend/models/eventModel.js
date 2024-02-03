@@ -14,11 +14,11 @@ const eventSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter your event product category"],
     },
-    start_date: {
+    startDate: {
       type: Date,
       required: true,
     },
-    end_date: {
+    endDate: {
       type: Date,
       required: true,
     },
