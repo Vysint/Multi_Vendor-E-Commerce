@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../../../../static/data";
 import { toast } from "react-toastify";
 import useCloudinaryImageUpload from "../../../hooks/imageCloudinary";
-// import "./CreateProduct.scss";
-import { useCreateProductMutation } from "../../../../features/api/productApiSlice";
 import { SpinnerImg } from "../../../loader/Loader";
+import { useCreateEventMutation } from "../../../../features/api/eventApiSlice";
+// import "./CreateProduct.scss";
 
 const CreateEvent = () => {
   const [event, setEvent] = useState({
@@ -26,7 +26,7 @@ const CreateEvent = () => {
 
   const [images, setImages] = useState([]);
   const { uploadImage, uploading, error } = useCloudinaryImageUpload();
-  const [createProduct] = useCreateProductMutation();
+  const [createEvent] = useCreateEventMutation();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -91,17 +91,19 @@ const CreateEvent = () => {
           }
         })
       );
-      // After all images are uploaded, create the product
+      // After all images are uploaded, create the event
 
       if (allUploadsSuccessful) {
         const formData = {
           ...event,
+          startDate,
+          endDate,
           images: imageUrls,
         };
 
-        await createProduct(formData).unwrap();
+        await createEvent(formData).unwrap();
         // Navigate after successful product creation
-        navigate("/dashboard-products");
+        navigate("/dashboard-events");
       } else {
         toast.error(
           "Some image uploads failed. Please try again (PNG, JPEG or JPG types)."
