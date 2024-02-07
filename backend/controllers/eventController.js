@@ -10,8 +10,8 @@ exports.createEvent = async (req, res, next) => {
     name,
     description,
     category,
-    start_date,
-    end_date,
+    startDate,
+    endDate,
     originalPrice,
     discountPrice,
     stock,
@@ -22,8 +22,8 @@ exports.createEvent = async (req, res, next) => {
       !name ||
       !description ||
       !category ||
-      !start_date ||
-      !end_date ||
+      !startDate ||
+      !endDate ||
       !originalPrice ||
       !discountPrice ||
       !stock
@@ -40,11 +40,11 @@ exports.createEvent = async (req, res, next) => {
       name,
       description,
       category,
-      start_date,
-      end_date,
       originalPrice,
       discountPrice,
       stock,
+      startDate,
+      endDate,
       shop: req.seller._id,
       images: req.body.images,
     });
