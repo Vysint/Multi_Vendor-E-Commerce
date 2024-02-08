@@ -10,6 +10,7 @@ const userRoutes = require("./routes/userRoutes");
 const shopRoutes = require("./routes/shopRoutes");
 const productRoutes = require("./routes/productRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+const couponRoutes = require("./routes/couponRoutes");
 
 const app = express();
 dotenv.config();
@@ -39,6 +40,8 @@ app.use("/api/v2/shop", shopRoutes);
 app.use("/api/v2/products", productRoutes);
 
 app.use("/api/v2/events", eventRoutes);
+
+app.use("/api/v2/coupons", couponRoutes);
 
 //Error middlewares
 app.use(errorHandler);
