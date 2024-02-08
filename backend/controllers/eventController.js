@@ -59,7 +59,7 @@ exports.createEvent = async (req, res, next) => {
   }
 };
 
-// @desc   Get all events for a given shop
+// @desc   Get all events for a  shop
 // route   POST /api/v2/events
 // @access Private
 
@@ -73,7 +73,7 @@ exports.getEvents = async (req, res, next) => {
     return next(err);
   }
 };
-// @desc   Delete an event for a given shop
+// @desc   Delete an event for a  shop
 // route   POST /api/v2/events/:id
 // @access Private
 
