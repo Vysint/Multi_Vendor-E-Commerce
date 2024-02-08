@@ -77,32 +77,32 @@ exports.getEvents = async (req, res, next) => {
 // route   POST /api/v2/events/:id
 // @access Private
 
-// exports.deleteEvent = async (req, res, next) => {
-//   const { id } = req.params;
-//   try {
-//     const event = await Event.findById(id);
+exports.deleteEvent = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const event = await Event.findById(id);
 
-//     if (!event) {
-//       res.status(404);
-//       throw new Error("Event not Found!");
-//     }
-//     // Check if shop is correct
-//     if (event.shop.toString() !== req.seller.id) {
-//       res.status(401);
-//       throw new Error("User not authorized!");
-//     }
+    if (!event) {
+      res.status(404);
+      throw new Error("Event not Found!");
+    }
+    // Check if shop is correct
+    if (event.shop.toString() !== req.seller.id) {
+      res.status(401);
+      throw new Error("User not authorized!");
+    }
 
-//     // Delete images in cloudinary for the event
-//     await Promise.all(
-//       event.images.map(async (image) => {
-//         await deleteImageFromCloudinary(image.public_id);
-//       })
-//     );
+    // Delete images in cloudinary for the event
+    await Promise.all(
+      event.images.map(async (image) => {
+        await deleteImageFromCloudinary(image.public_id);
+      })
+    );
 
-//     // Delete the event from the database
-//     await event.deleteOne();
-//     res.status(200).json({ message: "Event deleted successfully." });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
+    // Delete the event from the database
+    await event.deleteOne();
+    res.status(200).json({ message: "Event deleted successfully." });
+  } catch (err) {
+    return next(err);
+  }
+};
