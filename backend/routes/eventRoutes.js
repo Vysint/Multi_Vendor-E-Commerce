@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const {
   createEvent,
-  getEvents,
   deleteEvent,
+  getEvents,
 } = require("../controllers/eventController");
 const protectShop = require("../middlewares/shopMiddleware");
 
