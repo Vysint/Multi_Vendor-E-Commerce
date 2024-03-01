@@ -96,7 +96,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="terms">
-        <span>&copy; 2023. Vintage Solutions. All rights reserved. </span>
+        <span>&copy; 2024. Vintage Solutions. All rights reserved. </span>
         <span>Terms & Conditions Apply</span>
         <div>
           <img
