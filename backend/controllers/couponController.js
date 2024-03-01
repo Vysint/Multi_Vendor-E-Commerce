@@ -5,12 +5,15 @@ const Coupon = require("../models/couponModel");
 // @access Private
 exports.createCoupon = async (req, res, next) => {
   try {
-    const couponCode = await Coupon.find({ name: req.body.name });
+    const couponCodeExists = await Coupon.find({ name: req.body.name });
 
-    if (couponCode) {
+    if (couponCodeExists.length > 0) {
       res.status(400);
       throw new Error("Coupon code already exists");
     }
+
+    const couponCode = await Coupon.create(req.body);
+    res.status(201).json(couponCode);
   } catch (err) {
     return next(err);
   }
