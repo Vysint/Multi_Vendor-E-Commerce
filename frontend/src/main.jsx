@@ -31,6 +31,7 @@ import ShopCreateProductPage from "./pages/shop/ShopCreateProduct/ShopCreateProd
 import ShopAllProducts from "./pages/shop/shopAllProducts/ShopAllProducts.jsx";
 import CreateEventPage from "./pages/shop/events/shopCreateEventPage/ShopCreateEventPage.jsx";
 import ShopAllEvents from "./pages/shop/events/shopAllEvents/ShopAllEvents.jsx";
+import ShopAllCoupons from "./pages/shop/coupons/ShopAllCoupons.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -73,6 +74,7 @@ const router = createBrowserRouter(
         <Route path="/dashboard-create-event" element={<CreateEventPage />} />
 
         <Route path="/dashboard-events" element={<ShopAllEvents />} />
+        <Route path="/dashboard-coupons" element={<ShopAllCoupons />} />
       </Route>
     </Route>
   )
